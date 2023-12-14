@@ -1,0 +1,34 @@
+.contenitorebarra {
+  background-color: #1c2125;
+  width: 100wh;
+  height: 4rem;
+  border-bottom: 0.15rem solid rgb(66, 66, 66);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.input {
+  background-color: #121619;
+  border: none;
+  border-radius: 5px;
+  width: 15rem;
+  align-self: center;
+  padding: 0.7rem;
+}
+
+::placeholder {
+  color: #fcfcfc;
+}
+
+.svg {
+  height: 2.5rem;
+  align-self: center;
+  padding: 1rem;
+  fill: #fcfcfc;
+}
+
+.cont-anime {
+  max-width: 1100px;
+  background-color: #1c2125;
+}

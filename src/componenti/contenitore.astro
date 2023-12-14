@@ -1,0 +1,52 @@
+---
+
+import '../styles/componenti.css';
+
+
+
+import axios from "axios";
+import jsdom from "JSDOM";
+import fs from 'fs'
+const { JSDOM } = jsdom;
+let arr = []
+
+await axios.get('https://www.animeworld.so/') 
+            .then(({ data }) => {
+                const dom = new JSDOM(data);
+            let matches = dom.window.document.querySelectorAll(".film-list > .item > .inner > a")
+            matches.forEach(element => {
+                let fixed = element.outerHTML
+                    if (fixed.includes('<div class="dub">DUB</div>')){fixed = fixed.replace('<div class="dub">DUB</div>',"")}
+                    
+                    if (fixed.includes('<div class="ova">OVA</div>')){fixed = fixed.replace('<div class="ova">OVA</div>',"")}
+                    
+                    if (fixed.includes('<div class="ona">ONA</div>')){fixed = fixed.replace('<div class="ona">ONA</div>',"")}
+                    
+                    if (fixed.includes('<div class="movie">Movie</div>')){fixed = fixed.replace('<div class="movie">Movie</div>',"")}
+                    
+                    if (fixed.includes('<div class="special">Special</div>')){fixed = fixed.replace('<div class="special">Special</div>',"")}
+                    
+                    arr.push(fixed)
+                
+            });
+            
+        });
+ 
+
+        
+
+    
+
+    
+---
+
+<div class="cont-anime">
+    <div id="contenitore">  
+        { arr }
+    </div>
+</div>
+
+<script>
+   
+</script>
+
