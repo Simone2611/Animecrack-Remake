@@ -1,0 +1,72 @@
+---
+
+
+
+
+import Playvideo from '../../../componenti/playvideo.astro';
+
+
+import '../../../styles/componenti.css';
+import '../../../js/js.js';
+
+
+import axios from "axios";
+import jsdom from "JSDOM";
+import { manifest } from 'astro:ssr-manifest';
+const { JSDOM } = jsdom;
+
+let URL = Astro.request.url
+
+const URLplay = URL.split('/');
+
+console.log(URLplay)
+let link2 = "https://www.animeworld.so/api/episode/serverPlayerAnimeWorld?id=" + URLplay.at(-1);
+
+let link = ""
+
+await axios.get(link2) 
+            .then(({ data }) => {
+                const dom = new JSDOM(data);
+            let matches = dom.window.document.querySelectorAll("div video source")
+
+                
+            matches.forEach(element => {
+                let fixed = element.src
+                    console.log(fixed)
+
+                link = fixed
+                    
+                
+            });
+            
+        });
+        
+
+    
+
+    
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Animecrack</title>
+		
+	</head>
+	<body>
+		<Playvideo />
+		<div>
+			<video controls autoplay>
+				<source src={ link } type="video/mp4">
+			</video>
+			
+			
+		</div>
+		
+		
+	</body>
+</html>
+
