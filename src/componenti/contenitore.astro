@@ -8,12 +8,15 @@ import axios from "axios";
 import jsdom from "JSDOM";
 import fs from 'fs'
 const { JSDOM } = jsdom;
-let arr = []
+
+let arr = [];
 
 await axios.get('https://www.animeworld.so/') 
             .then(({ data }) => {
                 const dom = new JSDOM(data);
-            let matches = dom.window.document.querySelectorAll(".film-list > .item > .inner > a")
+            let matches = dom.window.document.querySelectorAll(".film-list > .item > .inner")
+
+        
             matches.forEach(element => {
                 let fixed = element.outerHTML
                     if (fixed.includes('<div class="dub">DUB</div>')){fixed = fixed.replace('<div class="dub">DUB</div>',"")}
@@ -26,7 +29,9 @@ await axios.get('https://www.animeworld.so/')
                     
                     if (fixed.includes('<div class="special">Special</div>')){fixed = fixed.replace('<div class="special">Special</div>',"")}
                     
+
                     arr.push(fixed)
+                    
                 
             });
             
@@ -41,12 +46,18 @@ await axios.get('https://www.animeworld.so/')
 ---
 
 <div class="cont-anime">
-    <div id="contenitore">  
-        { arr }
+    <div class="contenitore-anime" id="contenitore">  
+        {arr}
     </div>
 </div>
 
 <script>
-   
+    const contenitore = document.getElementById("contenitore")
+
+    
+
+    let transformato = contenitore.innerText.trim()
+
+    contenitore.innerHTML = transformato
 </script>
 
