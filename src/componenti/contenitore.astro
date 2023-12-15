@@ -46,7 +46,9 @@ await axios.get('https://www.animeworld.so/')
 ---
 
 <div class="cont-anime">
+    <p class="Recenti">Recenti</p>
     <div class="contenitore-anime" id="contenitore">  
+        
         {arr}
     </div>
 </div>
@@ -58,6 +60,6 @@ await axios.get('https://www.animeworld.so/')
 
     let transformato = contenitore.innerText.trim()
 
-    contenitore.innerHTML = transformato
+    contenitore.innerHTML =  transformato
 </script>
 

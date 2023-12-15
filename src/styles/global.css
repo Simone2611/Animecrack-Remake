@@ -1,11 +1,20 @@
+@import url("https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap");
+
 body,
 html {
   margin: 0;
   padding: 0;
   background-color: #121619;
+  font-family: Hind Siliguri;
 }
 
 p {
   margin: 0;
   padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  color: #fcfcfc;
 }
