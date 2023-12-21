@@ -15,7 +15,7 @@ await axios.get('https://www.animeworld.so/')
                 const dom = new JSDOM(data);
             let matches = dom.window.document.querySelectorAll(".film-list > .item > .inner")
 
-                console.log(matches)
+                
             matches.forEach(element => {
                 let fixed = element.outerHTML
                     if (fixed.includes('<div class="dub">DUB</div>')){fixed = fixed.replace('<div class="dub">DUB</div>',"")}

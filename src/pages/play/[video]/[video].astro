@@ -1,8 +1,4 @@
 ---
-
-
-
-
 import Playvideo from '../../../componenti/playvideo.astro';
 
 
@@ -19,12 +15,17 @@ let URL = Astro.request.url
 
 const URLplay = URL.split('/');
 
-console.log(URLplay)
+
 let link2 = "https://www.animeworld.so/api/episode/serverPlayerAnimeWorld?id=" + URLplay.at(-1);
+let nome1 = URLplay.at(-2).split(".")
+let nome2 = nome1.at(-2)
+let nome3 = nome2.replaceAll("-", " ")
+let nomefinale = nome3.toUpperCase()
+
 
 let link = ""
 
-await axios.get(link2) 
+		await axios.get(link2) 
             .then(({ data }) => {
                 const dom = new JSDOM(data);
             let matches = dom.window.document.querySelectorAll("div video source")
@@ -32,7 +33,7 @@ await axios.get(link2)
                 
             matches.forEach(element => {
                 let fixed = element.src
-                    console.log(fixed)
+                   
 
                 link = fixed
                     
@@ -40,11 +41,27 @@ await axios.get(link2)
             });
             
         });
-        
 
-    
+		
+	let arr = [];
+	let URL2 = URL.replace("http://localhost:4321/", "")
 
-    
+	await axios.get('https://www.animeworld.so/' + URL2) 
+		.then(({ data }) => {
+			const dom = new JSDOM(data);
+			let matches = dom.window.document.querySelectorAll("div > .server.active");
+
+			
+		matches.forEach(element => {
+			let fixed = element.outerHTML
+			
+			arr.push(fixed)
+			
+		});
+		
+	});
+
+
 ---
 
 <html lang="en">
@@ -58,15 +75,70 @@ await axios.get(link2)
 	</head>
 	<body>
 		<Playvideo />
-		<div>
+		<div class="videocontainer">
+			<p id="nomeEp">{nomefinale}</p>
 			<video controls autoplay>
 				<source src={ link } type="video/mp4">
 			</video>
-			
-			
 		</div>
+		<div class="contenitorebtn">
+			<button class="nodispl btn" id="previous"></button>
+			<button class="nodispl btn" id="next"></button>
+		</div>
+		<p class="text">Tutti gli episodi</p>
+		<div class="ep" id="contenitore">{arr}</div>
+		<script>
+    
+			const contenitore = document.getElementById("contenitore")
 		
+			
 		
+			let transformato = contenitore.innerText.trim()
+		
+			contenitore.innerHTML =  transformato
+			const ep = document.querySelector(".episode .active")
+			const nomeEp = document.getElementById("nomeEp")
+			let nextbtn = document.getElementById("next")
+			nomeEp.innerText += " EP " + ep.textContent
+			
+			
+			
+			let nextLink = document.querySelector("a.active").parentElement.nextElementSibling.children[0].href
+			if(nextLink == null || nextLink == undefined || nextLink == ""){
+				
+			}
+			else{
+			let nextA = document.createElement("a")
+			nextA.href = nextLink
+			nextA.innerHTML = "Next Episode"
+			nextbtn.classList.add("displ")
+			nextbtn.classList.remove("nodispl")
+			nextbtn.appendChild(nextA)
+			
+			}
+
+
+			let nextbtn2 = document.getElementById("previous")
+
+
+			let nextLink2 = document.querySelector("a.active").parentElement.previousElementSibling.children[0].href
+			if(nextLink2 == null || nextLink2 == undefined || nextLink2 == ""){
+				
+			}
+			else{
+			let nextA = document.createElement("a")
+			nextA.href = nextLink2
+			nextA.innerHTML = "Previous Episode"
+			nextbtn2.classList.add("displ")
+			nextbtn2.classList.remove("nodispl")
+			nextbtn2.appendChild(nextA)
+			
+			}
+			
+			
+			
+
+		</script>
 	</body>
 </html>
 

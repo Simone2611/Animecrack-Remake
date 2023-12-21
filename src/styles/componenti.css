@@ -97,7 +97,10 @@
 }
 
 .topcontainer {
+  display: flex;
   min-width: 10rem;
+  align-items: center;
+  vertical-align: middle;
 }
 
 .topcontainer2 {
@@ -105,6 +108,121 @@
   display: flex;
   flex-direction: row;
   justify-content: end;
+}
+
+.videocontainer {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  margin-top: 5rem;
+  max-width: 1000px;
+}
+
+.videocontainer video {
+  border-radius: 10px;
+}
+
+.videocontainer p {
+  color: #fcfcfc;
+  text-align: center;
+  font-size: 2rem;
+}
+
+.hidden {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  max-width: 900px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.episode {
+  font-size: 1rem;
+  width: fit-content;
+}
+
+.nodispl {
+  display: none;
+}
+
+.displ {
+  display: block;
+}
+
+.active {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  max-width: 900px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+.episode a {
+  color: #121619;
+  background-color: #fcfcfc;
+  border: 0.2rem solid #121619;
+  padding: 0.5rem;
+  width: 2rem;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+
+.episode a:hover {
+  background-color: #1c2125;
+  color: #fcfcfc;
+}
+
+ul {
+  padding: 1rem;
+}
+
+.range span {
+  color: #fcfcfc;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.range {
+  text-align: center;
+}
+
+.btn a {
+  color: #121619;
+}
+
+.btn {
+  background-color: #fcfcfc;
+  border: none;
+  border-radius: 10px;
+  padding: 0.5rem;
+  margin: 0.5rem 0 0.5rem 0;
+}
+
+.contenitorebtn {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.text {
+  color: #fcfcfc;
+  text-align: center;
+  font-size: 3rem;
+}
+
+.ep {
+  background-color: #1c2125;
+  border-radius: 10px;
+  max-width: 90vw;
+  margin: 0 auto;
 }
 
 @media only screen and (max-width: 950px) {
@@ -117,6 +235,16 @@
   .contenitore-anime {
     grid-template-columns: 1fr 1fr;
     gap: 0;
+  }
+  .logo {
+    height: 2rem;
+    align-self: center;
+  }
+  .topcontainer2 {
+    min-width: 5rem;
+  }
+  .topcontainer {
+    min-width: 6rem;
   }
 }
 
@@ -139,7 +267,7 @@
     width: 100%;
     margin-right: 1rem;
   }
-  .svg {
+  .topcontainer2 {
     display: none;
   }
   .logo {

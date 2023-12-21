@@ -18,3 +18,8 @@ a {
   color: inherit;
   color: #fcfcfc;
 }
+
+ul,
+li {
+  list-style-type: none;
+}
