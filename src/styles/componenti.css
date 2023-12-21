@@ -76,7 +76,7 @@
 }
 
 .name {
-  word-break: break-all;
+  overflow-wrap: break-word;
   max-width: 10rem;
   text-align: center;
 }
@@ -88,7 +88,7 @@
   padding: 0;
   align-items: center;
   width: 100%;
-  min-height: 25rem;
+  min-height: 28.3rem;
 }
 
 .logo {

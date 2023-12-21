@@ -1,0 +1,96 @@
+---
+import Barratop from "../../componenti/barratop.astro";
+
+import "../../styles/global.css";
+
+import axios from "axios";
+import jsdom from "JSDOM";
+import { manifest } from "astro:ssr-manifest";
+const { JSDOM } = jsdom;
+let arr = [];
+let fixed2 = [];
+let URL = Astro.request.url;
+const SEARCH_REGEX = /href\=\"([\w|\/|\.|\d|\-]+)\"/g;
+const URLsearch = URL.split("/");
+
+await axios
+  .get("https://www.animeworld.so/search?keyword=" + URLsearch.at(-2))
+  .then(({ data }) => {
+    const dom = new JSDOM(data);
+    let matches = dom.window.document.querySelectorAll(
+      ".film-list > .item > .inner"
+    );
+
+    matches.forEach(async (element) => {
+      let fixed = element.outerHTML;
+      if (fixed.includes('<div class="dub">DUB</div>')) {
+        fixed = fixed.replace('<div class="dub">DUB</div>', "");
+      }
+
+      if (fixed.includes('<div class="ova">OVA</div>')) {
+        fixed = fixed.replace('<div class="ova">OVA</div>', "");
+      }
+
+      if (fixed.includes('<div class="ona">ONA</div>')) {
+        fixed = fixed.replace('<div class="ona">ONA</div>', "");
+      }
+
+      if (fixed.includes('<div class="movie">Movie</div>')) {
+        fixed = fixed.replace('<div class="movie">Movie</div>', "");
+      }
+
+      if (fixed.includes('<div class="special">Special</div>')) {
+        fixed = fixed.replace('<div class="special">Special</div>', "");
+      }
+
+      fixed2.push(fixed);
+    });
+  })
+  .then(() => {
+    return Promise.all(
+      fixed2.map((fixed) => {
+        const search = [...fixed.matchAll(SEARCH_REGEX)];
+        const searchUrl = search[0][1];
+        return axios.get("https://www.animeworld.so" + searchUrl);
+      })
+    );
+  })
+  .then((responses) => {
+    fixed2.forEach((fixed, i) => {
+      const finalUrl = responses[i].request.res.responseUrl;
+
+      fixed = fixed.replace(SEARCH_REGEX, `href="` + finalUrl + `"`);
+
+      fixed = fixed.replace("https://www.animeworld.so", "");
+
+      arr.push(fixed);
+    });
+  });
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Animecrack</title>
+  </head>
+  <body>
+    <Barratop />
+    <div class="cont-anime">
+      <p class="Recenti">Recenti</p>
+      <div class="contenitore-anime" id="contenitore">
+        {arr}
+      </div>
+    </div>
+
+    <script>
+      const contenitore = document.getElementById("contenitore");
+
+      let transformato = contenitore.innerText.trim();
+
+      contenitore.innerHTML = transformato;
+    </script>
+  </body>
+</html>
