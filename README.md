@@ -24,11 +24,11 @@ On the first page, you'll find the latest updates on recent anime releases. Use 
 
 - **v1.0**
 
-  - AnimeCrack 100% work.
+  - AnimeCrack 100% working.
 
 - **v1.1**
   - Cooming soon (i think)
 
-## Bugs that i didnt fixed:
+## Bugs that i haven't fixed:
 
-- The "previous" button does not work with the last episode.
+- The "previous" button does not work with the last episode in a series.
