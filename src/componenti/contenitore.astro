@@ -1,8 +1,6 @@
 ---
-
-import '../styles/componenti.css';
-import '../js/js.js';
-
+import "../styles/componenti.css";
+import "../js/js.js";
 
 import axios from "axios";
 import jsdom from "JSDOM";
@@ -10,57 +8,50 @@ const { JSDOM } = jsdom;
 
 let arr = [];
 
-await axios.get('https://www.animeworld.so/') 
-            .then(({ data }) => {
-                const dom = new JSDOM(data);
-            let matches = dom.window.document.querySelectorAll(".film-list > .item > .inner")
+await axios.get("https://www.animeworld.so/").then(({ data }) => {
+  const dom = new JSDOM(data);
+  let matches = dom.window.document.querySelectorAll(
+    ".film-list > .item > .inner"
+  );
 
-                
-            matches.forEach(element => {
-                let fixed = element.outerHTML
-                    if (fixed.includes('<div class="dub">DUB</div>')){fixed = fixed.replace('<div class="dub">DUB</div>',"")}
-                    
-                    if (fixed.includes('<div class="ova">OVA</div>')){fixed = fixed.replace('<div class="ova">OVA</div>',"")}
-                    
-                    if (fixed.includes('<div class="ona">ONA</div>')){fixed = fixed.replace('<div class="ona">ONA</div>',"")}
-                    
-                    if (fixed.includes('<div class="movie">Movie</div>')){fixed = fixed.replace('<div class="movie">Movie</div>',"")}
-                    
-                    if (fixed.includes('<div class="special">Special</div>')){fixed = fixed.replace('<div class="special">Special</div>',"")}
-                    
+  matches.forEach((element) => {
+    let fixed = element.outerHTML;
+    if (fixed.includes('<div class="dub">DUB</div>')) {
+      fixed = fixed.replace('<div class="dub">DUB</div>', "");
+    }
 
-                    arr.push(fixed)
-                    
-                
-            });
-            
-        });
- 
+    if (fixed.includes('<div class="ova">OVA</div>')) {
+      fixed = fixed.replace('<div class="ova">OVA</div>', "");
+    }
 
-        
+    if (fixed.includes('<div class="ona">ONA</div>')) {
+      fixed = fixed.replace('<div class="ona">ONA</div>', "");
+    }
 
-    
+    if (fixed.includes('<div class="movie">Movie</div>')) {
+      fixed = fixed.replace('<div class="movie">Movie</div>', "");
+    }
 
-    
+    if (fixed.includes('<div class="special">Special</div>')) {
+      fixed = fixed.replace('<div class="special">Special</div>', "");
+    }
+
+    arr.push(fixed);
+  });
+});
 ---
 
 <div class="cont-anime">
-    <p class="Recenti">Recenti</p>
-    <div class="contenitore-anime" id="contenitore">  
-        
-        {arr}
-    </div>
+  <p class="Recenti">Recenti</p>
+  <div class="contenitore-anime" id="contenitore">
+    {arr}
+  </div>
 </div>
 
 <script>
-    
-    const contenitore = document.getElementById("contenitore")
+  const contenitore = document.getElementById("contenitore");
 
-    
+  let transformato = contenitore.innerText.trim();
 
-    let transformato = contenitore.innerText.trim()
-
-    contenitore.innerHTML =  transformato
-
+  contenitore.innerHTML = transformato;
 </script>
-

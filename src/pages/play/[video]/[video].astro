@@ -47,6 +47,37 @@ await axios.get("https://www.animeworld.so/" + URL2).then(({ data }) => {
     arr.push(fixed);
   });
 });
+let desc = "";
+
+await axios.get("https://www.animeworld.so/" + URL2).then(({ data }) => {
+  const dom = new JSDOM(data);
+  let matches = dom.window.document.querySelectorAll(".desc");
+
+  matches.forEach((element) => {
+    let fixed = element.outerHTML;
+    let fixed2 = fixed.replaceAll(`<div class="desc">`, ``);
+    desc = fixed2.replaceAll(`</div>`, ``);
+  });
+});
+let tag = "";
+await axios.get("https://www.animeworld.so/" + URL2).then(({ data }) => {
+  const dom = new JSDOM(data);
+  console.log(data);
+  let matches = dom.window.document.querySelectorAll("#tagsReload");
+
+  matches.forEach((element) => {
+    let fixed = element.outerHTML;
+    let fixed2 = fixed.replaceAll(
+      `<p id="tagsReload" style="max-height: 100px; overflow-y: auto; font-size: 10px; font-family: 'Nunito Sans', sans-serif;">`,
+      ``
+    );
+    let fixed3 = fixed2.replaceAll(`</p>`, ``);
+    let fixed4 = fixed3.replaceAll(`<span>`, "");
+    let fixed5 = fixed4.replaceAll(`<span class="episode-num-keywords">`, "");
+
+    tag = fixed5.replaceAll("</span>", "");
+  });
+});
 ---
 
 <html lang="en">
@@ -71,6 +102,12 @@ await axios.get("https://www.animeworld.so/" + URL2).then(({ data }) => {
     </div>
     <p class="text">Tutti gli episodi</p>
     <div class="ep" id="contenitore">{arr}</div>
+    <div class="contenitore-desc">
+      <h2>Descrizione</h2>
+      <p id="desc">{desc}</p>
+      <h2>Tag</h2>
+      <p id="tag">{tag}</p>
+    </div>
     <script>
       const contenitore = document.getElementById("contenitore");
 
@@ -82,34 +119,43 @@ await axios.get("https://www.animeworld.so/" + URL2).then(({ data }) => {
       let nextbtn = document.getElementById("next");
       nomeEp.innerText += " EP " + ep.textContent;
 
-      let nextLink =
-        document.querySelector("a.active").parentElement.nextElementSibling
-          .children[0].href;
-      if (nextLink == null || nextLink == undefined || nextLink == "") {
-      } else {
-        let nextA = document.createElement("a");
-        nextA.href = nextLink;
-        nextA.innerHTML = "Next Episode";
-        nextbtn.classList.add("displ");
-        nextbtn.classList.remove("nodispl");
-        nextbtn.appendChild(nextA);
-      }
+      next();
 
-      let nextbtn2 = document.getElementById("previous");
-
-      let nextLink2 =
-        document.querySelector("a.active").parentElement.previousElementSibling
-          .children[0].href;
-      if (nextLink2 == null || nextLink2 == undefined || nextLink2 == "") {
-      } else {
-        let nextA2 = document.createElement("a");
-        nextA2.href = nextLink2;
-        nextA2.innerHTML = "Previous Episode";
-        nextbtn2.classList.add("displ");
-        nextbtn2.classList.remove("nodispl");
-        nextbtn2.appendChild(nextA2);
+      function next() {
+        try {
+          let nextLink =
+            document.querySelector("a.active").parentElement.nextElementSibling
+              .children[0].href;
+          if (nextLink == null || nextLink == undefined || nextLink == "") {
+          } else {
+            let nextA = document.createElement("a");
+            nextA.href = nextLink;
+            nextA.innerHTML = "Next Episode";
+            nextbtn.classList.add("displ");
+            nextbtn.classList.remove("nodispl");
+            nextbtn.appendChild(nextA);
+          }
+          prev();
+        } catch (err) {
+          prev();
+        }
       }
-      console.log(nextLink2);
+      function prev() {
+        let nextbtn2 = document.getElementById("previous");
+
+        let nextLink2 =
+          document.querySelector("a.active").parentElement
+            .previousElementSibling.children[0].href;
+        if (nextLink2 == null || nextLink2 == undefined || nextLink2 == "") {
+        } else {
+          let nextA2 = document.createElement("a");
+          nextA2.href = nextLink2;
+          nextA2.innerHTML = "Previous Episode";
+          nextbtn2.classList.add("displ");
+          nextbtn2.classList.remove("nodispl");
+          nextbtn2.appendChild(nextA2);
+        }
+      }
     </script>
   </body>
 </html>

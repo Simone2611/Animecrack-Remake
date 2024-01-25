@@ -1,0 +1,82 @@
+---
+import "../styles/global.css";
+import "../styles/generi.css";
+---
+
+<div id="all" class="contenitoregenerimain">
+  <div class="btncontenitore">
+    <button id="button">Generi</button>
+  </div>
+  <div class="filler"></div>
+  <div id="generi" class="contenitore-generi">
+    <div>
+      <p>Arti Marziali</p>
+      <p>Action</p>
+      <p>Demoni</p>
+      <p>Fantasy</p>
+      <p>Hentai</p>
+      <p>Magic</p>
+      <p>Mistery</p>
+      <p>Police</p>
+      <p>Samurai</p>
+      <p>Seinen</p>
+      <p>Shoujo Ai</p>
+    </div>
+    <div>
+      <p>Slice of Life</p>
+      <p>Sports</p>
+      <p>Thriller</p>
+      <p>Yaoi</p>
+      <p>Avanguardia</p>
+      <p>Bambini</p>
+      <p>Drama</p>
+      <p>Game</p>
+      <p>Horror</p>
+      <p>Mecha</p>
+      <p>Music</p>
+    </div>
+    <div>
+      <p>Psychological</p>
+      <p>Sci-fi</p>
+      <p>Sentimental</p>
+      <p>Shounen</p>
+      <p>Space</p>
+      <p>Historical</p>
+      <p>Vampire</p>
+      <p>Yuri</p>
+      <p>Adventure</p>
+      <p>Commedia</p>
+      <p>Ecchi</p>
+    </div>
+    <div>
+      <p>Harem</p>
+      <p>Josei</p>
+      <p>Military</p>
+      <p>Parody</p>
+      <p>Romance</p>
+      <p>School</p>
+      <p>Shoujo</p>
+      <p>Shounen Ai</p>
+      <p>Supernatural</p>
+      <p>Super Power</p>
+      <p>Veicoli</p>
+    </div>
+  </div>
+</div>
+<script>
+  const generi = document.getElementById("generi");
+  const all = document.getElementById("all");
+
+  all.addEventListener("mouseover", (e) => {
+    generi.style.display = "flex";
+  });
+  all.addEventListener("mouseout", (e) => {
+    generi.style.display = "none";
+  });
+
+  generi.addEventListener("click", (e) => {
+    let genereselezionato = e.target.innerHTML.replaceAll(" ", "-");
+    window.location.href =
+      "http://localhost:4321/generi/" + genereselezionato.toLowerCase();
+  });
+</script>

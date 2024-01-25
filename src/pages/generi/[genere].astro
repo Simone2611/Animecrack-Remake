@@ -8,21 +8,18 @@ import jsdom from "JSDOM";
 import { manifest } from "astro:ssr-manifest";
 const { JSDOM } = jsdom;
 let arr = [];
-let fixed2 = [];
-let URL = Astro.request.url;
-const SEARCH_REGEX = /href\=\"([\w|\/|\.|\d|\-]+)\"/g;
-const URLsearch = URL.split("/");
-let filtro = URL.replaceAll("http://localhost:4321/", "");
-let filtrofinale = filtro.replaceAll("/search", "");
+let genere = Astro.request.url;
+let generefix = genere.replaceAll("http://localhost:4321/generi/", "");
+
 await axios
-  .get("https://www.animeworld.so/search?keyword=" + URLsearch.at(-2))
+  .get("https://www.animeworld.so/genre/" + generefix)
   .then(({ data }) => {
     const dom = new JSDOM(data);
     let matches = dom.window.document.querySelectorAll(
       ".film-list > .item > .inner"
     );
 
-    matches.forEach(async (element) => {
+    matches.forEach((element) => {
       let fixed = element.outerHTML;
       if (fixed.includes('<div class="dub">DUB</div>')) {
         fixed = fixed.replace('<div class="dub">DUB</div>', "");
@@ -44,26 +41,6 @@ await axios
         fixed = fixed.replace('<div class="special">Special</div>', "");
       }
 
-      fixed2.push(fixed);
-    });
-  })
-  .then(() => {
-    return Promise.all(
-      fixed2.map((fixed) => {
-        const search = [...fixed.matchAll(SEARCH_REGEX)];
-        const searchUrl = search[0][1];
-        return axios.get("https://www.animeworld.so" + searchUrl);
-      })
-    );
-  })
-  .then((responses) => {
-    fixed2.forEach((fixed, i) => {
-      const finalUrl = responses[i].request.res.responseUrl;
-
-      fixed = fixed.replace(SEARCH_REGEX, `href="` + finalUrl + `"`);
-
-      fixed = fixed.replace("https://www.animeworld.so", "");
-
       arr.push(fixed);
     });
   });
@@ -83,7 +60,7 @@ await axios
       <div class="genere">
         <p><a href="http://localhost:4321/">Home</a></p>
         <p>|</p>
-        <p>{filtrofinale}</p>
+        <p>{generefix}</p>
       </div>
       <div class="contenitore-anime" id="contenitore">
         {arr}

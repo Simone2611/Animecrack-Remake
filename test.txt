@@ -1,9 +1,0 @@
-<a href="/play/jujutsu-kaisen-2.M-Oiw" data-jtitle="Jujutsu Kaisen 2" class="name" title="Jujutsu Kaisen 2 Ep 13">Jujutsu Kaisen 2</a>                                                <img loading="lazy" src="https://img.animeworld.so/locandine/138022l.jpg" alt="Jujutsu Kaisen 2">
-                                                                    <div class="status">
-                                
-                                
-                                                                        <span class="bar"></span>
-                                                                        <div class="ep"> Ep 13 </div>
-                                                                    </div>
-                                                                </a>                               </a>          </div>
-                                                                </a>                                               </a>                                                      </a>                             </a>              </a>                           </a>

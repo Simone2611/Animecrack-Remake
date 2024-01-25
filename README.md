@@ -20,15 +20,29 @@ If, at some point, it ceases to function, it's likely due to alterations on the 
 
 On the first page, you'll find the latest updates on recent anime releases. Use the search bar to explore anime titles, if you can't locate a specific anime, it might be listed under an alternative name or is yet to be released.
 
+## How to use
+
+I will make it easy to use it when i finish it 100% with 0 bug
+
 ## Updates
 
 - **v1.0**
 
-  - AnimeCrack 100% working.
+  - AnimeCrack 100% work.
 
 - **v1.1**
+
   - Cooming soon (i think)
 
-## Bugs that i haven't fixed:
+- **v1.2**
+  - Fixed Previous button
+  - Added genres of anime (Adventure, Slice of life etc.)
+  - Last Epidose that come out
+  - Anime ongoing
+  - Description and tags under the episode
+  - Added some details and some little thing that make it look good
+  - Fixed page error when the link is short
 
-- The "previous" button does not work with the last episode in a series.
+## Bugs that i didnt fixed:
+
+- there is no bugs i think
