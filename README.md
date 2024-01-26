@@ -32,7 +32,7 @@ I will make it easy to use it when i finish it 100% with 0 bug
 
 - **v1.1**
 
-  - Cooming soon (i think)
+  - Bug fix
 
 - **v1.2**
 
