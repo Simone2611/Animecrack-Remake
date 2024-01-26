@@ -1,0 +1,54 @@
+.contenitore-categoria {
+  flex-direction: row;
+  background-color: white;
+  top: 8.5rem;
+  position: absolute;
+  display: none;
+}
+
+.contenitore-categoria div p {
+  padding: 0.7rem;
+  width: fit-content;
+  cursor: pointer;
+}
+
+.contenitore-categoria div p:hover {
+  color: #7f66ff;
+}
+
+.contenitorecategoriamain {
+  display: flex;
+  z-index: 50;
+}
+
+button {
+  vertical-align: middle;
+  justify-self: center;
+  color: white;
+  background-color: #121619;
+  border: 1px solid white;
+  width: 10rem;
+  padding: 0.2rem;
+  height: 3rem;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: white;
+  color: #121619;
+}
+
+.btncontenitore {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.filler {
+  position: absolute;
+  height: 1rem;
+  background-color: transparent;
+  top: 8rem;
+  color: transparent;
+  width: 10rem;
+}

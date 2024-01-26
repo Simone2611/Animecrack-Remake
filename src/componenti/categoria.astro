@@ -1,0 +1,38 @@
+---
+import "../styles/global.css";
+import "../styles/categoria.css";
+---
+
+<div id="all2" class="contenitorecategoriamain">
+  <div class="btncontenitore">
+    <button id="button">Categoria</button>
+  </div>
+  <div class="filler"></div>
+  <div id="categoria" class="contenitore-categoria">
+    <div>
+      <p>Animes</p>
+      <p>Movies</p>
+      <p>OVA</p>
+      <p>ONA</p>
+      <p>Specials</p>
+      <p>Music</p>
+    </div>
+  </div>
+  <script>
+    const categoria = document.getElementById("categoria");
+    const all = document.getElementById("all2");
+
+    all.addEventListener("mouseover", (e) => {
+      categoria.style.display = "flex";
+    });
+    all.addEventListener("mouseout", (e) => {
+      categoria.style.display = "none";
+    });
+
+    categoria.addEventListener("click", (e) => {
+      let genereselezionato = e.target.innerHTML.replaceAll(" ", "-");
+      window.location.href =
+        "http://localhost:4321/categoria/" + genereselezionato.toLowerCase();
+    });
+  </script>
+</div>

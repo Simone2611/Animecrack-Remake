@@ -1,0 +1,168 @@
+---
+import "../styles/componenti.css";
+import "../js/js.js";
+import "swiper/swiper-bundle.css";
+import axios from "axios";
+import jsdom from "JSDOM";
+import { manifest } from "astro:ssr-manifest";
+const { JSDOM } = jsdom;
+
+let arr2 = "";
+
+await axios.get("https://www.animeworld.so/").then(({ data }) => {
+  const dom = new JSDOM(data);
+  let matches = dom.window.document.querySelectorAll(
+    "#body .widget.slider .swiper-wrapper"
+  );
+
+  matches.forEach((element) => {
+    let fixed = element.innerHTML;
+    if (
+      fixed.includes(
+        "<p>Anno 2020: da qualche tempo nel mondo sono apparsi dei misteriosi varchi verso un universo parallelo. Questa dimensione, chiamata Mato, è popolata da terribili mostri che minacciano di uscire nel mondo reale; Allo stesso tempo, tuttavia, presenta una nuova fonte di energia detta “pesche”. Le pesche, misteriosamente, sono capaci di donare incredibili poteri alle donne umane: per questo motivo gli uomini ricoprono ormai un ruolo sempre più marginale nella società. per combattere i mostri, inoltre, è stato istituito un corpo di combattimento anti-demone formato unicamente da ragazze dotate di grandi poteri grazie alle pesche. Un giorno, uno studente di nome Yuuki si ritrova improvvisamente trasportato all’interno di Mato; a correre in suo aiuto è Kyouka, capitano della settima unità anti-demoni. Riconoscendo il suo potenziale latente e avendo bisogno di lui per potenziare le abilità legate alla propria pesca, Kyouka chiede al ragazzo di unirsi al corpo di combattimento… In qualità di suo schiavo! Questo incarico, però, sembra destinato a riservare a Yuuki molti più vantaggi di quanti non si aspettasse inizialmente…</p>"
+      )
+    ) {
+      fixed = fixed.replace(
+        "<p>Anno 2020: da qualche tempo nel mondo sono apparsi dei misteriosi varchi verso un universo parallelo. Questa dimensione, chiamata Mato, è popolata da terribili mostri che minacciano di uscire nel mondo reale; Allo stesso tempo, tuttavia, presenta una nuova fonte di energia detta “pesche”. Le pesche, misteriosamente, sono capaci di donare incredibili poteri alle donne umane: per questo motivo gli uomini ricoprono ormai un ruolo sempre più marginale nella società. per combattere i mostri, inoltre, è stato istituito un corpo di combattimento anti-demone formato unicamente da ragazze dotate di grandi poteri grazie alle pesche. Un giorno, uno studente di nome Yuuki si ritrova improvvisamente trasportato all’interno di Mato; a correre in suo aiuto è Kyouka, capitano della settima unità anti-demoni. Riconoscendo il suo potenziale latente e avendo bisogno di lui per potenziare le abilità legate alla propria pesca, Kyouka chiede al ragazzo di unirsi al corpo di combattimento… In qualità di suo schiavo! Questo incarico, però, sembra destinato a riservare a Yuuki molti più vantaggi di quanti non si aspettasse inizialmente…</p>",
+        "<p>Anno 2020: da qualche tempo nel mondo sono apparsi dei misteriosi varchi verso un universo parallelo. Questa dimensione, chiamata Mato, è popolata da terribili mostri che minacciano di uscire nel mondo reale...</p>"
+      );
+    }
+    arr2 = fixed;
+  });
+});
+---
+
+<div class="swiper">
+  <div class="swiper-wrapper" id="contenitore2">
+    {arr2}
+  </div>
+</div>
+<script>
+  import Swiper from "swiper/bundle";
+
+  const contenitore = document.getElementById("contenitore2");
+  let transformato = contenitore.innerText.trim();
+
+  contenitore.innerHTML = transformato;
+  const swiper = new Swiper(".swiper", {
+    autoplay: {
+      delay: 3000,
+    },
+  });
+  // let n = 0;
+  // function slider() {
+  //   let slide = document.querySelectorAll(".swiper-slide");
+  //   slide.forEach((element) => {
+  //     if (n == 0) {
+  //       element.id = "slide1";
+  //       n += 1;
+  //     } else if (n == 1) {
+  //       element.id = "slide2";
+  //       n += 1;
+  //     } else if (n == 2) {
+  //       element.id = "slide3";
+  //       n += 1;
+  //     } else if (n == 3) {
+  //       element.id = "slide4";
+  //       n += 1;
+  //     } else if (n == 4) {
+  //       element.id = "slide5";
+  //       n += 1;
+  //     } else if (n == 5) {
+  //       element.id = "slide6";
+  //       n += 1;
+  //     } else if (n == 6) {
+  //       element.id = "slide7";
+  //       n += 1;
+  //     } else if (n == 7) {
+  //       element.id = "slide8";
+  //       n += 1;
+  //     } else {
+  //       element.id = "slide9";
+  //       n = 0;
+  //     }
+  //   });
+  // }
+  // slider();
+
+  // var counter = 1;
+  // function changeSlide(i) {
+  //   //nascondi .swiper-slide.show
+  //   console.log(i);
+  //   if (i == 1) {
+  //     let old = document.getElementById("slide9");
+  //     old.classList.remove("show");
+  //   } else {
+  //     let old = document.getElementById("slide" + (+i - 1));
+  //     old.classList.remove("show");
+  //   }
+
+  //   // aggiungi show: document.getElementById('slide'+i)
+  //   const element = document.getElementById("slide" + i);
+  //   element.classList.add("show");
+  //   counter++;
+  //   if (counter == 10) {
+  //     counter = 1;
+  //   }
+  // }
+
+  // setInterval(changeSlide, 3000, counter);
+
+  // slider2();
+
+  // function slider2() {
+  //   for (let i = 1; i < 10; i++) {
+  //     let classe = document.getElementById("slide" + i);
+  //     if (i == 1) {
+  //       classe.classList.add("show");
+  //     }
+  //     if (i == 2) {
+  //       let remove = document.getElementById("slide1");
+  //       remove.classList.remove("show");
+  //       classe.classList.add("show");
+  //     }
+  //     if (i == 3) {
+  //       let remove1 = document.getElementById("slide2");
+  //       remove1.classList.remove("show");
+  //       classe.classList.add("show");
+  //     }
+  //     if (i == 4) {
+  //       let remove2 = document.getElementById("slide3");
+  //       remove2.classList.remove("show");
+  //       classe.classList.add("show");
+  //     }
+  //     if (i == 5) {
+  //       let remove3 = document.getElementById("slide4");
+  //       remove3.classList.remove("show");
+  //       classe.classList.add("show");
+  //     }
+  //     if (i == 6) {
+  //       let remove4 = document.getElementById("slide5");
+  //       remove4.classList.remove("show");
+  //       classe.classList.add("show");
+  //     }
+  //     if (i == 7) {
+  //       let remove5 = document.getElementById("slide6");
+  //       remove5.classList.remove("show");
+  //       classe.classList.add("show");
+  //     }
+  //     if (i == 8) {
+  //       let remove6 = document.getElementById("slide7");
+  //       remove6.classList.remove("show");
+  //       classe.classList.add("show");
+  //     }
+  //     if (i == 9) {
+  //       let remove7 = document.getElementById("slide8");
+  //       remove7.classList.remove("show");
+  //       classe.classList.add("show");
+  //     }
+  //     if (i == 10) {
+  //       let remove8 = document.getElementById("slide9");
+  //       remove8.classList.remove("show");
+  //       classe.classList.add("show");
+  //     }
+  //     console.log("a");
+  //     setTimeout(slider2, 3000);
+  //   }
+  // }
+</script>

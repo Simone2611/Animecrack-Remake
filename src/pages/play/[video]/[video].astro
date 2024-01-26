@@ -62,7 +62,6 @@ await axios.get("https://www.animeworld.so/" + URL2).then(({ data }) => {
 let tag = "";
 await axios.get("https://www.animeworld.so/" + URL2).then(({ data }) => {
   const dom = new JSDOM(data);
-  console.log(data);
   let matches = dom.window.document.querySelectorAll("#tagsReload");
 
   matches.forEach((element) => {

@@ -35,6 +35,7 @@ I will make it easy to use it when i finish it 100% with 0 bug
   - Cooming soon (i think)
 
 - **v1.2**
+
   - Fixed Previous button
   - Added genres of anime (Adventure, Slice of life etc.)
   - Last Epidose that come out
@@ -42,6 +43,11 @@ I will make it easy to use it when i finish it 100% with 0 bug
   - Description and tags under the episode
   - Added some details and some little thing that make it look good
   - Fixed page error when the link is short
+
+- **v1.3**
+  - Added homepage slider
+  - Added Random anime
+  - Added Category
 
 ## Bugs that i didnt fixed:
 

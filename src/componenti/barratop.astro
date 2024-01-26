@@ -1,6 +1,7 @@
 ---
 import "../styles/componenti.css";
 import Generi from "../componenti/generi.astro";
+import Categoria from "../componenti/categoria.astro";
 import Logo from "../img/AnimeCrack.png";
 ---
 
@@ -44,6 +45,8 @@ import Logo from "../img/AnimeCrack.png";
     <button id="nuoveAgg">Nuove aggiunte</button>
     <button id="ultimiep">Ultimi episodi</button>
     <button id="incorso">Anime in corso</button>
+    <Categoria />
+    <button id="random">Random</button>
   </div>
 </div>
 <script>
@@ -68,5 +71,9 @@ import Logo from "../img/AnimeCrack.png";
   const incorso = document.getElementById("incorso");
   incorso.addEventListener("click", (e) => {
     window.location.href = "http://localhost:4321/in-corso";
+  });
+  const random = document.getElementById("random");
+  random.addEventListener("click", (e) => {
+    window.location.href = "http://localhost:4321/random";
   });
 </script>

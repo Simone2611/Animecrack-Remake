@@ -10,9 +10,12 @@
     "astro": "astro"
   },
   "dependencies": {
+    "8": "^0.0.1",
+    "@astrojs/node": "^8.0.0",
     "astro": "^4.0.4",
     "axios": "^1.6.2",
-    "jsdom": "^11.1.0"
+    "jsdom": "^11.1.0",
+    "swiper": "^11.0.5"
   },
   "devDependencies": {
     "prettier": "^3.1.1",
