@@ -1,28 +1,25 @@
 ---
-import Barratop from "../../componenti/barratop.astro";
+import Barratop from "../componenti/barratop.astro";
 
-import "../../styles/global.css";
+import "../styles/global.css";
 
 import axios from "axios";
 import jsdom from "JSDOM";
 import { manifest } from "astro:ssr-manifest";
 const { JSDOM } = jsdom;
+let genere = Astro.request.url;
+let generefix = genere.replaceAll("http://localhost:4321/upcoming", "");
 let arr = [];
-let fixed2 = [];
-let URL = Astro.request.url;
-const SEARCH_REGEX = /href\=\"([\w|\/|\.|\d|\-]+)\"/g;
-const URLsearch = URL.split("/");
-let filtro = URL.replaceAll("http://localhost:4321/", "");
-let filtrofinale = filtro.replaceAll("/search", "");
+
 await axios
-  .get("https://www.animeworld.so/search?keyword=" + URLsearch.at(-2))
+  .get("https://www.animeworld.so/upcoming" + generefix)
   .then(({ data }) => {
     const dom = new JSDOM(data);
     let matches = dom.window.document.querySelectorAll(
-      ".film-list > .item > .inner"
+      ".film-listnext > .item > .inner"
     );
 
-    matches.forEach(async (element) => {
+    matches.forEach((element) => {
       let fixed = element.outerHTML;
       if (fixed.includes('<div class="dub">DUB</div>')) {
         fixed = fixed.replace('<div class="dub">DUB</div>', "");
@@ -44,26 +41,6 @@ await axios
         fixed = fixed.replace('<div class="special">Special</div>', "");
       }
 
-      fixed2.push(fixed);
-    });
-  })
-  .then(() => {
-    return Promise.all(
-      fixed2.map((fixed) => {
-        const search = [...fixed.matchAll(SEARCH_REGEX)];
-        const searchUrl = search[0][1];
-        return axios.get("https://www.animeworld.so" + searchUrl);
-      })
-    );
-  })
-  .then((responses) => {
-    fixed2.forEach((fixed, i) => {
-      const finalUrl = responses[i].request.res.responseUrl;
-
-      fixed = fixed.replace(SEARCH_REGEX, `href="` + finalUrl + `"`);
-
-      fixed = fixed.replace("https://www.animeworld.so", "");
-
       arr.push(fixed);
     });
   });
@@ -82,9 +59,12 @@ await axios
     <Barratop />
     <div class="cont-anime">
       <div class="genere">
-        <p><a href="http://localhost:4321/">Home</a></p>
-        <p>|</p>
-        <p>{filtrofinale}</p>
+        <div>
+          <p><a href="http://localhost:4321/">Home</a></p>
+          <p>|</p>
+          <p id="namegenere">Upcoming</p>
+        </div>
+        <div class="pagbtn"></div>
       </div>
       <div class="contenitore-anime" id="contenitore">
         {arr}
@@ -97,6 +77,26 @@ await axios
       let transformato = contenitore.innerText.trim();
 
       contenitore.innerHTML = transformato;
+
+      let url = window.location.href;
+
+      const namegenere = document.getElementById("namegenere");
+      if (url.includes("?page=")) {
+        let numero = url.charAt(url.length - 1);
+        let fix = namegenere.innerText.replaceAll("/?page=", "");
+        let fix2 = fix.replaceAll(numero, "");
+        namegenere.innerText = fix2;
+      } else {
+      }
+
+      const pag = document.getElementById("pagina");
+
+      if (url.includes("?page=")) {
+        let numero = url.charAt(url.length - 1);
+        pag.innerText = "Pagina Numero:" + " " + numero;
+      } else {
+        pag.innerText = "Pagina Numero:" + " " + "1";
+      }
     </script>
   </body>
 </html>

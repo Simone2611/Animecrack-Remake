@@ -68,10 +68,12 @@ import "../styles/generi.css";
   const all = document.getElementById("all");
 
   all.addEventListener("mouseover", (e) => {
-    generi.style.display = "flex";
+    generi.style.transform = "scaleY(1)";
+    generi.style.transition = "ease 0.2s";
   });
   all.addEventListener("mouseout", (e) => {
-    generi.style.display = "none";
+    generi.style.transform = "scaleY(0)";
+    generi.style.transition = "ease 0.2s";
   });
 
   generi.addEventListener("click", (e) => {

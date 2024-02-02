@@ -68,7 +68,7 @@
   max-width: 1100px;
   background-color: #1c2125;
   border-radius: 5px;
-  margin-top: 10rem;
+  margin-top: 9rem;
 }
 
 .poster {
@@ -105,7 +105,7 @@
 
 .Recenti {
   padding: 1rem;
-  font-size: 4rem;
+  font-size: 3rem;
   font-weight: bold;
   color: #fcfcfc;
   text-align: center;
@@ -218,17 +218,20 @@
 .episode a {
   color: #121619;
   background-color: #fcfcfc;
-  border: 0.2rem solid #121619;
+  margin: 0.3rem;
+  border-radius: 0.5rem;
   padding: 0.5rem;
   width: 2rem;
   display: flex;
   text-align: center;
   justify-content: center;
+  transition: ease 0.5s;
 }
 
 .episode a:hover {
-  background-color: #1c2125;
+  background-color: #121619;
   color: #fcfcfc;
+  transition: ease 0.5s;
 }
 
 ul {
@@ -246,7 +249,12 @@ ul {
 }
 
 .btn a {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
   color: #121619;
+  width: 100%;
+  height: 100%;
 }
 
 .btn {
@@ -255,6 +263,12 @@ ul {
   border-radius: 10px;
   padding: 0.5rem;
   margin: 0.5rem 0 0.5rem 0;
+  transition: ease 0.5s;
+}
+
+.btn:hover {
+  transform: scale(1.1);
+  transition: ease 0.5s;
 }
 
 .contenitorebtn {
@@ -268,7 +282,7 @@ ul {
 .text {
   color: #fcfcfc;
   text-align: center;
-  font-size: 3rem;
+  font-size: 2rem;
 }
 
 .ep {
@@ -281,11 +295,18 @@ ul {
 .genere {
   display: flex;
   flex-direction: row;
-  justify-content: start;
+  justify-content: space-between;
   gap: 1rem;
   padding: 0.5rem;
   padding-left: 1.7rem;
+  padding-right: 1.9rem;
   text-align: center;
+}
+
+.genere div {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
 }
 
 .genere p {
@@ -302,6 +323,10 @@ ul {
   font-size: 2rem;
   font-weight: bold;
   cursor: pointer;
+}
+
+.btn-2 {
+  width: 2rem !important;
 }
 
 .bottonitop {
@@ -336,7 +361,8 @@ ul {
   width: 55rem;
   height: 20rem;
   border-radius: 10px;
-  margin-top: 13rem;
+  margin-top: 10rem;
+  margin-bottom: -5rem;
 }
 
 .swiper-wrapper {
@@ -358,22 +384,30 @@ ul {
 }
 
 .info p {
-  margin-bottom: 2rem;
-  max-width: 80%;
+  max-width: 90ch;
+  height: 3rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .watch {
-  font-size: 1.5rem;
+  display: flex;
+  justify-content: center;
+  font-size: 1.2rem;
+  width: 9rem;
   padding: 0.5rem;
   background-color: black;
   border-radius: 5px;
   cursor: pointer;
   border: solid 0.1rem #fcfcfc;
+  transition: ease 0.5s;
 }
 
 .watch:hover {
   background-color: #fcfcfc;
   color: black;
+  transition: ease 0.5s;
 }
 
 @media only screen and (max-width: 950px) {
@@ -403,26 +437,26 @@ ul {
   .swiper {
     width: 28rem;
   }
-}
-
-@media only screen and (max-width: 465px) {
-  .contenitore-anime {
-    grid-template-columns: 1fr;
-    gap: 0;
-  }
-  .input {
-    width: 7rem;
-  }
-  .logo {
-    height: 2rem;
-    align-self: center;
-  }
   .bottonitop {
     flex-direction: column;
     align-items: center;
   }
+
+  @media only screen and (max-width: 465px) {
+    .contenitore-anime {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+    .input {
+      width: 7rem;
+    }
+    .logo {
+      height: 2rem;
+      align-self: center;
+    }
+  }
   .Recenti {
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
   .navbar {
     position: relative;

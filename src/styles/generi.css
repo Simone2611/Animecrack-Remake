@@ -3,7 +3,11 @@
   background-color: white;
   top: 8.5rem;
   position: absolute;
-  display: none;
+  display: flex;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: ease 0.2s;
+  border-radius: 10px;
 }
 
 .contenitore-generi div p {
@@ -14,6 +18,7 @@
 
 .contenitore-generi div p:hover {
   color: #7f66ff;
+  transition: ease 0.2s;
 }
 
 .contenitoregenerimain {
@@ -51,4 +56,22 @@ button:hover {
   top: 8rem;
   color: transparent;
   width: 10rem;
+}
+.contenitore-pagine {
+  color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.pagN {
+  color: white;
+  text-align: center;
+  font-size: 1.4rem;
+}
+
+.pagbtn {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
 }

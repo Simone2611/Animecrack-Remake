@@ -1,21 +1,20 @@
 ---
-import Barratop from "../../componenti/barratop.astro";
+import Barratop from "../componenti/barratop.astro";
 
-import "../../styles/global.css";
+import "../styles/global.css";
 
 import axios from "axios";
 import jsdom from "JSDOM";
 import { manifest } from "astro:ssr-manifest";
 const { JSDOM } = jsdom;
+let genere = Astro.request.url;
+let generefix = genere.replaceAll("http://localhost:4321/newest", "");
 let arr = [];
-let categoria = Astro.request.url;
-let categoriafix = categoria.replaceAll("http://localhost:4321/categoria/", "");
 
 await axios
-  .get("https://www.animeworld.so/" + categoriafix)
+  .get("https://www.animeworld.so/newest" + generefix)
   .then(({ data }) => {
     const dom = new JSDOM(data);
-
     let matches = dom.window.document.querySelectorAll(
       ".film-list > .item > .inner"
     );
@@ -63,7 +62,7 @@ await axios
         <div>
           <p><a href="http://localhost:4321/">Home</a></p>
           <p>|</p>
-          <p id="namegenere">{categoriafix}</p>
+          <p id="namegenere">Nuove aggiunte</p>
         </div>
         <div class="pagbtn">
           <button class="btn-2" id="precendente">&lt</button>

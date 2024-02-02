@@ -17,16 +17,7 @@ await axios.get("https://www.animeworld.so/").then(({ data }) => {
 
   matches.forEach((element) => {
     let fixed = element.innerHTML;
-    if (
-      fixed.includes(
-        "<p>Anno 2020: da qualche tempo nel mondo sono apparsi dei misteriosi varchi verso un universo parallelo. Questa dimensione, chiamata Mato, è popolata da terribili mostri che minacciano di uscire nel mondo reale; Allo stesso tempo, tuttavia, presenta una nuova fonte di energia detta “pesche”. Le pesche, misteriosamente, sono capaci di donare incredibili poteri alle donne umane: per questo motivo gli uomini ricoprono ormai un ruolo sempre più marginale nella società. per combattere i mostri, inoltre, è stato istituito un corpo di combattimento anti-demone formato unicamente da ragazze dotate di grandi poteri grazie alle pesche. Un giorno, uno studente di nome Yuuki si ritrova improvvisamente trasportato all’interno di Mato; a correre in suo aiuto è Kyouka, capitano della settima unità anti-demoni. Riconoscendo il suo potenziale latente e avendo bisogno di lui per potenziare le abilità legate alla propria pesca, Kyouka chiede al ragazzo di unirsi al corpo di combattimento… In qualità di suo schiavo! Questo incarico, però, sembra destinato a riservare a Yuuki molti più vantaggi di quanti non si aspettasse inizialmente…</p>"
-      )
-    ) {
-      fixed = fixed.replace(
-        "<p>Anno 2020: da qualche tempo nel mondo sono apparsi dei misteriosi varchi verso un universo parallelo. Questa dimensione, chiamata Mato, è popolata da terribili mostri che minacciano di uscire nel mondo reale; Allo stesso tempo, tuttavia, presenta una nuova fonte di energia detta “pesche”. Le pesche, misteriosamente, sono capaci di donare incredibili poteri alle donne umane: per questo motivo gli uomini ricoprono ormai un ruolo sempre più marginale nella società. per combattere i mostri, inoltre, è stato istituito un corpo di combattimento anti-demone formato unicamente da ragazze dotate di grandi poteri grazie alle pesche. Un giorno, uno studente di nome Yuuki si ritrova improvvisamente trasportato all’interno di Mato; a correre in suo aiuto è Kyouka, capitano della settima unità anti-demoni. Riconoscendo il suo potenziale latente e avendo bisogno di lui per potenziare le abilità legate alla propria pesca, Kyouka chiede al ragazzo di unirsi al corpo di combattimento… In qualità di suo schiavo! Questo incarico, però, sembra destinato a riservare a Yuuki molti più vantaggi di quanti non si aspettasse inizialmente…</p>",
-        "<p>Anno 2020: da qualche tempo nel mondo sono apparsi dei misteriosi varchi verso un universo parallelo. Questa dimensione, chiamata Mato, è popolata da terribili mostri che minacciano di uscire nel mondo reale...</p>"
-      );
-    }
+
     arr2 = fixed;
   });
 });
@@ -46,7 +37,7 @@ await axios.get("https://www.animeworld.so/").then(({ data }) => {
   contenitore.innerHTML = transformato;
   const swiper = new Swiper(".swiper", {
     autoplay: {
-      delay: 3000,
+      delay: 6000,
     },
   });
   // let n = 0;

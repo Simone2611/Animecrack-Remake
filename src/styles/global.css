@@ -4,7 +4,7 @@ body,
 html {
   margin: 0;
   padding: 0;
-  background-color: #121619;
+
   font-family: Hind Siliguri;
 }
 
@@ -26,4 +26,13 @@ li {
 
 button {
   cursor: pointer;
+}
+
+.bgimg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: fixed;
+  top: 0;
+  z-index: -1;
 }

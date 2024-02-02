@@ -23,10 +23,12 @@ import "../styles/categoria.css";
     const all = document.getElementById("all2");
 
     all.addEventListener("mouseover", (e) => {
-      categoria.style.display = "flex";
+      categoria.style.transform = "scaleY(1)";
+      categoria.style.transition = "ease 0.2s";
     });
     all.addEventListener("mouseout", (e) => {
-      categoria.style.display = "none";
+      categoria.style.transform = "scaleY(0)";
+      categoria.style.transition = "ease 0.2s";
     });
 
     categoria.addEventListener("click", (e) => {

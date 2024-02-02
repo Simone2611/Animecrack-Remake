@@ -7,39 +7,43 @@ import axios from "axios";
 import jsdom from "JSDOM";
 import { manifest } from "astro:ssr-manifest";
 const { JSDOM } = jsdom;
+let genere = Astro.request.url;
+let generefix = genere.replaceAll("http://localhost:4321/random", "");
 let arr = [];
 
-await axios.get("https://www.animeworld.so/random").then(({ data }) => {
-  const dom = new JSDOM(data);
-  let matches = dom.window.document.querySelectorAll(
-    ".film-list > .item > .inner"
-  );
+await axios
+  .get("https://www.animeworld.so/random" + generefix)
+  .then(({ data }) => {
+    const dom = new JSDOM(data);
+    let matches = dom.window.document.querySelectorAll(
+      ".film-list > .item > .inner"
+    );
 
-  matches.forEach((element) => {
-    let fixed = element.outerHTML;
-    if (fixed.includes('<div class="dub">DUB</div>')) {
-      fixed = fixed.replace('<div class="dub">DUB</div>', "");
-    }
+    matches.forEach((element) => {
+      let fixed = element.outerHTML;
+      if (fixed.includes('<div class="dub">DUB</div>')) {
+        fixed = fixed.replace('<div class="dub">DUB</div>', "");
+      }
 
-    if (fixed.includes('<div class="ova">OVA</div>')) {
-      fixed = fixed.replace('<div class="ova">OVA</div>', "");
-    }
+      if (fixed.includes('<div class="ova">OVA</div>')) {
+        fixed = fixed.replace('<div class="ova">OVA</div>', "");
+      }
 
-    if (fixed.includes('<div class="ona">ONA</div>')) {
-      fixed = fixed.replace('<div class="ona">ONA</div>', "");
-    }
+      if (fixed.includes('<div class="ona">ONA</div>')) {
+        fixed = fixed.replace('<div class="ona">ONA</div>', "");
+      }
 
-    if (fixed.includes('<div class="movie">Movie</div>')) {
-      fixed = fixed.replace('<div class="movie">Movie</div>', "");
-    }
+      if (fixed.includes('<div class="movie">Movie</div>')) {
+        fixed = fixed.replace('<div class="movie">Movie</div>', "");
+      }
 
-    if (fixed.includes('<div class="special">Special</div>')) {
-      fixed = fixed.replace('<div class="special">Special</div>', "");
-    }
+      if (fixed.includes('<div class="special">Special</div>')) {
+        fixed = fixed.replace('<div class="special">Special</div>', "");
+      }
 
-    arr.push(fixed);
+      arr.push(fixed);
+    });
   });
-});
 ---
 
 <html lang="en">
@@ -51,15 +55,29 @@ await axios.get("https://www.animeworld.so/random").then(({ data }) => {
     <title>Animecrack</title>
   </head>
   <body>
+    <img class="bgimg" src="/src/img/wallpaper.jpg" />
     <Barratop />
     <div class="cont-anime">
       <div class="genere">
-        <p><a href="http://localhost:4321/">Home</a></p>
-        <p>|</p>
-        <p>random</p>
+        <div>
+          <p><a href="http://localhost:4321/">Home</a></p>
+          <p>|</p>
+          <p id="namegenere">Random</p>
+        </div>
+        <div class="pagbtn">
+          <button class="btn-2" id="precendente">&lt</button>
+          <button class="btn-2" id="successivo">&gt</button>
+        </div>
       </div>
       <div class="contenitore-anime" id="contenitore">
         {arr}
+      </div>
+      <p class="pagN" id="pagina"></p>
+      <div class="contenitore-pagine">
+        <div class="pagbtn">
+          <button id="precendente2">Precedente</button>
+          <button id="successivo2">Successiva</button>
+        </div>
       </div>
     </div>
 
@@ -69,6 +87,78 @@ await axios.get("https://www.animeworld.so/random").then(({ data }) => {
       let transformato = contenitore.innerText.trim();
 
       contenitore.innerHTML = transformato;
+
+      let url = window.location.href;
+
+      const namegenere = document.getElementById("namegenere");
+      if (url.includes("?page=")) {
+        let numero = url.charAt(url.length - 1);
+        let fix = namegenere.innerText.replaceAll("/?page=", "");
+        let fix2 = fix.replaceAll(numero, "");
+        namegenere.innerText = fix2;
+      } else {
+      }
+
+      const pag = document.getElementById("pagina");
+
+      if (url.includes("?page=")) {
+        let numero = url.charAt(url.length - 1);
+        pag.innerText = "Pagina Numero:" + " " + numero;
+      } else {
+        pag.innerText = "Pagina Numero:" + " " + "1";
+      }
+
+      const btnsuccessivo = document.getElementById("successivo");
+      const btnprecedente = document.getElementById("precendente");
+
+      btnsuccessivo.addEventListener("click", (e) => {
+        if (url.includes("?page=")) {
+          let numeropag = url.charAt(url.length - 1);
+          let numerofix = +numeropag + +1;
+          window.location.href = url.substring(0, url.length - 1) + numerofix;
+        } else {
+          window.location.href = window.location.href + "/?page=2";
+        }
+      });
+
+      btnprecedente.addEventListener("click", (e) => {
+        if (url.includes("?page=2")) {
+          window.location.href = window.location.href.replaceAll(
+            "/?page=2",
+            ""
+          );
+        } else if (url.includes("?page=")) {
+          let numeropag = url.charAt(url.length - 1);
+          let numerofix = +numeropag - +1;
+          window.location.href = url.substring(0, url.length - 1) + numerofix;
+        }
+      });
+
+      const btnsuccessivo2 = document.getElementById("successivo2");
+      const btnprecedente2 = document.getElementById("precendente2");
+
+      btnsuccessivo2.addEventListener("click", (e) => {
+        if (url.includes("?page=")) {
+          let numeropag = url.charAt(url.length - 1);
+          let numerofix = +numeropag + +1;
+          window.location.href = url.substring(0, url.length - 1) + numerofix;
+        } else {
+          window.location.href = window.location.href + "/?page=2";
+        }
+      });
+
+      btnprecedente2.addEventListener("click", (e) => {
+        if (url.includes("?page=2")) {
+          window.location.href = window.location.href.replaceAll(
+            "/?page=2",
+            ""
+          );
+        } else if (url.includes("?page=")) {
+          let numeropag = url.charAt(url.length - 1);
+          let numerofix = +numeropag - +1;
+          window.location.href = url.substring(0, url.length - 1) + numerofix;
+        }
+      });
     </script>
   </body>
 </html>

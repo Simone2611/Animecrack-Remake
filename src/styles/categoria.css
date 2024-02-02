@@ -3,7 +3,9 @@
   background-color: white;
   top: 8.5rem;
   position: absolute;
-  display: none;
+  transform: scaleY(0);
+  transform-origin: top;
+  border-radius: 10px;
 }
 
 .contenitore-categoria div p {
@@ -31,11 +33,13 @@ button {
   padding: 0.2rem;
   height: 3rem;
   border-radius: 5px;
+  transition: ease 0.5s;
 }
 
 button:hover {
   background-color: white;
   color: #121619;
+  transition: ease 0.5s;
 }
 
 .btncontenitore {

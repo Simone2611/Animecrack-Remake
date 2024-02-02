@@ -47,6 +47,7 @@ import Logo from "../img/AnimeCrack.png";
     <button id="incorso">Anime in corso</button>
     <Categoria />
     <button id="random">Random</button>
+    <button id="upcoming">Upcoming</button>
   </div>
 </div>
 <script>
@@ -55,25 +56,40 @@ import Logo from "../img/AnimeCrack.png";
   cerca.addEventListener("keypress", function (event) {
     if (event.keyCode == 13) {
       let text1 = document.getElementById("cerca").value;
-
-      window.location.pathname = text1 + "/search";
+      if (
+        text1.includes("/") ||
+        text1.includes("{") ||
+        text1.includes("}") ||
+        text1.includes("\\") ||
+        text1.includes("<") ||
+        text1.includes(">")
+      ) {
+        alert("non inserire caratteri speciali");
+      } else {
+        window.location.pathname = text1 + "/search";
+      }
     }
   });
 
   const newagg = document.getElementById("nuoveAgg");
   newagg.addEventListener("click", (e) => {
-    window.location.href = "http://localhost:4321/nuove-aggiunte";
+    window.location.href = "http://localhost:4321/newest";
   });
   const ultimiep = document.getElementById("ultimiep");
   ultimiep.addEventListener("click", (e) => {
-    window.location.href = "http://localhost:4321/ultimi-ep";
+    window.location.href = "http://localhost:4321/updated";
   });
   const incorso = document.getElementById("incorso");
   incorso.addEventListener("click", (e) => {
-    window.location.href = "http://localhost:4321/in-corso";
+    window.location.href = "http://localhost:4321/ongoing";
   });
   const random = document.getElementById("random");
   random.addEventListener("click", (e) => {
     window.location.href = "http://localhost:4321/random";
+  });
+
+  const upcoming = document.getElementById("upcoming");
+  upcoming.addEventListener("click", (e) => {
+    window.location.href = "http://localhost:4321/upcoming";
   });
 </script>
