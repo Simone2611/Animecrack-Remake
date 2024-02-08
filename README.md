@@ -58,4 +58,4 @@ I will make it easy to use it when i finish it 100% with 0 bug
 
 ## Bugs that i didnt fixed:
 
-- there is no bugs i think
+- there is no bug i think
