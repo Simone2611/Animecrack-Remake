@@ -53,25 +53,34 @@ await axios.get(link2).then(({ data }) => {
   </head>
   <body>
     <img class="bgimg" src="/src/img/wallpaper.jpg" />
-    <Playvideo />
-    <div class="videocontainer">
-      <p id="nomeEp">{link}</p>
-      <video controls autoplay>
-        <source src={link} type="video/mp4" />
-      </video>
+    <div class="loading">
+      <img src="/src/img/AnimeCrack.png" />
+      <img src="/src/img/loading.svg" />
     </div>
-    <div class="contenitorebtn">
-      <button class="nodispl btn" id="previous"></button>
-      <button class="nodispl btn" id="next"></button>
+
+    <div class="no">
+      <img class="bgimg" src="/src/img/wallpaper.jpg" />
+      <Playvideo />
+      <div class="videocontainer">
+        <p id="nomeEp">{link}</p>
+        <video controls autoplay>
+          <source src={link} type="video/mp4" />
+        </video>
+      </div>
+      <div class="contenitorebtn">
+        <button class="nodispl btn" id="previous"></button>
+        <button class="nodispl btn" id="next"></button>
+      </div>
+      <div>
+        <p>Descrizione:</p>
+        <p id="desc"></p>
+        <p>Tag:</p>
+        <p id="tag"></p>
+      </div>
+      <p class="text">Tutti gli episodi</p>
+      <div class="ep" id="contenitore">{arr}</div>
     </div>
-    <div>
-      <p>Descrizione:</p>
-      <p id="desc"></p>
-      <p>Tag:</p>
-      <p id="tag"></p>
-    </div>
-    <p class="text">Tutti gli episodi</p>
-    <div class="ep" id="contenitore">{arr}</div>
+
     <script>
       const contenitore = document.getElementById("contenitore");
 

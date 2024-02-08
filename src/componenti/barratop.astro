@@ -56,15 +56,8 @@ import Logo from "../img/AnimeCrack.png";
   cerca.addEventListener("keypress", function (event) {
     if (event.keyCode == 13) {
       let text1 = document.getElementById("cerca").value;
-      if (
-        text1.includes("/") ||
-        text1.includes("{") ||
-        text1.includes("}") ||
-        text1.includes("\\") ||
-        text1.includes("<") ||
-        text1.includes(">")
-      ) {
-        alert("non inserire caratteri speciali");
+      if (text1.includes("?") || text1.includes("\\") || text1.includes("/")) {
+        alert("Non puoi usare questo simbolo/carattere");
       } else {
         window.location.pathname = text1 + "/search";
       }

@@ -68,7 +68,7 @@
   max-width: 1100px;
   background-color: #1c2125;
   border-radius: 5px;
-  margin-top: 9rem;
+  margin-top: 10rem;
 }
 
 .poster {
@@ -122,8 +122,11 @@
 
 .name {
   overflow-wrap: break-word;
-  max-width: 10rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 25ch;
   text-align: center;
+  white-space: nowrap;
 }
 
 .inner {
@@ -133,7 +136,7 @@
   padding: 0;
   align-items: center;
   width: 100%;
-  min-height: 28.3rem;
+  margin-bottom: 3rem;
   transition: ease 1s;
 }
 
@@ -211,6 +214,7 @@
   justify-content: center;
   align-items: center;
   max-width: 900px;
+  margin-bottom: 0.5rem;
   margin: 0 auto;
   flex-wrap: wrap;
 }
@@ -262,7 +266,7 @@ ul {
   border: none;
   border-radius: 10px;
   padding: 0.5rem;
-  margin: 0.5rem 0 0.5rem 0;
+  margin: 1rem 0 1rem 0;
   transition: ease 0.5s;
 }
 
@@ -289,7 +293,9 @@ ul {
   background-color: #1c2125;
   border-radius: 10px;
   max-width: 90vw;
+
   margin: 0 auto;
+  margin-top: 1rem;
 }
 
 .genere {
@@ -298,9 +304,10 @@ ul {
   justify-content: space-between;
   gap: 1rem;
   padding: 0.5rem;
-  padding-left: 1.7rem;
+  padding-left: 1.75rem;
   padding-right: 1.9rem;
   text-align: center;
+  margin-bottom: 2rem;
 }
 
 .genere div {
@@ -338,15 +345,23 @@ ul {
 }
 
 .contenitore-desc {
-  max-width: 90vw;
+  max-width: calc(90vw - 2rem);
   color: white;
   display: flex;
   flex-direction: column;
   margin: 0 auto;
   background-color: #1c2125;
-  margin-top: 2rem;
+  margin-top: 1rem;
   padding: 1rem;
   border-radius: 10px;
+}
+
+.contenitore-desc p:last-child {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 300ch;
+  white-space: nowrap;
+  cursor: pointer;
 }
 
 .contenitore-desc h2 {
@@ -361,7 +376,7 @@ ul {
   width: 55rem;
   height: 20rem;
   border-radius: 10px;
-  margin-top: 10rem;
+  margin-top: 12.5rem;
   margin-bottom: -5rem;
 }
 
@@ -410,6 +425,38 @@ ul {
   transition: ease 0.5s;
 }
 
+.showbtn {
+  width: 7rem;
+  height: 2.5rem;
+  align-self: center;
+
+  margin-bottom: 1.6rem;
+}
+
+.no {
+  display: none;
+}
+
+.loading {
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  height: 100vh;
+}
+
+.loading img:first-child {
+  width: 30rem;
+  align-self: center;
+  height: fit-content;
+}
+
+.loading img:last-child {
+  width: 5rem;
+  height: fit-content;
+  align-self: center;
+  margin-top: 3rem;
+}
 @media only screen and (max-width: 950px) {
   .contenitore-anime {
     grid-template-columns: 1fr 1fr 1fr;
@@ -454,6 +501,9 @@ ul {
       height: 2rem;
       align-self: center;
     }
+    .genere {
+      opacity: 0;
+    }
   }
   .Recenti {
     font-size: 2rem;
@@ -470,6 +520,14 @@ ul {
   .input {
     width: 100%;
     margin-right: 1rem;
+  }
+  .genere {
+    width: 0;
+    height: 1rem;
+  }
+  .genere div {
+    width: 0;
+    height: 1rem;
   }
   .topcontainer2 {
     display: none;

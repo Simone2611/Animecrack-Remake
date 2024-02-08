@@ -74,7 +74,7 @@ await axios.get("https://www.animeworld.so/" + URL2).then(({ data }) => {
     let fixed4 = fixed3.replaceAll(`<span>`, "");
     let fixed5 = fixed4.replaceAll(`<span class="episode-num-keywords">`, "");
 
-    tag = fixed5.replaceAll("</span>", "");
+    tag = decodeURI(fixed5.replaceAll("</span>", ""));
   });
 });
 ---
@@ -106,6 +106,7 @@ await axios.get("https://www.animeworld.so/" + URL2).then(({ data }) => {
       <h2>Descrizione</h2>
       <p id="desc">{desc}</p>
       <h2>Tag</h2>
+      <button class="showbtn" id="show">Show all</button>
       <p id="tag">{tag}</p>
     </div>
     <script>
@@ -119,6 +120,26 @@ await axios.get("https://www.animeworld.so/" + URL2).then(({ data }) => {
       let nextbtn = document.getElementById("next");
       nomeEp.innerText += " EP " + ep.textContent;
 
+      const tag = document.getElementById("tag");
+      const show = document.getElementById("show");
+      let n = 1;
+      show.addEventListener("click", (e) => {
+        if (n == 1) {
+          tag.style.overflow = "visible";
+          tag.style.textOverflow = "unset";
+          tag.style.maxWidth = "100%";
+          tag.style.whiteSpace = "initial";
+          show.innerText = "Hide all";
+          n = 2;
+        } else {
+          tag.style.overflow = "hidden";
+          tag.style.textOverflow = "ellipsis";
+          tag.style.maxWidth = "300ch";
+          tag.style.whiteSpace = "nowrap";
+          show.innerText = "Show all";
+          n = 1;
+        }
+      });
       next();
 
       function next() {
@@ -140,6 +161,7 @@ await axios.get("https://www.animeworld.so/" + URL2).then(({ data }) => {
           prev();
         }
       }
+
       function prev() {
         let nextbtn2 = document.getElementById("previous");
 

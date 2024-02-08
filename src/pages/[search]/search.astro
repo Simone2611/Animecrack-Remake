@@ -14,6 +14,7 @@ const SEARCH_REGEX = /href\=\"([\w|\/|\.|\d|\-]+)\"/g;
 const URLsearch = URL.split("/");
 let filtro = URL.replaceAll("http://localhost:4321/", "");
 let filtrofinale = filtro.replaceAll("/search", "");
+let filtrofinale2 = decodeURI(filtrofinale);
 await axios
   .get("https://www.animeworld.so/search?keyword=" + URLsearch.at(-2))
   .then(({ data }) => {
@@ -82,9 +83,12 @@ await axios
     <Barratop />
     <div class="cont-anime">
       <div class="genere">
-        <p><a href="http://localhost:4321/">Home</a></p>
-        <p>|</p>
-        <p>{filtrofinale}</p>
+        <div>
+          <p><a href="http://localhost:4321/">Home</a></p>
+          <p>|</p>
+          <p id="namegenere">{filtrofinale2}</p>
+        </div>
+        <div class="pagbtn"></div>
       </div>
       <div class="contenitore-anime" id="contenitore">
         {arr}

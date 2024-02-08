@@ -45,9 +45,16 @@ I will make it easy to use it when i finish it 100% with 0 bug
   - Fixed page error when the link is short
 
 - **v1.3**
+
   - Added homepage slider
   - Added Random anime
   - Added Category
+
+- **v1.4**
+  - Loading page
+  - Css fix
+  - Now the min width is 222px before it break
+  - Bug fix
 
 ## Bugs that i didnt fixed:
 
