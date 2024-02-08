@@ -1,6 +1,8 @@
 ---
 import Playvideo from "../../componenti/playvideo.astro";
-
+import img from "/src/img/wallpaper.jpg";
+import logo from "/src/img/AnimeCrack.png";
+import svg from "/src/img/loading.svg";
 import "../../styles/componenti.css";
 import "../../js/js.js";
 
@@ -18,7 +20,8 @@ let link = URL.replaceAll("http://localhost:4321/play/", "");
 let link2 = "https://www.animeworld.so/play/" + link;
 
 let arr = [];
-
+let messaggio1 = "";
+let messaggio2 = "";
 await axios.get(link2).then(({ data }) => {
   const dom = new JSDOM(data);
   let matches = dom.window.document.querySelectorAll("div > .server.active");
@@ -41,6 +44,15 @@ await axios.get(link2).then(({ data }) => {
   });
 });
 // // // // // // // // // // // // // // //
+await axios.get(link2).then(({ data }) => {
+  const dom = new JSDOM(data);
+  let matches = dom.window.document.querySelectorAll("#unavailable");
+
+  matches.forEach((element) => {
+    messaggio1 = "Questo anime non è ancora disponibile";
+    messaggio2 = "Clicca il logo per tornare nella home";
+  });
+});
 ---
 
 <html lang="en">
@@ -52,12 +64,16 @@ await axios.get(link2).then(({ data }) => {
     <title>Animecrack</title>
   </head>
   <body>
-    <img class="bgimg" src="/src/img/wallpaper.jpg" />
-    <div class="loading">
-      <img src="/src/img/AnimeCrack.png" />
-      <img src="/src/img/loading.svg" />
-    </div>
+    <img class="bgimg" src={img.src} />
+    <div class="container-load">
+      <div class="loading">
+        <img src={logo.src} id="home" />
 
+        <img src={svg.src} id="carica" />
+      </div>
+      <p id="messaggio">{messaggio1}</p>
+      <p>{messaggio2}</p>
+    </div>
     <div class="no">
       <img class="bgimg" src="/src/img/wallpaper.jpg" />
       <Playvideo />
@@ -82,6 +98,16 @@ await axios.get(link2).then(({ data }) => {
     </div>
 
     <script>
+      const home = document.getElementById("home");
+      home.addEventListener("click", (e) => {
+        window.location.href = "http://localhost:4321/";
+      });
+      const messaggio = document.getElementById("messaggio");
+      if (messaggio.innerText == "Questo anime non è ancora disponibile") {
+        const carica = document.getElementById("carica");
+        carica.style.display = "none";
+      }
+
       const contenitore = document.getElementById("contenitore");
 
       let transformato = contenitore.innerText.trim();

@@ -1,6 +1,6 @@
 ---
 import Playvideo from "../../../componenti/playvideo.astro";
-
+import img from "/src/img/wallpaper.jpg";
 import "../../../styles/componenti.css";
 import "../../../js/js.js";
 
@@ -88,7 +88,7 @@ await axios.get("https://www.animeworld.so/" + URL2).then(({ data }) => {
     <title>Animecrack</title>
   </head>
   <body>
-    <img class="bgimg" src="/src/img/wallpaper.jpg" />
+    <img class="bgimg" src={img.src} />
     <Playvideo />
     <div class="videocontainer">
       <p id="nomeEp">{nomefinale}</p>

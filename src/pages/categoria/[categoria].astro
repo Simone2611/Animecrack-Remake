@@ -1,6 +1,6 @@
 ---
 import Barratop from "../../componenti/barratop.astro";
-
+import img from "/src/img/wallpaper.jpg";
 import "../../styles/global.css";
 
 import axios from "axios";
@@ -56,7 +56,7 @@ await axios
     <title>Animecrack</title>
   </head>
   <body>
-    <img class="bgimg" src="/src/img/wallpaper.jpg" />
+    <img class="bgimg" src={img.src} />
     <Barratop />
     <div class="cont-anime">
       <div class="genere">

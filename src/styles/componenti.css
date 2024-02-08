@@ -442,13 +442,13 @@ ul {
   display: flex;
   justify-content: center;
   margin: 0 auto;
-  height: 100vh;
 }
 
 .loading img:first-child {
   width: 30rem;
   align-self: center;
   height: fit-content;
+  cursor: pointer;
 }
 
 .loading img:last-child {
@@ -456,6 +456,19 @@ ul {
   height: fit-content;
   align-self: center;
   margin-top: 3rem;
+}
+
+.container-load {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.container-load p {
+  align-self: center;
+  color: white;
+  font-size: 2rem;
 }
 @media only screen and (max-width: 950px) {
   .contenitore-anime {
