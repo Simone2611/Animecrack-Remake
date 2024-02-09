@@ -98,7 +98,7 @@ await axios
 
       if (url.includes("?page=")) {
         let numeropag = url.replaceAll(
-          "http://localhost:4321/newest/" + namegenere.innerText + "/?page=",
+          "http://localhost:4321/newest/?page=",
           ""
         );
         pag.innerText = "Pagina Numero:" + " " + numeropag;

@@ -59,7 +59,7 @@ import Logo from "../img/AnimeCrack.png";
       if (text1.includes("?") || text1.includes("\\") || text1.includes("/")) {
         alert("Non puoi usare questo simbolo/carattere");
       } else if (text1 == "") {
-        alert("Scrivi qualcosa");
+        alert("Devi scrivere qualcosa");
       } else {
         let fix = text1.replaceAll(/\d+/g, "");
         let fix2 = fix.replaceAll("?page=", "");

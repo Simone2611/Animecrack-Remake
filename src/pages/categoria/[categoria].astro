@@ -12,7 +12,7 @@ let categoria = Astro.request.url;
 let categoriafix = categoria.replaceAll("http://localhost:4321/categoria/", "");
 let categoriafix2 = categoriafix.replaceAll(/\d+/g, "");
 let nome = categoriafix2.replaceAll("/?page=", "");
-console.log(nome);
+
 await axios
   .get("https://www.animeworld.so/" + categoriafix)
   .then(({ data }) => {
@@ -132,7 +132,7 @@ await axios
       btnprecedente.addEventListener("click", (e) => {
         if (
           url ==
-          "http://localhost:4321/categoria/" + namegenere.innerText + "/?page="
+          "http://localhost:4321/categoria/" + namegenere.innerText + "/?page=2"
         ) {
           window.location.href =
             "http://localhost:4321/categoria/" + namegenere.innerText;
