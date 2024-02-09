@@ -12,7 +12,8 @@ let fixed2 = [];
 let URL = Astro.request.url;
 const SEARCH_REGEX = /href\=\"([\w|\/|\.|\d|\-]+)\"/g;
 const URLsearch = URL.split("/");
-let filtro = URL.replaceAll("http://localhost:4321/", "");
+let filtro = URL.replaceAll(Astro.url.origin + "/", "");
+
 let filtrofinale = filtro.replaceAll("/search", "");
 let filtrofinale2 = decodeURI(filtrofinale);
 await axios
@@ -84,7 +85,7 @@ await axios
     <div class="cont-anime">
       <div class="genere">
         <div>
-          <p><a href="http://localhost:4321/">Home</a></p>
+          <p><a href="/">Home</a></p>
           <p>|</p>
           <p id="namegenere">{filtrofinale2}</p>
         </div>

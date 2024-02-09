@@ -9,7 +9,8 @@ import { manifest } from "astro:ssr-manifest";
 const { JSDOM } = jsdom;
 let arr = [];
 let categoria = Astro.request.url;
-let categoriafix = categoria.replaceAll("http://localhost:4321/categoria/", "");
+let categoriafix = categoria.replaceAll(Astro.url.origin + "/categoria/", "");
+
 let categoriafix2 = categoriafix.replaceAll(/\d+/g, "");
 let nome = categoriafix2.replaceAll("/?page=", "");
 
@@ -63,7 +64,7 @@ await axios
     <div class="cont-anime">
       <div class="genere">
         <div>
-          <p><a href="http://localhost:4321/">Home</a></p>
+          <p><a href="/">Home</a></p>
           <p>|</p>
           <p id="namegenere">{nome}</p>
         </div>
@@ -92,16 +93,16 @@ await axios
       contenitore.innerHTML = transformato;
 
       let url = window.location.href;
+      let origin = window.location.origin;
+      let path = window.location.pathname;
 
+      // Origin è local ecc e path togli con ?page= per avere numero
       const namegenere = document.getElementById("namegenere");
 
       const pag = document.getElementById("pagina");
 
       if (url.includes("?page=")) {
-        let numeropag = url.replaceAll(
-          "http://localhost:4321/categoria/" + namegenere.innerText + "/?page=",
-          ""
-        );
+        let numeropag = url.replaceAll(origin + path + "?page=", "");
         pag.innerText = "Pagina Numero:" + " " + numeropag;
       } else {
         pag.innerText = "Pagina Numero:" + " " + "1";
@@ -112,43 +113,23 @@ await axios
 
       btnsuccessivo.addEventListener("click", (e) => {
         if (url.includes("?page=")) {
-          let numeropag = url.replaceAll(
-            "http://localhost:4321/categoria/" +
-              namegenere.innerText +
-              "/?page=",
-            ""
-          );
+          let numeropag = url.replaceAll(origin + path + "?page=", "");
           let numerofix = +numeropag + +1;
           window.location.href =
-            "http://localhost:4321/categoria/" +
-            namegenere.innerText +
-            "/?page=" +
-            numerofix;
+            "/categoria/" + namegenere.innerText + "/?page=" + numerofix;
         } else {
           window.location.href = window.location.href + "/?page=2";
         }
       });
 
       btnprecedente.addEventListener("click", (e) => {
-        if (
-          url ==
-          "http://localhost:4321/categoria/" + namegenere.innerText + "/?page=2"
-        ) {
-          window.location.href =
-            "http://localhost:4321/categoria/" + namegenere.innerText;
+        if (url == origin + path + "?page=2") {
+          window.location.href = "/categoria/" + namegenere.innerText;
         } else {
-          let numeropag = url.replaceAll(
-            "http://localhost:4321/categoria/" +
-              namegenere.innerText +
-              "/?page=",
-            ""
-          );
+          let numeropag = url.replaceAll(origin + path + "?page=", "");
           let numerofix = +numeropag - +1;
           window.location.href =
-            "http://localhost:4321/categoria/" +
-            namegenere.innerText +
-            "/?page=" +
-            numerofix;
+            "/categoria/" + namegenere.innerText + "/?page=" + numerofix;
         }
       });
 
@@ -158,49 +139,33 @@ await axios
       btnsuccessivo2.addEventListener("click", (e) => {
         if (url.includes("?page=")) {
           let numeropag = url.replaceAll(
-            "http://localhost:4321/categoria/" +
-              namegenere.innerText +
-              "/?page=",
+            "/categoria/" + namegenere.innerText + "/?page=",
             ""
           );
           let numerofix = +numeropag + +1;
           window.location.href =
-            "http://localhost:4321/categoria/" +
-            namegenere.innerText +
-            "/?page=" +
-            numerofix;
+            "/categoria/" + namegenere.innerText + "/?page=" + numerofix;
         } else {
           window.location.href = window.location.href + "/?page=2";
         }
       });
 
       btnprecedente2.addEventListener("click", (e) => {
-        if (
-          url ==
-          "http://localhost:4321/categoria/" + namegenere.innerText + "/?page=2"
-        ) {
-          window.location.href =
-            "http://localhost:4321/categoria/" + namegenere.innerText;
+        if (url == origin + path + "?page=2") {
+          window.location.href = origin + "/categoria/" + namegenere.innerText;
         } else {
           let numeropag = url.replaceAll(
-            "http://localhost:4321/categoria/" +
-              namegenere.innerText +
-              "/?page=",
+            "/categoria/" + namegenere.innerText + "/?page=",
             ""
           );
           let numerofix = +numeropag - +1;
           window.location.href =
-            "http://localhost:4321/categoria/" +
-            namegenere.innerText +
-            "/?page=" +
-            numerofix;
+            "/categoria/" + namegenere.innerText + "/?page=" + numerofix;
         }
       });
 
       if (url.includes("NaN")) {
-        window.location.href =
-          "http://localhost:4321/categoria/" +
-          namegenere.innerText.replaceAll("NaN", "");
+        window.location.href = origin + path;
       }
     </script>
   </body>
