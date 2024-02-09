@@ -1,11 +1,14 @@
 import { defineConfig } from "astro/config";
+// Also can be @astrojs/vercel/static
+import vercel from "@astrojs/vercel/serverless";
 
-import node from "@astrojs/node";
-
-// https://astro.build/config
 export default defineConfig({
+  // Also can be 'static' or 'hybrid'
   output: "server",
-  adapter: node({
-    mode: "standalone",
+  adapter: vercel({
+    webAnalytics: {
+      enabled: true,
+    },
+    maxDuration: 8,
   }),
 });
