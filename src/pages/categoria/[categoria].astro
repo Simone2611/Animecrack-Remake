@@ -10,7 +10,9 @@ const { JSDOM } = jsdom;
 let arr = [];
 let categoria = Astro.request.url;
 let categoriafix = categoria.replaceAll("http://localhost:4321/categoria/", "");
-
+let categoriafix2 = categoriafix.replaceAll(/\d+/g, "");
+let nome = categoriafix2.replaceAll("/?page=", "");
+console.log(nome);
 await axios
   .get("https://www.animeworld.so/" + categoriafix)
   .then(({ data }) => {
@@ -63,7 +65,7 @@ await axios
         <div>
           <p><a href="http://localhost:4321/">Home</a></p>
           <p>|</p>
-          <p id="namegenere">{categoriafix}</p>
+          <p id="namegenere">{nome}</p>
         </div>
         <div class="pagbtn">
           <button class="btn-2" id="precendente">&lt</button>
@@ -92,23 +94,12 @@ await axios
       let url = window.location.href;
 
       const namegenere = document.getElementById("namegenere");
-      if (url.includes("?page=")) {
-        let numeropag = url.replaceAll(
-          "http://localhost:4321/categoria/animes/?page=",
-          ""
-        );
-        let fix = url.replaceAll("?page=" + numeropag, "");
-        let fix2 = fix.replaceAll("http://localhost:4321/categoria/", "");
-        let finalfix = fix2.replaceAll("/animes/", "");
-        namegenere.innerText = finalfix.replaceAll("/", "");
-      } else {
-      }
 
       const pag = document.getElementById("pagina");
 
       if (url.includes("?page=")) {
         let numeropag = url.replaceAll(
-          "http://localhost:4321/categoria/animes/?page=",
+          "http://localhost:4321/categoria/" + namegenere.innerText + "/?page=",
           ""
         );
         pag.innerText = "Pagina Numero:" + " " + numeropag;
@@ -122,28 +113,42 @@ await axios
       btnsuccessivo.addEventListener("click", (e) => {
         if (url.includes("?page=")) {
           let numeropag = url.replaceAll(
-            "http://localhost:4321/categoria/animes/?page=",
+            "http://localhost:4321/categoria/" +
+              namegenere.innerText +
+              "/?page=",
             ""
           );
           let numerofix = +numeropag + +1;
           window.location.href =
-            "http://localhost:4321/categoria/animes/?page=" + numerofix;
+            "http://localhost:4321/categoria/" +
+            namegenere.innerText +
+            "/?page=" +
+            numerofix;
         } else {
           window.location.href = window.location.href + "/?page=2";
         }
       });
 
       btnprecedente.addEventListener("click", (e) => {
-        if (url == "http://localhost:4321/categoria/animes/?page=2") {
-          window.location.href = "http://localhost:4321/categoria/animes";
+        if (
+          url ==
+          "http://localhost:4321/categoria/" + namegenere.innerText + "/?page="
+        ) {
+          window.location.href =
+            "http://localhost:4321/categoria/" + namegenere.innerText;
         } else {
           let numeropag = url.replaceAll(
-            "http://localhost:4321/categoria/animes/?page=",
+            "http://localhost:4321/categoria/" +
+              namegenere.innerText +
+              "/?page=",
             ""
           );
           let numerofix = +numeropag - +1;
           window.location.href =
-            "http://localhost:4321/categoria/animes/?page=" + numerofix;
+            "http://localhost:4321/categoria/" +
+            namegenere.innerText +
+            "/?page=" +
+            numerofix;
         }
       });
 
@@ -153,30 +158,50 @@ await axios
       btnsuccessivo2.addEventListener("click", (e) => {
         if (url.includes("?page=")) {
           let numeropag = url.replaceAll(
-            "http://localhost:4321/categoria/animes/?page=",
+            "http://localhost:4321/categoria/" +
+              namegenere.innerText +
+              "/?page=",
             ""
           );
           let numerofix = +numeropag + +1;
           window.location.href =
-            "http://localhost:4321/categoria/animes/?page=" + numerofix;
+            "http://localhost:4321/categoria/" +
+            namegenere.innerText +
+            "/?page=" +
+            numerofix;
         } else {
           window.location.href = window.location.href + "/?page=2";
         }
       });
 
       btnprecedente2.addEventListener("click", (e) => {
-        if (url == "http://localhost:4321/categoria/animes/?page=2") {
-          window.location.href = "http://localhost:4321/categoria/animes";
+        if (
+          url ==
+          "http://localhost:4321/categoria/" + namegenere.innerText + "/?page=2"
+        ) {
+          window.location.href =
+            "http://localhost:4321/categoria/" + namegenere.innerText;
         } else {
           let numeropag = url.replaceAll(
-            "http://localhost:4321/categoria/animes/?page=",
+            "http://localhost:4321/categoria/" +
+              namegenere.innerText +
+              "/?page=",
             ""
           );
           let numerofix = +numeropag - +1;
           window.location.href =
-            "http://localhost:4321/categoria/animes/?page=" + numerofix;
+            "http://localhost:4321/categoria/" +
+            namegenere.innerText +
+            "/?page=" +
+            numerofix;
         }
       });
+
+      if (url.includes("NaN")) {
+        window.location.href =
+          "http://localhost:4321/categoria/" +
+          namegenere.innerText.replaceAll("NaN", "");
+      }
     </script>
   </body>
 </html>
