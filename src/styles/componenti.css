@@ -231,12 +231,15 @@
   display: flex;
   text-align: center;
   justify-content: center;
+  border: 0.1rem solid transparent;
   transition: ease 0.5s;
 }
 
 .episode a:hover {
+  transform: scale(1.1);
   background-color: #121619;
   color: #fcfcfc;
+  border: 0.1rem solid #fcfcfc;
   transition: ease 0.5s;
 }
 
@@ -259,21 +262,30 @@ ul {
   justify-content: center;
   flex-direction: column;
   color: #121619;
-  width: 100%;
   height: 100%;
+  width: 100%;
+  text-align: center;
+  border-radius: 10px;
+  transition: ease 0.5s;
 }
 
 .btn {
   background-color: #fcfcfc;
   border: none;
   border-radius: 10px;
-  padding: 0.5rem;
   margin: 1rem 0 1rem 0;
   transition: ease 0.5s;
 }
 
 .btn:hover {
   transform: scale(1.1);
+  background-color: #121619;
+  border: solid 0.1rem #fcfcfc;
+  transition: ease 0.5s;
+}
+
+.btn a:hover {
+  color: #fcfcfc;
   transition: ease 0.5s;
 }
 
@@ -295,7 +307,6 @@ ul {
   background-color: #1c2125;
   border-radius: 10px;
   max-width: 90vw;
-
   margin: 0 auto;
   margin-top: 1rem;
 }
@@ -375,7 +386,7 @@ ul {
 }
 
 .swiper {
-  width: 55rem;
+  max-width: 1100px;
   height: 20rem;
   border-radius: 10px;
   margin-top: 12.5rem;

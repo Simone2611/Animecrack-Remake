@@ -23,7 +23,6 @@
 
 .contenitorecategoriamain {
   display: flex;
-  z-index: 50;
 }
 
 button {
@@ -78,4 +77,14 @@ button:hover {
   align-items: center;
   transform: scale(1.1);
   transition: ease 0.5s;
+}
+@media only screen and (max-width: 840px) {
+  .filler {
+    display: none;
+  }
+  .contenitore-categoria {
+    z-index: 2000;
+    left: 40%;
+    top: 77%;
+  }
 }
