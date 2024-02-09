@@ -13,7 +13,7 @@ import Logo from "../img/AnimeCrack.png";
       </a>
     </div>
     <div class="input">
-      <input class="input2" id="cerca" placeholder="Cerca..." />
+      <input class="input2" id="cerca1" placeholder="Cerca..." />
       <svg
         class="svg-in"
         xmlns="http://www.w3.org/2000/svg"
@@ -51,15 +51,19 @@ import Logo from "../img/AnimeCrack.png";
   </div>
 </div>
 <script>
-  const cerca = document.getElementById("cerca");
+  const cerca = document.getElementById("cerca1");
 
   cerca.addEventListener("keypress", function (event) {
     if (event.keyCode == 13) {
-      let text1 = document.getElementById("cerca").value;
+      let text1 = document.getElementById("cerca1").value;
       if (text1.includes("?") || text1.includes("\\") || text1.includes("/")) {
         alert("Non puoi usare questo simbolo/carattere");
+      } else if (text1 == "") {
+        alert("Scrivi qualcosa");
       } else {
-        window.location.pathname = text1 + "/search";
+        let fix = text1.replaceAll(/\d+/g, "");
+        let fix2 = fix.replaceAll("?page=", "");
+        window.location.href = "http://localhost:4321/" + fix2 + "/search";
       }
     }
   });
