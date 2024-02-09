@@ -78,8 +78,7 @@ import "../styles/generi.css";
 
   generi.addEventListener("click", (e) => {
     let genereselezionato = e.target.innerHTML.replaceAll(" ", "-");
-    window.location.href =
-      "http://localhost:4321/generi/" + genereselezionato.toLowerCase();
+    window.location.href = "/generi/" + genereselezionato.toLowerCase();
   });
 
   function isMobile() {
@@ -90,7 +89,7 @@ import "../styles/generi.css";
   button.addEventListener("click", (e) => {
     if (isMobile()) {
     } else {
-      window.location.href = "http://localhost:4321/generi/arti-marziali";
+      window.location.href = "/generi/arti-marziali";
     }
   });
 </script>

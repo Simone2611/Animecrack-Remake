@@ -12,7 +12,7 @@ let categoria = Astro.request.url;
 let categoriafix = categoria.replaceAll(Astro.url.origin + "/categoria/", "");
 
 let categoriafix2 = categoriafix.replaceAll(/\d+/g, "");
-let nome = categoriafix2.replaceAll("/?page=", "");
+let nome = categoriafix2.replaceAll("?page=", "");
 
 await axios
   .get("https://www.animeworld.so/" + categoriafix)
@@ -91,13 +91,20 @@ await axios
       let transformato = contenitore.innerText.trim();
 
       contenitore.innerHTML = transformato;
-
+      const namegenere = document.getElementById("namegenere");
       let url = window.location.href;
       let origin = window.location.origin;
       let path = window.location.pathname;
+      let nomegen = namegenere.innerText;
 
+      if (
+        namegenere.innerText.includes("?page=") ||
+        namegenere.innerText.includes("/")
+      ) {
+        let fix = nomegen.replaceAll("?page=", "");
+        namegenere.innerText = fix.replaceAll("/", "");
+      }
       // Origin è local ecc e path togli con ?page= per avere numero
-      const namegenere = document.getElementById("namegenere");
 
       const pag = document.getElementById("pagina");
 
@@ -115,16 +122,16 @@ await axios
         if (url.includes("?page=")) {
           let numeropag = url.replaceAll(origin + path + "?page=", "");
           let numerofix = +numeropag + +1;
-          window.location.href =
-            "/categoria/" + namegenere.innerText + "/?page=" + numerofix;
+          window.location.href = "/categoria/" + nomegen + "?page=" + numerofix;
         } else {
-          window.location.href = window.location.href + "/?page=2";
+          window.location.href = origin + path + "?page=2";
         }
       });
 
       btnprecedente.addEventListener("click", (e) => {
         if (url == origin + path + "?page=2") {
-          window.location.href = "/categoria/" + namegenere.innerText;
+          window.location.href =
+            "/categoria/" + namegenere.innerText.replaceAll("?page=", "");
         } else {
           let numeropag = url.replaceAll(origin + path + "?page=", "");
           let numerofix = +numeropag - +1;
@@ -138,26 +145,20 @@ await axios
 
       btnsuccessivo2.addEventListener("click", (e) => {
         if (url.includes("?page=")) {
-          let numeropag = url.replaceAll(
-            "/categoria/" + namegenere.innerText + "/?page=",
-            ""
-          );
+          let numeropag = url.replaceAll(origin + path + "?page=", "");
           let numerofix = +numeropag + +1;
-          window.location.href =
-            "/categoria/" + namegenere.innerText + "/?page=" + numerofix;
+          window.location.href = "/categoria/" + nomegen + "?page=" + numerofix;
         } else {
-          window.location.href = window.location.href + "/?page=2";
+          window.location.href = origin + path + "?page=2";
         }
       });
 
       btnprecedente2.addEventListener("click", (e) => {
         if (url == origin + path + "?page=2") {
-          window.location.href = origin + "/categoria/" + namegenere.innerText;
+          window.location.href =
+            "/categoria/" + namegenere.innerText.replaceAll("?page=", "");
         } else {
-          let numeropag = url.replaceAll(
-            "/categoria/" + namegenere.innerText + "/?page=",
-            ""
-          );
+          let numeropag = url.replaceAll(origin + path + "?page=", "");
           let numerofix = +numeropag - +1;
           window.location.href =
             "/categoria/" + namegenere.innerText + "/?page=" + numerofix;
@@ -165,7 +166,8 @@ await axios
       });
 
       if (url.includes("NaN")) {
-        window.location.href = origin + path;
+        window.location.href =
+          "/categoria/" + namegenere.innerText.replaceAll("NaN", "");
       }
     </script>
   </body>

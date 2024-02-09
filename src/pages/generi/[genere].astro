@@ -9,9 +9,10 @@ import { manifest } from "astro:ssr-manifest";
 const { JSDOM } = jsdom;
 let arr = [];
 let genere = Astro.request.url;
-let generefix = genere.replaceAll("http://localhost:4321/generi/", "");
+let generefix = genere.replaceAll(Astro.url.origin + "/generi/", "");
 let generefix2 = generefix.replaceAll(/\d+/g, "");
-let nome = generefix2.replaceAll("/?page=", "");
+let nome = generefix2.replaceAll("?page=", "");
+
 await axios
   .get("https://www.animeworld.so/genre/" + generefix)
   .then(({ data }) => {
@@ -88,18 +89,25 @@ await axios
       let transformato = contenitore.innerText.trim();
 
       contenitore.innerHTML = transformato;
-
-      let url = window.location.href;
-
       const namegenere = document.getElementById("namegenere");
+      let url = window.location.href;
+      let origin = window.location.origin;
+      let path = window.location.pathname;
+      let nomegen = namegenere.innerText;
+
+      if (
+        namegenere.innerText.includes("?page=") ||
+        namegenere.innerText.includes("/")
+      ) {
+        let fix = nomegen.replaceAll("?page=", "");
+        namegenere.innerText = fix.replaceAll("/", "");
+      }
+      // Origin è local ecc e path togli con ?page= per avere numero
 
       const pag = document.getElementById("pagina");
 
       if (url.includes("?page=")) {
-        let numeropag = url.replaceAll(
-          "http://localhost:4321/generi/" + namegenere.innerText + "/?page=",
-          ""
-        );
+        let numeropag = url.replaceAll(origin + path + "?page=", "");
         pag.innerText = "Pagina Numero:" + " " + numeropag;
       } else {
         pag.innerText = "Pagina Numero:" + " " + "1";
@@ -110,39 +118,23 @@ await axios
 
       btnsuccessivo.addEventListener("click", (e) => {
         if (url.includes("?page=")) {
-          let numeropag = url.replaceAll(
-            "http://localhost:4321/generi/" + namegenere.innerText + "/?page=",
-            ""
-          );
+          let numeropag = url.replaceAll(origin + path + "?page=", "");
           let numerofix = +numeropag + +1;
-          window.location.href =
-            "http://localhost:4321/generi/" +
-            namegenere.innerText +
-            "/?page=" +
-            numerofix;
+          window.location.href = "/generi/" + nomegen + "?page=" + numerofix;
         } else {
-          window.location.href = window.location.href + "/?page=2";
+          window.location.href = origin + path + "?page=2";
         }
       });
 
       btnprecedente.addEventListener("click", (e) => {
-        if (
-          url ==
-          "http://localhost:4321/generi/" + namegenere.innerText + "/?page=2"
-        ) {
+        if (url == origin + path + "?page=2") {
           window.location.href =
-            "http://localhost:4321/generi/" + namegenere.innerText;
+            "/generi/" + namegenere.innerText.replaceAll("?page=", "");
         } else {
-          let numeropag = url.replaceAll(
-            "http://localhost:4321/generi/" + namegenere.innerText + "/?page=",
-            ""
-          );
+          let numeropag = url.replaceAll(origin + path + "?page=", "");
           let numerofix = +numeropag - +1;
           window.location.href =
-            "http://localhost:4321/generi/" +
-            namegenere.innerText +
-            "/?page=" +
-            numerofix;
+            "/generi/" + namegenere.innerText + "/?page=" + numerofix;
         }
       });
 
@@ -151,46 +143,29 @@ await axios
 
       btnsuccessivo2.addEventListener("click", (e) => {
         if (url.includes("?page=")) {
-          let numeropag = url.replaceAll(
-            "http://localhost:4321/generi/" + namegenere.innerText + "/?page=",
-            ""
-          );
+          let numeropag = url.replaceAll(origin + path + "?page=", "");
           let numerofix = +numeropag + +1;
-          window.location.href =
-            "http://localhost:4321/generi/" +
-            namegenere.innerText +
-            "/?page=" +
-            numerofix;
+          window.location.href = "/generi/" + nomegen + "?page=" + numerofix;
         } else {
-          window.location.href = window.location.href + "/?page=2";
+          window.location.href = origin + path + "?page=2";
         }
       });
 
       btnprecedente2.addEventListener("click", (e) => {
-        if (
-          url ==
-          "http://localhost:4321/generi/" + namegenere.innerText + "/?page=2"
-        ) {
+        if (url == origin + path + "?page=2") {
           window.location.href =
-            "http://localhost:4321/generi/" + namegenere.innerText;
+            "/generi/" + namegenere.innerText.replaceAll("?page=", "");
         } else {
-          let numeropag = url.replaceAll(
-            "http://localhost:4321/generi/" + namegenere.innerText + "/?page=",
-            ""
-          );
+          let numeropag = url.replaceAll(origin + path + "?page=", "");
           let numerofix = +numeropag - +1;
           window.location.href =
-            "http://localhost:4321/generi/" +
-            namegenere.innerText +
-            "/?page=" +
-            numerofix;
+            "/generi/" + namegenere.innerText + "/?page=" + numerofix;
         }
       });
 
       if (url.includes("NaN")) {
         window.location.href =
-          "http://localhost:4321/generi/" +
-          namegenere.innerText.replaceAll("NaN", "");
+          "/generi/" + namegenere.innerText.replaceAll("NaN", "");
       }
     </script>
   </body>

@@ -35,9 +35,9 @@ await axios.get(link2).then(({ data }) => {
 });
 
 let arr = [];
-let URL2 = URL.replace("http://localhost:4321/", "");
+let URL2 = URL.replace(Astro.url.origin, "");
 
-await axios.get("https://www.animeworld.so/" + URL2).then(({ data }) => {
+await axios.get("https://www.animeworld.so" + URL2).then(({ data }) => {
   const dom = new JSDOM(data);
   let matches = dom.window.document.querySelectorAll("div > .server.active");
 
@@ -49,7 +49,7 @@ await axios.get("https://www.animeworld.so/" + URL2).then(({ data }) => {
 });
 let desc = "";
 
-await axios.get("https://www.animeworld.so/" + URL2).then(({ data }) => {
+await axios.get("https://www.animeworld.so" + URL2).then(({ data }) => {
   const dom = new JSDOM(data);
   let matches = dom.window.document.querySelectorAll(".desc");
 
@@ -60,7 +60,7 @@ await axios.get("https://www.animeworld.so/" + URL2).then(({ data }) => {
   });
 });
 let tag = "";
-await axios.get("https://www.animeworld.so/" + URL2).then(({ data }) => {
+await axios.get("https://www.animeworld.so" + URL2).then(({ data }) => {
   const dom = new JSDOM(data);
   let matches = dom.window.document.querySelectorAll("#tagsReload");
 

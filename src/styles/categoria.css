@@ -25,6 +25,10 @@
   display: flex;
 }
 
+.imghomea {
+  width: 100%;
+}
+
 button {
   vertical-align: middle;
   justify-self: center;

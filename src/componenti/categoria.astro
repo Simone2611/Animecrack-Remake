@@ -34,8 +34,7 @@ import "../styles/categoria.css";
 
     categoria.addEventListener("click", (e) => {
       let genereselezionato = e.target.innerHTML.replaceAll(" ", "-");
-      window.location.href =
-        "http://localhost:4321/categoria/" + genereselezionato.toLowerCase();
+      window.location.href = "/categoria/" + genereselezionato.toLowerCase();
     });
 
     function isMobile() {
@@ -47,7 +46,7 @@ import "../styles/categoria.css";
     button.addEventListener("click", (e) => {
       if (isMobile()) {
       } else {
-        window.location.href = "http://localhost:4321/categoria/animes";
+        window.location.href = "/categoria/animes";
       }
     });
   </script>

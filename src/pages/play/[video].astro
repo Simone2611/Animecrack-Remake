@@ -15,9 +15,9 @@ let URL = Astro.request.url;
 
 const URLplay = URL.split("/");
 
-let link = URL.replaceAll("http://localhost:4321/play/", "");
+let link = URL.replaceAll(Astro.url.origin, "");
 
-let link2 = "https://www.animeworld.so/play/" + link;
+let link2 = "https://www.animeworld.so" + link;
 
 let arr = [];
 let messaggio1 = "";
@@ -100,7 +100,7 @@ await axios.get(link2).then(({ data }) => {
     <script>
       const home = document.getElementById("home");
       home.addEventListener("click", (e) => {
-        window.location.href = "http://localhost:4321/";
+        window.location.href = window.location.origin;
       });
       const messaggio = document.getElementById("messaggio");
       if (messaggio.innerText == "Questo anime non è ancora disponibile") {
