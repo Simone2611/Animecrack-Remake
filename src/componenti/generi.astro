@@ -5,7 +5,7 @@ import "../styles/generi.css";
 
 <div id="all" class="contenitoregenerimain">
   <div class="btncontenitore">
-    <button id="button">Generi</button>
+    <button id="button3">Generi</button>
   </div>
   <div class="filler"></div>
   <div id="generi" class="contenitore-generi">
@@ -66,7 +66,7 @@ import "../styles/generi.css";
 <script>
   const generi = document.getElementById("generi");
   const all = document.getElementById("all");
-
+  const button = document.getElementById("button3");
   all.addEventListener("mouseover", (e) => {
     generi.style.transform = "scaleY(1)";
     generi.style.transition = "ease 0.2s";
@@ -80,5 +80,17 @@ import "../styles/generi.css";
     let genereselezionato = e.target.innerHTML.replaceAll(" ", "-");
     window.location.href =
       "http://localhost:4321/generi/" + genereselezionato.toLowerCase();
+  });
+
+  function isMobile() {
+    const regex =
+      /Mobi|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
+    return regex.test(navigator.userAgent);
+  }
+  button.addEventListener("click", (e) => {
+    if (isMobile()) {
+    } else {
+      window.location.href = "http://localhost:4321/generi/arti-marziali";
+    }
   });
 </script>

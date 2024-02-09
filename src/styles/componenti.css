@@ -23,12 +23,14 @@
   border-radius: 5px;
   width: 30rem;
   align-self: center;
-  padding: 0.7rem;
+  height: 2rem;
+  padding: 0.3rem;
   vertical-align: middle;
   color: #fcfcfc;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-self: center;
 }
 .svg-in {
   fill: white;
@@ -470,6 +472,7 @@ ul {
   color: white;
   font-size: 2rem;
 }
+
 @media only screen and (max-width: 950px) {
   .contenitore-anime {
     grid-template-columns: 1fr 1fr 1fr;
@@ -479,13 +482,13 @@ ul {
   }
 }
 
-@media only screen and (max-width: 740px) {
+@media only screen and (max-width: 839px) {
   .contenitore-anime {
     grid-template-columns: 1fr 1fr;
     gap: 0;
   }
   .logo {
-    height: 2rem;
+    height: 3rem;
     align-self: center;
   }
   .topcontainer2 {
@@ -501,23 +504,6 @@ ul {
     flex-direction: column;
     align-items: center;
   }
-
-  @media only screen and (max-width: 465px) {
-    .contenitore-anime {
-      grid-template-columns: 1fr;
-      gap: 0;
-    }
-    .input {
-      width: 7rem;
-    }
-    .logo {
-      height: 2rem;
-      align-self: center;
-    }
-    .genere {
-      opacity: 0;
-    }
-  }
   .Recenti {
     font-size: 2rem;
   }
@@ -526,6 +512,25 @@ ul {
   }
   .swiper {
     display: none !important;
+  }
+  .input {
+    width: 13.5rem;
+  }
+}
+@media only screen and (max-width: 465px) {
+  .contenitore-anime {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .input {
+    width: 5rem;
+  }
+  .logo {
+    height: 2rem;
+    align-self: center;
+  }
+  .genere {
+    opacity: 0;
   }
 }
 

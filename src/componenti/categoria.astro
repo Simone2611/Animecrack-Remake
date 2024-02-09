@@ -5,7 +5,7 @@ import "../styles/categoria.css";
 
 <div id="all2" class="contenitorecategoriamain">
   <div class="btncontenitore">
-    <button id="button">Categoria</button>
+    <button id="button2">Categoria</button>
   </div>
   <div class="filler"></div>
   <div id="categoria" class="contenitore-categoria">
@@ -21,6 +21,7 @@ import "../styles/categoria.css";
   <script>
     const categoria = document.getElementById("categoria");
     const all = document.getElementById("all2");
+    const button = document.getElementById("button2");
 
     all.addEventListener("mouseover", (e) => {
       categoria.style.transform = "scaleY(1)";
@@ -35,6 +36,19 @@ import "../styles/categoria.css";
       let genereselezionato = e.target.innerHTML.replaceAll(" ", "-");
       window.location.href =
         "http://localhost:4321/categoria/" + genereselezionato.toLowerCase();
+    });
+
+    function isMobile() {
+      const regex =
+        /Mobi|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
+      return regex.test(navigator.userAgent);
+    }
+
+    button.addEventListener("click", (e) => {
+      if (isMobile()) {
+      } else {
+        window.location.href = "http://localhost:4321/categoria/animes";
+      }
     });
   </script>
 </div>

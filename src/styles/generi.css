@@ -14,11 +14,13 @@
   padding: 0.7rem;
   width: fit-content;
   cursor: pointer;
+  transition: ease 0.5s;
 }
 
 .contenitore-generi div p:hover {
+  transform: scale(1.1);
   color: #7f66ff;
-  transition: ease 0.2s;
+  transition: ease 0.5s;
 }
 
 .contenitoregenerimain {

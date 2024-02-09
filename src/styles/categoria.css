@@ -12,10 +12,13 @@
   padding: 0.7rem;
   width: fit-content;
   cursor: pointer;
+  transition: ease 0.5s;
 }
 
 .contenitore-categoria div p:hover {
+  transform: scale(1.1);
   color: #7f66ff;
+  transition: ease 0.5s;
 }
 
 .contenitorecategoriamain {
@@ -55,4 +58,24 @@ button:hover {
   top: 8rem;
   color: transparent;
   width: 10rem;
+}
+
+.svgbtn {
+  background-color: transparent;
+  border: none;
+  width: 1.6rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+}
+
+.svgbtn:hover {
+  background-color: transparent;
+  border: none;
+  width: 1.6rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  transform: scale(1.1);
+  transition: ease 0.5s;
 }
