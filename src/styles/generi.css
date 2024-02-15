@@ -1,7 +1,7 @@
 .contenitore-generi {
   flex-direction: row;
   background-color: white;
-  top: 8.5rem;
+  top: 7.5rem;
   position: absolute;
   display: flex;
   transform: scaleY(0);
@@ -79,12 +79,15 @@ button:hover {
 }
 
 @media only screen and (max-width: 840px) {
+  .contenitore-generi {
+    display: none;
+  }
   .filler {
     display: none;
   }
   .contenitore-generi {
+    flex-direction: column;
     z-index: 2000;
-    left: 25%;
   }
 }
 

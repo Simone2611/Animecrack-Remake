@@ -1,7 +1,7 @@
 .contenitore-categoria {
   flex-direction: row;
   background-color: white;
-  top: 8.5rem;
+  top: 7.5rem;
   position: absolute;
   transform: scaleY(0);
   transform-origin: top;
@@ -23,10 +23,6 @@
 
 .contenitorecategoriamain {
   display: flex;
-}
-
-.imghomea {
-  width: 100%;
 }
 
 button {
@@ -56,9 +52,9 @@ button:hover {
 
 .filler {
   position: absolute;
-  height: 1rem;
+  height: 1.6rem;
   background-color: transparent;
-  top: 8rem;
+  top: 5.9rem;
   color: transparent;
   width: 10rem;
 }
@@ -87,8 +83,6 @@ button:hover {
     display: none;
   }
   .contenitore-categoria {
-    z-index: 2000;
-    left: 40%;
-    top: 77%;
+    display: none;
   }
 }

@@ -2,12 +2,20 @@
   background-color: #1c2125;
   width: 100%;
   overflow-x: hidden;
-  height: 4rem;
+  height: fit-content;
   border-bottom: 0.15rem solid rgb(66, 66, 66);
   display: flex;
+  flex-direction: column;
+  padding: 0.5rem 0 0.5rem 0;
+}
 
+.barra-1 {
+  display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
+  max-width: 1100px;
+  margin: 0 auto;
+  gap: 7rem;
 }
 
 .navbar {
@@ -53,7 +61,6 @@
 .svg {
   height: 2.5rem;
   justify-content: end;
-  padding: 0.5rem 1rem 0.5rem 1rem;
   fill: #fcfcfc;
   align-self: center;
 }
@@ -67,10 +74,10 @@
   display: flex;
   flex-direction: column;
   margin: 0 auto;
+
   max-width: 1100px;
-  background-color: #1c2125;
-  border-radius: 5px;
-  margin-top: 10rem;
+
+  border-radius: 15px;
 }
 
 .poster {
@@ -85,7 +92,7 @@
   max-height: 18rem;
   object-fit: cover;
   align-self: center;
-  border-radius: 8px;
+  border-radius: 10px;
 }
 
 .inner:hover {
@@ -107,6 +114,7 @@
 
 .Recenti {
   padding: 1rem;
+  height: 5rem;
   font-size: 3rem;
   font-weight: bold;
   color: #fcfcfc;
@@ -118,8 +126,10 @@
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 1rem;
   align-items: center;
-
+  background-color: #1c2125;
   width: 100%;
+  padding-top: 2rem;
+  border-radius: 15px;
 }
 
 .name {
@@ -159,8 +169,8 @@
   min-width: 10rem;
   display: flex;
   flex-direction: row;
+
   justify-content: end;
-  gap: 1rem;
 }
 
 .topcontainer2 button {
@@ -182,7 +192,7 @@
 
 .videocontainer p {
   color: #fcfcfc;
-  text-align: center;
+  text-align: left;
   font-size: 2rem;
 }
 
@@ -320,7 +330,7 @@ ul {
   padding-left: 1.75rem;
   padding-right: 1.9rem;
   text-align: center;
-  margin-bottom: 2rem;
+  margin-top: 7.5rem;
 }
 
 .genere div {
@@ -332,16 +342,21 @@ ul {
 .genere p {
   color: white;
   font-size: 2rem;
+  transition: ease 0.5s;
 }
-
+.genere p a:first-child {
+  transition: ease 0.5s;
+}
 .genere p a:first-child:hover {
   color: #7f66ff;
+  transition: ease 0.5s;
 }
 
 .genere p:first-child {
   color: white;
   font-size: 2rem;
   font-weight: bold;
+  transition: ease 0.5s;
   cursor: pointer;
 }
 
@@ -352,9 +367,27 @@ ul {
 .bottonitop {
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 1rem;
+  justify-content: space-around;
+  max-width: 1100px;
+  margin: 0 auto;
+  gap: 6rem;
+  margin: 1rem auto 1rem auto;
+}
+
+.bottonitop button {
+  background-color: transparent;
+  padding: 0px;
+  width: fit-content;
+  height: fit-content;
+  border: 0px;
+  transition: ease 0.5s;
+}
+
+.bottonitop button:hover {
+  color: #7f66ff;
+  transform: scale(1.1);
+  background-color: transparent;
+  transition: ease 0.5s;
 }
 
 .contenitore-desc {
@@ -388,9 +421,8 @@ ul {
 .swiper {
   max-width: 1100px;
   height: 20rem;
-  border-radius: 10px;
+  border-radius: 15px;
   margin-top: 12.5rem;
-  margin-bottom: -5rem;
 }
 
 .swiper-wrapper {
@@ -484,6 +516,22 @@ ul {
   font-size: 2rem;
 }
 
+.svg-in2 {
+  fill: white;
+  width: 1.5rem;
+  display: none;
+}
+
+@media only screen and (max-width: 1070px) {
+  .barra-1 {
+    gap: 4rem;
+    margin: 0;
+    justify-content: space-between;
+  }
+  .bottonitop {
+    gap: 4rem;
+  }
+}
 @media only screen and (max-width: 950px) {
   .contenitore-anime {
     grid-template-columns: 1fr 1fr 1fr;
@@ -494,6 +542,12 @@ ul {
 }
 
 @media only screen and (max-width: 839px) {
+  .genere {
+    margin-top: 0rem;
+  }
+  .contenitorebarra {
+    height: 4rem;
+  }
   .contenitore-anime {
     grid-template-columns: 1fr 1fr;
     gap: 0;
@@ -511,10 +565,6 @@ ul {
   .swiper {
     width: 28rem;
   }
-  .bottonitop {
-    flex-direction: column;
-    align-items: center;
-  }
   .Recenti {
     font-size: 2rem;
   }
@@ -527,21 +577,46 @@ ul {
   .input {
     width: 13.5rem;
   }
+  .bottonitop {
+    top: 2rem;
+    transform: scaleX(0);
+    transition: ease 0.5s;
+    transform-origin: right;
+    text-align: center;
+  }
+
+  .filler {
+    display: none;
+    width: 0;
+    height: 0;
+  }
+  .svg {
+    display: none;
+  }
+  .svg-in2 {
+    display: block;
+    z-index: 100;
+    margin-right: 0.5rem;
+  }
 }
 @media only screen and (max-width: 465px) {
+  .contenitorebarra {
+    height: 2.5rem;
+  }
   .contenitore-anime {
     grid-template-columns: 1fr;
     gap: 0;
   }
   .input {
-    width: 5rem;
+    width: 30rem;
+    margin-left: 0.5rem;
   }
-  .logo {
-    height: 2rem;
-    align-self: center;
+  .topcontainer {
+    display: none;
+    width: 0;
   }
   .genere {
-    opacity: 0;
+    display: none;
   }
 }
 

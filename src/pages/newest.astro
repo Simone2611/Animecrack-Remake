@@ -9,9 +9,9 @@ import { manifest } from "astro:ssr-manifest";
 const { JSDOM } = jsdom;
 let arr = [];
 let genere = Astro.request.url;
-let generefix = genere.replaceAll(Astro.url.origin + "/newest", "");
+let generefix = genere.replaceAll("http://localhost:4321/newest", "");
 let generefix2 = generefix.replaceAll(/\d+/g, "");
-let nome = generefix2.replaceAll("?page=", "");
+let nome = generefix2.replaceAll("/?page=", "");
 
 await axios
   .get("https://www.animeworld.so/newest" + generefix)
@@ -89,25 +89,18 @@ await axios
       let transformato = contenitore.innerText.trim();
 
       contenitore.innerHTML = transformato;
-      const namegenere = document.getElementById("namegenere");
-      let url = window.location.href;
-      let origin = window.location.origin;
-      let path = window.location.pathname;
-      let nomegen = namegenere.innerText;
 
-      if (
-        namegenere.innerText.includes("?page=") ||
-        namegenere.innerText.includes("/")
-      ) {
-        let fix = nomegen.replaceAll("?page=", "");
-        namegenere.innerText = fix.replaceAll("/", "");
-      }
-      // Origin è local ecc e path togli con ?page= per avere numero
+      let url = window.location.href;
+
+      const namegenere = document.getElementById("namegenere");
 
       const pag = document.getElementById("pagina");
 
       if (url.includes("?page=")) {
-        let numeropag = url.replaceAll(origin + path + "?page=", "");
+        let numeropag = url.replaceAll(
+          "http://localhost:4321/newest/?page=",
+          ""
+        );
         pag.innerText = "Pagina Numero:" + " " + numeropag;
       } else {
         pag.innerText = "Pagina Numero:" + " " + "1";
@@ -118,21 +111,29 @@ await axios
 
       btnsuccessivo.addEventListener("click", (e) => {
         if (url.includes("?page=")) {
-          let numeropag = url.replaceAll(origin + path + "?page=", "");
+          let numeropag = url.replaceAll(
+            "http://localhost:4321/newest/?page=",
+            ""
+          );
           let numerofix = +numeropag + +1;
-          window.location.href = "/newest/" + "?page=" + numerofix;
+          window.location.href =
+            "http://localhost:4321/newest/?page=" + numerofix;
         } else {
-          window.location.href = origin + path + "?page=2";
+          window.location.href = window.location.href + "/?page=2";
         }
       });
 
       btnprecedente.addEventListener("click", (e) => {
-        if (url == origin + path + "?page=2") {
-          window.location.href = "/newest";
+        if (url == "http://localhost:4321/newest/?page=2") {
+          window.location.href = "http://localhost:4321/newest";
         } else {
-          let numeropag = url.replaceAll(origin + path + "?page=", "");
+          let numeropag = url.replaceAll(
+            "http://localhost:4321/newest/?page=",
+            ""
+          );
           let numerofix = +numeropag - +1;
-          window.location.href = "/newest/" + "?page=" + numerofix;
+          window.location.href =
+            "http://localhost:4321/newest/?page=" + numerofix;
         }
       });
 
@@ -141,26 +142,34 @@ await axios
 
       btnsuccessivo2.addEventListener("click", (e) => {
         if (url.includes("?page=")) {
-          let numeropag = url.replaceAll(origin + path + "?page=", "");
+          let numeropag = url.replaceAll(
+            "http://localhost:4321/newest/?page=",
+            ""
+          );
           let numerofix = +numeropag + +1;
-          window.location.href = "/newest/" + "?page=" + numerofix;
+          window.location.href =
+            "http://localhost:4321/newest/?page=" + numerofix;
         } else {
-          window.location.href = origin + path + "?page=2";
+          window.location.href = window.location.href + "/?page=2";
         }
       });
 
       btnprecedente2.addEventListener("click", (e) => {
-        if (url == origin + path + "?page=2") {
-          window.location.href = "/newest";
+        if (url == "http://localhost:4321/newest/?page=2") {
+          window.location.href = "http://localhost:4321/newest";
         } else {
-          let numeropag = url.replaceAll(origin + path + "?page=", "");
+          let numeropag = url.replaceAll(
+            "http://localhost:4321/newest/?page=",
+            ""
+          );
           let numerofix = +numeropag - +1;
-          window.location.href = "/newest/" + "?page=" + numerofix;
+          window.location.href =
+            "http://localhost:4321/newest/?page=" + numerofix;
         }
       });
 
       if (url.includes("NaN")) {
-        window.location.href = origin + path;
+        window.location.href = "http://localhost:4321/newest";
       }
     </script>
   </body>
