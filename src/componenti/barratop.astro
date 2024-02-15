@@ -9,7 +9,7 @@ import Logo from "../img/AnimeCrack.png";
   <div class="contenitorebarra">
     <div class="barra-1">
       <div class="topcontainer">
-        <a href="http://localhost:4321/">
+        <a href="/">
           <img src={Logo.src} class="logo" />
         </a>
       </div>
@@ -109,7 +109,7 @@ import Logo from "../img/AnimeCrack.png";
       } else {
         let fix = text1.replaceAll(/\d+/g, "");
         let fix2 = fix.replaceAll("?page=", "");
-        window.location.href = "http://localhost:4321/" + fix2 + "/search";
+        window.location.href = "/" + fix2 + "/search";
       }
     }
   });
@@ -125,29 +125,29 @@ import Logo from "../img/AnimeCrack.png";
     } else {
       let fix = text1.replaceAll(/\d+/g, "");
       let fix2 = fix.replaceAll("?page=", "");
-      window.location.href = "http://localhost:4321/" + fix2 + "/search";
+      window.location.href = "/" + fix2 + "/search";
     }
   });
 
   const newagg = document.getElementById("nuoveAgg");
   newagg.addEventListener("click", (e) => {
-    window.location.href = "http://localhost:4321/newest";
+    window.location.href = "/newest";
   });
   const ultimiep = document.getElementById("ultimiep");
   ultimiep.addEventListener("click", (e) => {
-    window.location.href = "http://localhost:4321/updated";
+    window.location.href = "/updated";
   });
   const incorso = document.getElementById("incorso");
   incorso.addEventListener("click", (e) => {
-    window.location.href = "http://localhost:4321/ongoing";
+    window.location.href = "/ongoing";
   });
   const random = document.getElementById("random");
   random.addEventListener("click", (e) => {
-    window.location.href = "http://localhost:4321/random";
+    window.location.href = "/random";
   });
 
   const upcoming = document.getElementById("upcoming");
   upcoming.addEventListener("click", (e) => {
-    window.location.href = "http://localhost:4321/upcoming";
+    window.location.href = "/upcoming";
   });
 </script>
