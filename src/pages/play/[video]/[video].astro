@@ -90,24 +90,41 @@ await axios.get("https://www.animeworld.so/" + URL2).then(({ data }) => {
   <body>
     <img class="bgimg" src={img.src} />
     <Playvideo />
-    <div class="videocontainer">
-      <video controls autoplay>
-        <source src={link} type="video/mp4" />
-      </video>
-      <p id="nomeEp">{nomefinale}</p>
-    </div>
-    <div class="contenitorebtn">
-      <button class="nodispl btn" id="previous"></button>
-      <button class="nodispl btn" id="next"></button>
-    </div>
-    <p class="text">Tutti gli episodi</p>
-    <div class="ep" id="contenitore">{arr}</div>
-    <div class="contenitore-desc">
-      <h2>Descrizione</h2>
-      <p id="desc">{desc}</p>
-      <h2>Tag</h2>
-      <button class="showbtn" id="show">Show all</button>
-      <p id="tag">{tag}</p>
+    <div class="videocontainer2">
+      <div class="contsinistra">
+        <div class="videocontainer">
+          <video controls autoplay>
+            <source src={link} type="video/mp4" />
+          </video>
+
+          <p class="nomeanime" id="nomeEp">{nomefinale}</p>
+          <div class="contenitorebtn">
+            <button class="nodispl btn" id="previous"></button>
+            <button class="nodispl btn" id="next"></button>
+          </div>
+          <p id="desc">{desc}</p>
+        </div>
+
+        <div class="contenitore-desc">
+          <div class="tagcontainer">
+            <h2>Tag</h2>
+            <button class="showbtn" id="show">Show all</button>
+          </div>
+
+          <p id="tag">{tag}</p>
+        </div>
+      </div>
+
+      <div class="episodi">
+        <div class="contenitorebtn">
+          <button class="btn" id="eppag-pre">&lt</button>
+          <button class="btn" id="eppag-next">&gt</button>
+        </div>
+
+        <p id="numeropagina">Episodi pagina:</p>
+
+        <div class="ep" id="contenitore">{arr}</div>
+      </div>
     </div>
     <script>
       const contenitore = document.getElementById("contenitore");
@@ -145,6 +162,52 @@ await axios.get("https://www.animeworld.so/" + URL2).then(({ data }) => {
           n = 1;
         }
       });
+
+      let numero = 0;
+      let quantepag = 0;
+      const allep = document.querySelectorAll("ul");
+      allep.forEach((element) => {
+        numero += 1;
+        element.setAttribute("id", "n" + numero);
+        quantepag++;
+      });
+      const numeropag = document.getElementById("numeropagina");
+
+      numeropag.innerText = "Episodi pagina 1 / " + quantepag;
+
+      const nextlista = document.getElementById("eppag-next");
+      const prelista = document.getElementById("eppag-pre");
+
+      let pagina = 1;
+
+      nextlista.addEventListener("click", (e) => {
+        if (pagina == quantepag) {
+        } else {
+          let darimuovere = document.getElementById("n" + pagina);
+          let aggiungere = document.getElementById("n" + (+pagina + 1));
+          darimuovere.classList.remove("active");
+          darimuovere.classList.add("hidden");
+          aggiungere.classList.add("active");
+          aggiungere.classList.remove("hidden");
+          pagina++;
+          numeropag.innerText = "Episodi pagina " + pagina + " / " + quantepag;
+        }
+      });
+
+      prelista.addEventListener("click", (e) => {
+        if (pagina == 1) {
+        } else {
+          let darimuovere = document.getElementById("n" + pagina);
+          let aggiungere = document.getElementById("n" + (+pagina - 1));
+          darimuovere.classList.remove("active");
+          darimuovere.classList.add("hidden");
+          aggiungere.classList.add("active");
+          aggiungere.classList.remove("hidden");
+          pagina -= 1;
+          numeropag.innerText = "Episodi pagina " + pagina + " / " + quantepag;
+        }
+      });
+
       next();
 
       function next() {

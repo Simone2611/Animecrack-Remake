@@ -182,8 +182,28 @@
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  margin-top: 10rem;
   max-width: 1000px;
+}
+
+.videocontainer2 {
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
+  margin-top: 10rem;
+  width: fit-content;
+}
+
+.contsinistra {
+  margin-top: 1rem;
+}
+
+.videocontainer2 video {
+  max-width: 1000px;
+}
+
+.ep div div {
+  display: none;
+  height: 0;
 }
 
 .videocontainer video {
@@ -196,6 +216,13 @@
   font-size: 2rem;
 }
 
+.videocontainer p:last-child {
+  color: #fcfcfc;
+  text-align: left;
+  font-size: 0.9rem;
+  margin: 0.5rem 0 0.5rem 0;
+}
+
 .hidden {
   display: flex;
   flex-direction: row;
@@ -205,6 +232,7 @@
   margin: 0 auto;
   flex-wrap: wrap;
   margin-top: 1rem;
+  display: none;
 }
 
 .episode {
@@ -283,7 +311,7 @@ ul {
   background-color: #fcfcfc;
   border: none;
   border-radius: 10px;
-  margin: 1rem 0 1rem 0;
+  margin: 0.5rem 0 0.5rem 0;
   transition: ease 0.5s;
 }
 
@@ -300,10 +328,9 @@ ul {
 }
 
 .contenitorebtn {
-  margin: 0 auto;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: start;
   gap: 1rem;
 }
 
@@ -314,11 +341,44 @@ ul {
 }
 
 .ep {
-  background-color: #1c2125;
   border-radius: 10px;
-  max-width: 90vw;
+  max-width: 30rem;
+  height: 45rem;
   margin: 0 auto;
-  margin-top: 1rem;
+}
+
+.tagcontainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.episodi {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.episodi div button {
+  color: #121619;
+  font-size: 1.2rem;
+  text-align: center;
+  max-width: 3rem;
+}
+
+.episodi div button:hover {
+  color: white;
+  font-size: 1.2rem;
+  text-align: center;
+  background-color: #121619;
+  transform: scale(1.1);
+  max-width: 3rem;
+}
+
+.episodi p {
+  color: white;
+  font-size: 1.5rem;
+  text-align: center;
 }
 
 .genere {
@@ -391,12 +451,12 @@ ul {
 }
 
 .contenitore-desc {
-  max-width: calc(90vw - 2rem);
+  max-width: 1000px;
   color: white;
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  background-color: #1c2125;
+
   margin-top: 1rem;
   padding: 1rem;
   border-radius: 10px;
@@ -412,6 +472,7 @@ ul {
 
 .contenitore-desc h2 {
   text-align: center;
+  margin: 0 0 1rem 0rem;
 }
 
 .show {
@@ -474,8 +535,17 @@ ul {
   width: 7rem;
   height: 2.5rem;
   align-self: center;
-
+  background-color: transparent;
+  border: none;
   margin-bottom: 1.6rem;
+  transition: ease 0.5s;
+}
+
+.showbtn:hover {
+  transform: scale(1.1);
+  background-color: transparent;
+  color: #7f66ff;
+  transition: ease 0.5s;
 }
 
 .no {
