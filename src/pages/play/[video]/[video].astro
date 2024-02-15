@@ -132,36 +132,6 @@ await axios.get("https://www.animeworld.so/" + URL2).then(({ data }) => {
       let transformato = contenitore.innerText.trim();
 
       contenitore.innerHTML = transformato;
-      const ep = document.querySelector(".episode .active");
-      const nomeEp = document.getElementById("nomeEp");
-      let nextbtn = document.getElementById("next");
-      let normale = nomeEp.innerText.toLowerCase();
-      nomeEp.innerText =
-        normale.charAt(0).toUpperCase() +
-        normale.slice(1) +
-        " Ep " +
-        ep.textContent;
-
-      const tag = document.getElementById("tag");
-      const show = document.getElementById("show");
-      let n = 1;
-      show.addEventListener("click", (e) => {
-        if (n == 1) {
-          tag.style.overflow = "visible";
-          tag.style.textOverflow = "unset";
-          tag.style.maxWidth = "100%";
-          tag.style.whiteSpace = "initial";
-          show.innerText = "Hide all";
-          n = 2;
-        } else {
-          tag.style.overflow = "hidden";
-          tag.style.textOverflow = "ellipsis";
-          tag.style.maxWidth = "300ch";
-          tag.style.whiteSpace = "nowrap";
-          show.innerText = "Show all";
-          n = 1;
-        }
-      });
 
       let numero = 0;
       let quantepag = 0;
@@ -205,6 +175,37 @@ await axios.get("https://www.animeworld.so/" + URL2).then(({ data }) => {
           aggiungere.classList.remove("hidden");
           pagina -= 1;
           numeropag.innerText = "Episodi pagina " + pagina + " / " + quantepag;
+        }
+      });
+
+      const ep = document.querySelector(".episode .active");
+      const nomeEp = document.getElementById("nomeEp");
+      let nextbtn = document.getElementById("next");
+      let normale = nomeEp.innerText.toLowerCase();
+      nomeEp.innerText =
+        normale.charAt(0).toUpperCase() +
+        normale.slice(1) +
+        " Ep " +
+        ep.textContent;
+
+      const tag = document.getElementById("tag");
+      const show = document.getElementById("show");
+      let n = 1;
+      show.addEventListener("click", (e) => {
+        if (n == 1) {
+          tag.style.overflow = "visible";
+          tag.style.textOverflow = "unset";
+          tag.style.maxWidth = "100%";
+          tag.style.whiteSpace = "initial";
+          show.innerText = "Hide all";
+          n = 2;
+        } else {
+          tag.style.overflow = "hidden";
+          tag.style.textOverflow = "ellipsis";
+          tag.style.maxWidth = "300ch";
+          tag.style.whiteSpace = "nowrap";
+          show.innerText = "Show all";
+          n = 1;
         }
       });
 
