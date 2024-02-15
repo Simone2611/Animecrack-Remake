@@ -34,8 +34,7 @@ import "../styles/categoria.css";
 
     categoria.addEventListener("click", (e) => {
       let genereselezionato = e.target.innerHTML.replaceAll(" ", "-");
-      window.location.href =
-        "http://localhost:4321/categoria/" + genereselezionato.toLowerCase();
+      window.location.href = "/categoria/" + genereselezionato.toLowerCase();
     });
 
     function isMobile() {
@@ -43,10 +42,11 @@ import "../styles/categoria.css";
         /Mobi|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
       return regex.test(navigator.userAgent);
     }
+
     if (isMobile()) {
     } else {
       button.addEventListener("click", (e) => {
-        window.location.href = "http://localhost:4321/categoria/animes";
+        window.location.href = "/categoria/animes";
       });
     }
 
@@ -54,8 +54,15 @@ import "../styles/categoria.css";
       let width = window.innerWidth;
       if (width < 840) {
         button.addEventListener("click", (e) => {
-          window.location.href = "http://localhost:4321/categoria/animes";
+          window.location.href = "/categoria/animes";
         });
+      }
+    });
+
+    button.addEventListener("click", (e) => {
+      if (isMobile()) {
+      } else {
+        window.location.href = "/categoria/animes";
       }
     });
   </script>

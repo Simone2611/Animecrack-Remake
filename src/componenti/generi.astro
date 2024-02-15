@@ -78,8 +78,7 @@ import "../styles/generi.css";
 
   generi.addEventListener("click", (e) => {
     let genereselezionato = e.target.innerHTML.replaceAll(" ", "-");
-    window.location.href =
-      "http://localhost:4321/generi/" + genereselezionato.toLowerCase();
+    window.location.href = "/generi/" + genereselezionato.toLowerCase();
   });
 
   function isMobile() {
@@ -87,10 +86,11 @@ import "../styles/generi.css";
       /Mobi|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
     return regex.test(navigator.userAgent);
   }
+
   if (isMobile()) {
   } else {
     button.addEventListener("click", (e) => {
-      window.location.href = "http://localhost:4321/generi/arti-marziali";
+      window.location.href = "/generi/arti-marziali";
     });
   }
   let width = window.innerWidth;
@@ -100,7 +100,7 @@ import "../styles/generi.css";
 
   if (width < 840) {
     button.addEventListener("click", (e) => {
-      window.location.href = "http://localhost:4321/generi/arti-marziali";
+      window.location.href = "/generi/arti-marziali";
     });
   }
 </script>
