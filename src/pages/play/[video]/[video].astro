@@ -96,36 +96,35 @@ await axios.get("https://www.animeworld.so" + URL2).then(({ data }) => {
           <video controls autoplay>
             <source src={link} type="video/mp4" />
           </video>
-
-          <p class="nomeanime" id="nomeEp">{nomefinale}</p>
           <div class="contenitorebtn">
+            <p class="nomeanime" id="nomeEp">{nomefinale}</p>
             <button class="nodispl btn" id="previous"></button>
             <button class="nodispl btn" id="next"></button>
           </div>
           <p id="desc">{desc}</p>
         </div>
 
-        <div class="contenitore-desc">
-          <div class="tagcontainer">
-            <h2>Tag</h2>
-            <button class="showbtn" id="show">Show all</button>
+        <div class="contenitoreep">
+          <div class="contenitorebtn">
+            <p id="numeropagina">Episodi pagina:</p>
+            <button class="btn" id="eppag-pre">&lt</button>
+            <button class="btn" id="eppag-next">&gt</button>
           </div>
 
-          <p id="tag">{tag}</p>
+          <div class="ep" id="contenitore">{arr}</div>
         </div>
       </div>
 
-      <div class="episodi">
-        <div class="contenitorebtn">
-          <button class="btn" id="eppag-pre">&lt</button>
-          <button class="btn" id="eppag-next">&gt</button>
+      <div class="contenitore-desc">
+        <div class="tagcontainer">
+          <h2>Tag</h2>
+          <!-- <button class="showbtn" id="show">Show all</button> -->
         </div>
 
-        <p id="numeropagina">Episodi pagina:</p>
-
-        <div class="ep" id="contenitore">{arr}</div>
+        <p id="tag">{tag}</p>
       </div>
     </div>
+
     <script>
       const contenitore = document.getElementById("contenitore");
 
@@ -188,26 +187,23 @@ await axios.get("https://www.animeworld.so" + URL2).then(({ data }) => {
         " Ep " +
         ep.textContent;
 
-      const tag = document.getElementById("tag");
-      const show = document.getElementById("show");
-      let n = 1;
-      show.addEventListener("click", (e) => {
-        if (n == 1) {
-          tag.style.overflow = "visible";
-          tag.style.textOverflow = "unset";
-          tag.style.maxWidth = "100%";
-          tag.style.whiteSpace = "initial";
-          show.innerText = "Hide all";
-          n = 2;
-        } else {
-          tag.style.overflow = "hidden";
-          tag.style.textOverflow = "ellipsis";
-          tag.style.maxWidth = "300ch";
-          tag.style.whiteSpace = "nowrap";
-          show.innerText = "Show all";
-          n = 1;
-        }
-      });
+      // const tag = document.getElementById("tag");
+      // const show = document.getElementById("show");
+      // let n = 1;
+      // show.addEventListener("click", (e) => {
+      //   if (n == 1) {
+      //     tag.style.overflow = "visible";
+      //     tag.style.textOverflow = "unset";
+      //     tag.style.maxWidth = "100%";
+      //     tag.style.whiteSpace = "initial";
+      //     show.innerText = "Hide all";
+      //     n = 2;
+      //   } else {
+      //     tag.removeAttribute("style");
+      //     show.innerText = "Show all";
+      //     n = 1;
+      //   }
+      // });
 
       next();
 
