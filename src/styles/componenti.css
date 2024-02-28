@@ -627,6 +627,13 @@ ul {
   display: none;
 }
 
+.consigliati {
+  display: flex;
+  flex-direction: row;
+  overflow-x: scroll;
+  gap: 1.5rem;
+}
+
 @media only screen and (max-width: 1070px) {
   .barra-1 {
     gap: 4rem;

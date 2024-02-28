@@ -77,6 +77,44 @@ await axios.get("https://www.animeworld.so" + URL2).then(({ data }) => {
     tag = decodeURI(fixed5.replaceAll("</span>", ""));
   });
 });
+let name = nomefinale.replace(/[0-9]/g, "");
+let name1 = name.replaceAll("ep", "");
+let name2 = name1.replaceAll("ITA", "");
+
+let arr2 = [];
+await axios
+  .get("https://www.animeworld.so/search?keyword=" + name2.toLowerCase())
+  .then(({ data }) => {
+    const dom = new JSDOM(data);
+    let matches = dom.window.document.querySelectorAll(
+      ".film-list > .item > .inner"
+    );
+
+    matches.forEach((element) => {
+      let fixed = element.outerHTML;
+      if (fixed.includes('<div class="dub">DUB</div>')) {
+        fixed = fixed.replace('<div class="dub">DUB</div>', "");
+      }
+
+      if (fixed.includes('<div class="ova">OVA</div>')) {
+        fixed = fixed.replace('<div class="ova">OVA</div>', "");
+      }
+
+      if (fixed.includes('<div class="ona">ONA</div>')) {
+        fixed = fixed.replace('<div class="ona">ONA</div>', "");
+      }
+
+      if (fixed.includes('<div class="movie">Movie</div>')) {
+        fixed = fixed.replace('<div class="movie">Movie</div>', "");
+      }
+
+      if (fixed.includes('<div class="special">Special</div>')) {
+        fixed = fixed.replace('<div class="special">Special</div>', "");
+      }
+      console.log(fixed);
+      arr2.push(fixed);
+    });
+  });
 ---
 
 <html lang="en">
@@ -117,6 +155,10 @@ await axios.get("https://www.animeworld.so" + URL2).then(({ data }) => {
 
       <div class="contenitore-desc">
         <div class="tagcontainer">
+          <h2>Consigliati</h2>
+        </div>
+        <div id="contenitore2" class="consigliati">{arr2}</div>
+        <div class="tagcontainer">
           <h2>Tag</h2>
           <!-- <button class="showbtn" id="show">Show all</button> -->
         </div>
@@ -131,6 +173,12 @@ await axios.get("https://www.animeworld.so" + URL2).then(({ data }) => {
       let transformato = contenitore.innerText.trim();
 
       contenitore.innerHTML = transformato;
+
+      const contenitore2 = document.getElementById("contenitore2");
+
+      let transformato2 = contenitore2.innerText.trim();
+
+      contenitore2.innerHTML = transformato2;
 
       let numero = 0;
       let quantepag = 0;

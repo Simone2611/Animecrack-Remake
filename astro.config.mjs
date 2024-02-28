@@ -12,3 +12,8 @@ export default defineConfig({
     maxDuration: 8,
   }),
 });
+
+// import { defineConfig } from "astro/config";
+
+// // https://astro.build/config
+// export default defineConfig({});
