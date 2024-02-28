@@ -632,6 +632,7 @@ ul {
   flex-direction: row;
   overflow-x: scroll;
   gap: 1.5rem;
+  padding: 1rem;
 }
 
 @media only screen and (max-width: 1070px) {

@@ -77,15 +77,16 @@ await axios.get("https://www.animeworld.so" + URL2).then(({ data }) => {
     tag = decodeURI(fixed5.replaceAll("</span>", ""));
   });
 });
-let name = nomefinale.replace(/[0-9]/g, "");
+let name = nomefinale.replace(/[0-9]/g, "").toLowerCase();
 let name1 = name.replaceAll("ep", "");
-let name2 = name1.replaceAll("ITA", "");
-let name3 = name2.replaceAll("sub", "");
+let name2 = name1.replaceAll("ita", "");
+let name3 = name2.replaceAll("film", "");
 let name4 = name3.replaceAll("ova", "");
-let name5 = name4.replaceAll("film", "");
+let name5 = name4.replaceAll("sub", "");
+
 let arr2 = [];
 await axios
-  .get("https://www.animeworld.so/search?keyword=" + name5.toLowerCase())
+  .get("https://www.animeworld.so/search?keyword=" + name5)
   .then(({ data }) => {
     const dom = new JSDOM(data);
     let matches = dom.window.document.querySelectorAll(
@@ -113,7 +114,7 @@ await axios
       if (fixed.includes('<div class="special">Special</div>')) {
         fixed = fixed.replace('<div class="special">Special</div>', "");
       }
-      console.log(fixed);
+
       arr2.push(fixed);
     });
   });
