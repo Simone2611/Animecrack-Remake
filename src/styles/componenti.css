@@ -501,6 +501,7 @@ ul {
   /* overflow: hidden;
   text-overflow: ellipsis; */
   max-width: 100%;
+  font-size: 0.9rem;
   /* white-space: nowrap; */
 }
 
