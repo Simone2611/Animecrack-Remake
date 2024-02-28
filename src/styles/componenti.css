@@ -250,7 +250,7 @@
 .active {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+
   align-items: center;
   max-width: 900px;
   margin-bottom: 0.5rem;
