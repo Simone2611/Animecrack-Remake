@@ -80,10 +80,12 @@ await axios.get("https://www.animeworld.so" + URL2).then(({ data }) => {
 let name = nomefinale.replace(/[0-9]/g, "");
 let name1 = name.replaceAll("ep", "");
 let name2 = name1.replaceAll("ITA", "");
-
+let name3 = name2.replaceAll("sub", "");
+let name4 = name3.replaceAll("ova", "");
+let name5 = name4.replaceAll("film", "");
 let arr2 = [];
 await axios
-  .get("https://www.animeworld.so/search?keyword=" + name2.toLowerCase())
+  .get("https://www.animeworld.so/search?keyword=" + name5.toLowerCase())
   .then(({ data }) => {
     const dom = new JSDOM(data);
     let matches = dom.window.document.querySelectorAll(
