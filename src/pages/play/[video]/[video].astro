@@ -1,6 +1,7 @@
 ---
 import Playvideo from "../../../componenti/playvideo.astro";
 import img from "/src/img/wallpaper.jpg";
+import play from "/src/img/play.svg";
 import "../../../styles/componenti.css";
 import "../../../js/js.js";
 
@@ -77,16 +78,12 @@ await axios.get("https://www.animeworld.so" + URL2).then(({ data }) => {
     tag = decodeURI(fixed5.replaceAll("</span>", ""));
   });
 });
-let name = nomefinale.replace(/[0-9]/g, "").toLowerCase();
-let name1 = name.replaceAll("ep", "");
-let name2 = name1.replaceAll("ita", "");
-let name3 = name2.replaceAll("film", "");
-let name4 = name3.replaceAll("ova", "");
-let name5 = name4.replaceAll("sub", "");
+
+let name = nomefinale.split(" ")[0];
 
 let arr2 = [];
 await axios
-  .get("https://www.animeworld.so/search?keyword=" + name5)
+  .get("https://www.animeworld.so/search?keyword=" + name.toLowerCase())
   .then(({ data }) => {
     const dom = new JSDOM(data);
     let matches = dom.window.document.querySelectorAll(
@@ -155,11 +152,12 @@ await axios
           <div class="ep" id="contenitore">{arr}</div>
         </div>
       </div>
-
+      <!-- <p id="asd">{play.src}</p> -->
       <div class="contenitore-desc">
         <div class="tagcontainer">
           <h2>Consigliati</h2>
         </div>
+
         <div id="contenitore2" class="consigliati">{arr2}</div>
         <div class="tagcontainer">
           <h2>Tag</h2>
@@ -182,6 +180,18 @@ await axios
       let transformato2 = contenitore2.innerText.trim();
 
       contenitore2.innerHTML = transformato2;
+      const inner = contenitore2.querySelectorAll(".inner");
+      inner.forEach((element) => {
+        let img = document.createElement("img");
+        img.classList.add("playimg");
+        img.src = "../../../src/img/play.svg";
+
+        let a = element.querySelector("a");
+        let aImg = document.createElement("a");
+        aImg.href = a.href;
+        a.appendChild(img);
+        element.appendChild(a);
+      });
 
       let numero = 0;
       let quantepag = 0;

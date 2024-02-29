@@ -7,6 +7,7 @@
   display: flex;
   flex-direction: column;
   padding: 0.5rem 0 0.5rem 0;
+  overflow: hidden;
 }
 
 .barra-1 {
@@ -92,7 +93,12 @@
   max-height: 18rem;
   object-fit: cover;
   align-self: center;
+
   border-radius: 10px;
+  filter: brightness(70%);
+
+  z-index: 1;
+  transition: ease 0.5s;
 }
 
 .inner:hover {
@@ -633,6 +639,18 @@ ul {
   overflow-x: scroll;
   gap: 1.5rem;
   padding: 1rem;
+  max-width: 1000px;
+  height: 350px;
+  margin: 0 auto;
+}
+
+.playimg {
+  width: 2rem;
+  object-fit: scale-down !important;
+  margin-top: -11rem;
+  overflow-y: hidden;
+  z-index: 2;
+  filter: brightness(100%) !important;
 }
 
 @media only screen and (max-width: 1070px) {
@@ -643,6 +661,9 @@ ul {
   }
   .bottonitop {
     gap: 4rem;
+  }
+  .consigliati {
+    max-width: 700px;
   }
 }
 @media only screen and (max-width: 950px) {
@@ -718,9 +739,20 @@ ul {
   .videocontainer p:last-child {
     font-size: 0.6rem;
   }
+  .consigliati {
+    max-width: 600px;
+  }
+}
+@media only screen and (max-width: 640px) {
+  .consigliati {
+    max-width: 400px;
+  }
 }
 
 @media only screen and (max-width: 465px) {
+  .consigliati {
+    max-width: 200px;
+  }
   .contenitorebarra {
     height: 2.5rem;
   }
