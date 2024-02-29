@@ -167,7 +167,7 @@ await axios
         <p id="tag">{tag}</p>
       </div>
     </div>
-
+    <img class="hidden" id="play" src={play.src} />
     <script>
       const contenitore = document.getElementById("contenitore");
 
@@ -180,11 +180,13 @@ await axios
       let transformato2 = contenitore2.innerText.trim();
 
       contenitore2.innerHTML = transformato2;
+      let play = document.getElementById("play");
+      console.log(play.getAttribute("src"));
       const inner = contenitore2.querySelectorAll(".inner");
       inner.forEach((element) => {
         let img = document.createElement("img");
         img.classList.add("playimg");
-        img.src = "../../../src/img/play.svg";
+        img.src = play.getAttribute("src");
 
         let a = element.querySelector("a");
         let aImg = document.createElement("a");
