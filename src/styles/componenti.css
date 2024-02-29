@@ -95,10 +95,8 @@
   align-self: center;
 
   border-radius: 10px;
-  filter: brightness(70%);
 
   z-index: 1;
-  transition: ease 0.5s;
 }
 
 .inner:hover {
@@ -643,7 +641,9 @@ ul {
   height: 350px;
   margin: 0 auto;
 }
-
+.consigliati .poster img {
+  filter: brightness(70%);
+}
 .playimg {
   width: 2rem;
   object-fit: scale-down !important;
