@@ -181,7 +181,7 @@ await axios
 
       contenitore2.innerHTML = transformato2;
       let play = document.getElementById("play");
-      console.log(play.getAttribute("src"));
+
       const inner = contenitore2.querySelectorAll(".inner");
       inner.forEach((element) => {
         let img = document.createElement("img");
@@ -201,7 +201,9 @@ await axios
         let location = window.location.href;
         arr.push(location);
         document.cookie =
-          "crono=" + arr + ";path=/;expires=Fri, 31 Dec 9999 23:59:59 GMT";
+          "crono=" +
+          JSON.stringify(arr) +
+          ";path=/;expires=Fri, 31 Dec 9999 23:59:59 GMT";
         localStorage.setItem("Cronologia", JSON.stringify(arr));
       } else if (old[14] != undefined) {
         old.splice(0, 1);
