@@ -1,0 +1,91 @@
+---
+import "../styles/global.css";
+import "../styles/login.css";
+
+import img from "/src/img/wallpaper.jpg";
+---
+
+<img class="bgimg" src={img.src} />
+
+<div class="log-c">
+  <p>Log in</p>
+  <form action="../../info.json" method="post">
+    <input id="name" type="text" placeholder="name..." required />
+    <input id="pass" type="password" placeholder="password..." required />
+
+    <button class="login">login</button>
+  </form>
+  <div class="button">
+    <button id="registrati">Registrati</button>
+    <button id="home">Home</button>
+  </div>
+</div>
+
+<script>
+  import bcryptjs from "bcryptjs";
+
+  const login = document.getElementById("login");
+  login.addEventListener("click", (e) => {
+    let pass = document.getElementById("pass").value;
+    let name = document.getElementById("name").value;
+    if (typeof pass === "string" && pass.length === 0) {
+    } else if (pass === null) {
+    } else if (!(pass.length > 3)) {
+      alert("la password è troppo corta");
+    } else if (!(name.length > 3)) {
+      alert("nome troppo corto");
+    } else if (name.length === null) {
+      alert("nome troppo corto");
+    } else if (typeof name === "string" && name.length === 0) {
+      alert("inserire un nome");
+    } else {
+      // Requiring module
+      const bcrypt = bcryptjs;
+
+      const password = pass;
+
+      // Encryption of the string password
+      bcrypt.genSalt(10, function (err, Salt) {
+        // The bcrypt is used for encrypting password.
+        bcrypt.hash(password, Salt, function (err, hash) {
+          if (err) {
+            return console.log("Cannot encrypt");
+          }
+          let ogg = localStorage.getItem("acc");
+          let oggfix = JSON.parse(ogg);
+
+          let hashedPassword = oggfix.pass;
+          console.log(hashedPassword);
+
+          bcrypt.compare(
+            password,
+            hashedPassword,
+            async function (err, isMatch) {
+              // Comparing the original password to
+              // encrypted password
+              if (isMatch) {
+                console.log("asddsas");
+              }
+
+              if (!isMatch) {
+                // If password doesn't match the following
+                // message will be sent
+                console.log("no");
+                // location.reload();
+              }
+            }
+          );
+        });
+      });
+    }
+  });
+  const home = document.getElementById("home");
+  home.addEventListener("click", (e) => {
+    window.location.href = "/";
+  });
+
+  const registrati = document.getElementById("registrati");
+  registrati.addEventListener("click", (e) => {
+    window.location.href = "/registrati";
+  });
+</script>

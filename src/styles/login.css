@@ -1,0 +1,49 @@
+.log-c {
+  display: flex;
+  margin: 0 auto;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 20rem;
+  min-height: 100vh;
+  gap: 0.3rem;
+}
+
+p {
+  color: white;
+  text-align: center;
+}
+
+.button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.login {
+  margin-top: 0rem;
+}
+
+button:hover {
+  background-color: white;
+  border: solid 0.1rem white;
+  color: black;
+  transition: ease 0.5s;
+}
+
+button {
+  background-color: black;
+  border: solid 0.1rem white;
+  color: white;
+  border-radius: 5px;
+  padding: 0.2rem;
+  margin-top: 1rem;
+  transition: ease 0.5s;
+}
+
+input {
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  padding: 0.5rem;
+}

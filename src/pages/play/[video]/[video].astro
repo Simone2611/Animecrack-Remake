@@ -195,6 +195,46 @@ await axios
         element.appendChild(a);
       });
 
+      let old = JSON.parse(localStorage.getItem("Cronologia"));
+      if (old == null) {
+        let arr = [];
+        let location = window.location.href;
+        arr.push(location);
+        document.cookie =
+          "crono=" + arr + ";path=/;expires=Fri, 31 Dec 9999 23:59:59 GMT";
+        localStorage.setItem("Cronologia", JSON.stringify(arr));
+      } else if (old[14] != undefined) {
+        old.splice(0, 1);
+        let location = window.location.href;
+
+        old.push(location);
+
+        document.cookie =
+          "crono=" +
+          JSON.stringify(old) +
+          ";path=/;expires=Fri, 31 Dec 9999 23:59:59 GMT";
+        localStorage.setItem("Cronologia", JSON.stringify(old));
+      } else {
+        let location = window.location.href;
+
+        let n = 0;
+        old.forEach((element) => {
+          if (element == location) {
+            n = 1;
+          }
+        });
+
+        if (n == 0) {
+          old.push(location);
+          document.cookie =
+            "crono=" +
+            JSON.stringify(old) +
+            ";path=/;expires=Fri, 31 Dec 9999 23:59:59 GMT";
+          localStorage.setItem("Cronologia", JSON.stringify(old));
+        } else {
+        }
+      }
+
       let numero = 0;
       let quantepag = 0;
       const allep = document.querySelectorAll("ul");

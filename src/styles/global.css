@@ -49,6 +49,10 @@ ul {
 ::-webkit-scrollbar-track {
   background: #1c2125;
 }
+::-webkit-scrollbar-track-x {
+  background: #1c2125;
+  border-radius: 5px;
+}
 
 ::-webkit-scrollbar-thumb {
   background: whitesmoke;

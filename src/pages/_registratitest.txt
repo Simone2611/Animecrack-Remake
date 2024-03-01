@@ -1,0 +1,103 @@
+---
+import "../styles/global.css";
+import "../styles/login.css";
+import img from "/src/img/wallpaper.jpg";
+import fs from "fs";
+// let local = localStorage.getItem("acc");
+// fs.writeFile("../../info.json", local, (err) => {
+//   if (err) {
+//     console.error(err);
+//   } else {
+//     // file written successfully
+//   }
+// });
+---
+
+<img class="bgimg" src={img.src} />
+
+<div class="log-c">
+  <p>Registrati</p>
+  <input id="name" type="text" placeholder="name..." />
+  <input id="pass" type="password" placeholder="password..." />
+  <button class="login" id="crea">Crea</button>
+  <div class="button">
+    <button id="login">login</button>
+    <button id="home">Home</button>
+  </div>
+</div>
+
+<script>
+  import bcryptjs from "bcryptjs";
+
+  const crea = document.getElementById("crea");
+  crea.addEventListener("click", (e) => {
+    let pass = document.getElementById("pass").value;
+    let name = document.getElementById("name").value;
+    if (typeof pass === "string" && pass.length === 0) {
+    } else if (pass === null) {
+    } else if (!(pass.length > 3)) {
+      alert("la password è troppo corta");
+    } else if (!(name.length > 3)) {
+      alert("nome troppo corto");
+    } else if (name.length === null) {
+      alert("nome troppo corto");
+    } else if (typeof name === "string" && name.length === 0) {
+      alert("inserire un nome");
+    } else {
+      // Requiring module
+      const bcrypt = bcryptjs;
+
+      const password = pass;
+
+      var hashedPassword;
+
+      // Encryption of the string password
+      bcrypt.genSalt(10, function (err, Salt) {
+        // The bcrypt is used for encrypting password.
+        bcrypt.hash(password, Salt, function (err, hash) {
+          if (err) {
+            return console.log("Cannot encrypt");
+          }
+
+          hashedPassword = hash;
+          console.log(hash);
+
+          bcrypt.compare(
+            password,
+            hashedPassword,
+            async function (err, isMatch) {
+              // Comparing the original password to
+              // encrypted password
+              if (isMatch) {
+                console.log("Encrypted password is: ", password);
+                console.log("Decrypted password is: ", hashedPassword);
+                let json = JSON.stringify(hashedPassword);
+                let ogg = {
+                  nome: name,
+                  pass: json,
+                };
+                let string = JSON.stringify(ogg);
+                localStorage.setItem("acc", string);
+              }
+
+              if (!isMatch) {
+                // If password doesn't match the following
+                // message will be sent
+                location.reload();
+              }
+            }
+          );
+        });
+      });
+    }
+  });
+  const home = document.getElementById("home");
+  home.addEventListener("click", (e) => {
+    window.location.href = "/";
+  });
+
+  const login = document.getElementById("login");
+  login.addEventListener("click", (e) => {
+    window.location.href = "/login";
+  });
+</script>
