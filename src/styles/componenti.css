@@ -14,8 +14,8 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-  max-width: 1100px;
   margin: 0 auto;
+  padding: 0 1rem 0 1rem;
   gap: 7rem;
 }
 
@@ -140,18 +140,24 @@
   display: flex;
   justify-content: row;
   gap: 1rem;
-
   background-color: #1c2125;
   max-width: 1100px;
   padding: 1rem;
   padding-top: 2rem;
-  border-radius: 1rem;
+  border-radius: 15px;
   overflow-x: scroll;
 }
+
 .contenitore-crono::-webkit-scrollbar-track {
   background: #1c2125;
-  border-radius: 5px;
+  border-radius: 15px;
 }
+
+.contenitore-crono .inner {
+  width: auto;
+  margin-bottom: 0;
+}
+
 .name {
   overflow-wrap: break-word;
   overflow: hidden;
@@ -173,7 +179,7 @@
 }
 
 .logo {
-  height: 3rem;
+  height: 1.2rem;
   align-self: center;
 }
 
@@ -644,6 +650,7 @@ ul {
 .svg-in2 {
   fill: white;
   width: 1.5rem;
+  vertical-align: middle;
   display: none;
 }
 
@@ -692,6 +699,9 @@ ul {
 }
 
 @media only screen and (max-width: 839px) {
+  .svg-in2 {
+    display: flex;
+  }
   .genere {
     margin-top: 0rem;
   }
@@ -703,7 +713,7 @@ ul {
     gap: 0;
   }
   .logo {
-    height: 3rem;
+    height: 1rem;
     align-self: center;
   }
   .topcontainer2 {
@@ -743,11 +753,7 @@ ul {
   .svg {
     display: none;
   }
-  .svg-in2 {
-    display: block;
-    z-index: 100;
-    margin-right: 0.5rem;
-  }
+
   .videocontainer p {
     font-size: 1.4rem;
     align-self: center;
@@ -806,7 +812,7 @@ ul {
     display: none;
   }
   .logo {
-    height: 1.5rem;
+    height: 0.5rem;
     align-self: center;
   }
   .poster img {
