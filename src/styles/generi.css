@@ -1,7 +1,7 @@
 .contenitore-generi {
   flex-direction: row;
   background-color: white;
-  top: 7.5rem;
+  top: 6.5rem;
   position: absolute;
   display: flex;
   transform: scaleY(0);
@@ -53,9 +53,9 @@ button:hover {
 
 .filler {
   position: absolute;
-  height: 1rem;
+  height: 1.6rem;
   background-color: transparent;
-  top: 8rem;
+  top: 5rem;
   color: transparent;
   width: 10rem;
 }

@@ -100,39 +100,40 @@ if (Astro.cookies.get("crono")) {
   crono.innerHTML = trasf;
   if (crono.innerHTML == "") {
     allcrono.classList.add("hidden");
+  } else {
+    const ep = document.getElementById("ep");
+
+    let transformato2 = ep.innerText.trim();
+
+    ep.innerHTML = transformato2;
+    let arrep = [];
+    let epname = ep.querySelectorAll("a");
+    epname.forEach((element) => {
+      arrep.push(element.innerText);
+    });
+    const links = JSON.parse(document.getElementById("links").innerText);
+    const img = crono.querySelectorAll("img");
+    let i = 0;
+    img.forEach((element) => {
+      const div = document.createElement("div");
+      const a = document.createElement("a");
+      const a2 = document.createElement("a");
+
+      div.classList.add("inner");
+
+      a.classList.add("poster");
+      a.appendChild(element);
+      a.href = links[i];
+
+      a2.classList.add("name");
+      a2.innerText = element.alt;
+      a2.href = links[i];
+      a2.innerText = a2.innerText + " ep " + arrep[i];
+
+      div.appendChild(a);
+      div.appendChild(a2);
+      crono.appendChild(div);
+      i++;
+    });
   }
-  const ep = document.getElementById("ep");
-
-  let transformato2 = ep.innerText.trim();
-
-  ep.innerHTML = transformato2;
-  let arrep = [];
-  let epname = ep.querySelectorAll("a");
-  epname.forEach((element) => {
-    arrep.push(element.innerText);
-  });
-  const links = JSON.parse(document.getElementById("links").innerText);
-  const img = crono.querySelectorAll("img");
-  let i = 0;
-  img.forEach((element) => {
-    const div = document.createElement("div");
-    const a = document.createElement("a");
-    const a2 = document.createElement("a");
-
-    div.classList.add("inner");
-
-    a.classList.add("poster");
-    a.appendChild(element);
-    a.href = links[i];
-
-    a2.classList.add("name");
-    a2.innerText = element.alt;
-    a2.href = links[i];
-    a2.innerText = a2.innerText + " ep " + arrep[i];
-
-    div.appendChild(a);
-    div.appendChild(a2);
-    crono.appendChild(div);
-    i++;
-  });
 </script>

@@ -744,12 +744,6 @@ ul {
     transform-origin: right;
     text-align: center;
   }
-
-  .filler {
-    display: none;
-    width: 0;
-    height: 0;
-  }
   .svg {
     display: none;
   }

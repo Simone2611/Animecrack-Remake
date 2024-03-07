@@ -1,7 +1,7 @@
 .contenitore-categoria {
   flex-direction: row;
   background-color: white;
-  top: 7.5rem;
+  top: 6.5rem;
   position: absolute;
   transform: scaleY(0);
   transform-origin: top;
@@ -48,15 +48,6 @@ button:hover {
   align-items: center;
   display: flex;
   justify-content: center;
-}
-
-.filler {
-  position: absolute;
-  height: 1.6rem;
-  background-color: transparent;
-  top: 5.9rem;
-  color: transparent;
-  width: 10rem;
 }
 
 .svgbtn {
