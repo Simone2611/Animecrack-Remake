@@ -80,12 +80,18 @@ import Logo from "../img/AnimeCrack.png";
       search2.style.display = "flex";
       loadDoc();
     }
-    input.addEventListener("focusin", (e) => {
-      search2.style.display = "flex";
+
+    addEventListener("click", (e) => {
+      let target = e.target.toString();
+
+      if (target.includes("HTMLInputElement")) {
+        search2.style.display = "flex";
+      } else {
+        search2.style.display = "none";
+      }
     });
-    input.addEventListener("focusout", (e) => {
-      search2.style.display = "none";
-    });
+
+    search2.addEventListener;
     function loadDoc() {
       const xhttp = new XMLHttpRequest();
       xhttp.onload = function () {
