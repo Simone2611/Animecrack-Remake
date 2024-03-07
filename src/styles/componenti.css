@@ -41,6 +41,7 @@
   justify-content: space-between;
   align-self: center;
 }
+
 .svg-in {
   fill: white;
   width: 1.3rem;
@@ -678,7 +679,6 @@ ul {
 .search {
   position: absolute;
   margin-top: 2.5rem;
-  display: flex;
   flex-direction: column;
   justify-content: center;
   /* flex-wrap: wrap; */
@@ -688,7 +688,7 @@ ul {
 }
 
 .search .inner {
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
   flex-direction: row;
   align-items: normal;
 }
@@ -766,6 +766,7 @@ ul {
   .input {
     width: 13.5rem;
   }
+
   .bottonitop {
     top: 2rem;
     flex-direction: column;

@@ -77,7 +77,6 @@ I will make it easy to use it when i finish it 100% with 0 bug
 
 ## Bugs that i didnt fixed:
 
-- if u click outside the input it doesn't close the pop up with the 4 anime
 - Mobile is strange but not that bad
 - Similar anime tab work but it search the first word of the title and sometime it can search too much anime
 - Music tab for some reason have thumbnail strange
