@@ -10,6 +10,7 @@ import "../styles/generi.css";
   <div class="filler"></div>
   <div id="generi" class="contenitore-generi">
     <div>
+      <p>Home</p>
       <p>Arti Marziali</p>
       <p>Action</p>
       <p>Demoni</p>
@@ -78,7 +79,11 @@ import "../styles/generi.css";
 
   generi.addEventListener("click", (e) => {
     let genereselezionato = e.target.innerHTML.replaceAll(" ", "-");
-    window.location.href = "/generi/" + genereselezionato.toLowerCase();
+    if (genereselezionato == "Home") {
+      window.location.href = "/";
+    } else {
+      window.location.href = "/generi/" + genereselezionato.toLowerCase();
+    }
   });
 
   function isMobile() {

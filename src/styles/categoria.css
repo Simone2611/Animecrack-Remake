@@ -20,7 +20,9 @@
   color: #7f66ff;
   transition: ease 0.5s;
 }
-
+.homebtn {
+  display: none;
+}
 .contenitorecategoriamain {
   display: flex;
 }
@@ -75,5 +77,10 @@ button:hover {
   }
   .contenitore-categoria {
     display: none;
+  }
+}
+@media only screen and (max-width: 465px) {
+  .homebtn {
+    display: flex;
   }
 }

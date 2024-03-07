@@ -10,6 +10,7 @@ import "../styles/categoria.css";
   <div class="filler"></div>
   <div id="categoria" class="contenitore-categoria">
     <div>
+      <p>Home</p>
       <p>Animes</p>
       <p>Movies</p>
       <p>OVA</p>
@@ -34,7 +35,12 @@ import "../styles/categoria.css";
 
     categoria.addEventListener("click", (e) => {
       let genereselezionato = e.target.innerHTML.replaceAll(" ", "-");
-      window.location.href = "/categoria/" + genereselezionato.toLowerCase();
+
+      if (genereselezionato == "Home") {
+        window.location.href = "/";
+      } else {
+        window.location.href = "/categoria/" + genereselezionato.toLowerCase();
+      }
     });
 
     function isMobile() {
@@ -49,16 +55,13 @@ import "../styles/categoria.css";
         window.location.href = "/categoria/animes";
       });
     }
+    let width = window.innerWidth;
 
-    window.addEventListener("resize", (e) => {
-      let width = window.innerWidth;
-      if (width < 840) {
-        button.addEventListener("click", (e) => {
-          window.location.href = "/categoria/animes";
-        });
-      }
-    });
-
+    if (width < 840) {
+      button.addEventListener("click", (e) => {
+        window.location.href = "/categoria/animes";
+      });
+    }
     button.addEventListener("click", (e) => {
       if (isMobile()) {
       } else {

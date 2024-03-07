@@ -179,10 +179,12 @@ await axios
           contgen.style.display = "flex";
           contgen.style.position = "absolute";
           contgen.style.top = "0";
-          contgen.style.right = "0";
+          contgen.style.left = "0";
         }
       });
 
+      const bottoni = document.getElementById("bottoni");
+      bottoni.style.display = "none";
       window.addEventListener("resize", (e) => {
         let width = window.innerWidth;
         if (width > 840) {

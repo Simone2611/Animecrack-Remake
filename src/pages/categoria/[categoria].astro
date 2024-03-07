@@ -170,23 +170,28 @@ await axios
           "/categoria/" + namegenere.innerText.replaceAll("NaN", "");
       }
       const contgen = document.getElementById("categoria");
+      const ultimiep = document.getElementById("ultimiep");
       const bottoni = document.getElementById("bottoni");
       const barra = document.getElementById("barra");
       contgen.removeAttribute("style");
       barra.removeAttribute("style");
+
       barra.addEventListener("click", (e) => {
         let width = window.innerWidth;
         if (width < 840) {
+          ultimiep.style.color = "transparent";
           bottoni.style.width = "3.4rem";
           bottoni.style.height = "0";
+
           contgen.style.transform = "scaleY(1)";
           contgen.style.display = "flex";
           contgen.style.position = "absolute";
           contgen.style.top = "0";
-          contgen.style.right = "0";
+          contgen.style.left = "0";
         }
       });
 
+      bottoni.style.display = "none";
       window.addEventListener("resize", (e) => {
         let width = window.innerWidth;
         if (width > 840) {

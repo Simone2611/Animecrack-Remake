@@ -56,6 +56,7 @@ import Logo from "../img/AnimeCrack.png";
       </div>
     </div>
     <div id="bottoni" class="bottonitop">
+      <button id="home" class="homebtn">Home</button>
       <Generi />
       <button id="nuoveAgg">Nuove aggiunte</button>
       <button id="ultimiep">Ultimi episodi</button>
@@ -72,18 +73,14 @@ import Logo from "../img/AnimeCrack.png";
   let nclick = 0;
   barra.addEventListener("click", (e) => {
     if (nclick == 0) {
+      bottoni.style.transform = "scaleX(0%)";
       bottoni.style.display = "flex";
-      bottoni.style.flexDirection = "column";
-      bottoni.style.position = "absolute";
-      bottoni.style.backgroundColor = "#1c2125";
-      bottoni.style.right = "0";
-      bottoni.style.padding = "0.5rem";
-      bottoni.style.transform = "scaleX(1)";
-      bottoni.style.transition = "ease 0.5s";
+      bottoni.style.transition = "0.5s ease";
       nclick = 1;
     } else {
-      bottoni.style.transform = "scaleX(0)";
-      bottoni.style.transition = "ease 0.5s";
+      bottoni.style.transform = "scaleX(100%)";
+      // bottoni.style.display = "none";
+      bottoni.style.transition = "0.5s ease";
       nclick = 0;
     }
   });
@@ -149,5 +146,10 @@ import Logo from "../img/AnimeCrack.png";
   const upcoming = document.getElementById("upcoming");
   upcoming.addEventListener("click", (e) => {
     window.location.href = "/upcoming";
+  });
+
+  const home = document.getElementById("home");
+  home.addEventListener("click", (e) => {
+    window.location.href = "/";
   });
 </script>

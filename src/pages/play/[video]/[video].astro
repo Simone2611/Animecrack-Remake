@@ -30,7 +30,8 @@ await axios.get(link2).then(({ data }) => {
 
   matches.forEach((element) => {
     let fixed = element.src;
-
+    let blob = new Blob([fixed], { type: "video/mp4" });
+    console.log(blob.stream);
     link = fixed;
   });
 });
@@ -132,7 +133,7 @@ await axios
       <div class="contsinistra">
         <div class="videocontainer">
           <video controls autoplay>
-            <source src={link} type="video/mp4" />
+            <source id="video" src={link} type="video/mp4" />
           </video>
           <div class="contenitorebtn">
             <p class="nomeanime" id="nomeEp">{nomefinale}</p>
