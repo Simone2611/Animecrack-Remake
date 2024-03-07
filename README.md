@@ -64,6 +64,7 @@ I will make it easy to use it when i finish it 100% with 0 bug
     - less height
     - search bar update (u can see the first 4 anime u will see of the word u type)
   - better video player (css)
+    - removed Tags becacuse it was useless
     - changed the position of the elements of the page
     - Episode now have pages (i did it because i dont want to scroll 1h to see last ep)
     - similar anime added
