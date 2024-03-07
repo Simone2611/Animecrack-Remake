@@ -675,6 +675,28 @@ ul {
   filter: brightness(100%) !important;
 }
 
+.search {
+  position: absolute;
+  margin-top: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* flex-wrap: wrap; */
+  align-self: center;
+  background-color: #121619;
+  padding: 0.5rem;
+}
+
+.search .inner {
+  margin-bottom: 0.5rem;
+  flex-direction: row;
+  align-items: normal;
+}
+
+.search .inner a img {
+  max-width: 5rem;
+}
+
 @media only screen and (max-width: 1070px) {
   .barra-1 {
     gap: 4rem;

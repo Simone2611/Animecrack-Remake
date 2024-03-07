@@ -65,9 +65,41 @@ import Logo from "../img/AnimeCrack.png";
       <button id="random">Random</button>
       <button id="upcoming">Upcoming</button>
     </div>
+
+    <div class="search" id="search"></div>
   </div>
 </div>
 <script>
+  addEventListener("input", (event) => {
+    let letter = document.getElementById("cerca1").value;
+    let search2 = document.getElementById("search");
+    if (letter == null || letter == undefined || letter == "") {
+      search2.style.display = "none";
+    } else {
+      search2.style.display = "flex";
+      loadDoc();
+    }
+
+    function loadDoc() {
+      const xhttp = new XMLHttpRequest();
+      xhttp.onload = function () {
+        const res = this.responseText;
+        const search = document.getElementById("search");
+        search.innerText = res;
+
+        let transformato = res.trim();
+        search.innerHTML = transformato;
+        const inputsearch = document.getElementById("inputsearch");
+
+        let transformato2 = inputsearch.innerText.trim();
+
+        inputsearch.innerHTML = transformato2;
+      };
+      xhttp.open("GET", "/input/" + letter.replaceAll(" ", "+"));
+      xhttp.send();
+    }
+  });
+
   const barra = document.getElementById("barra");
   const bottoni = document.getElementById("bottoni");
   let nclick = 0;
