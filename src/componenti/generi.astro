@@ -10,7 +10,7 @@ import "../styles/generi.css";
   <div class="filler"></div>
   <div id="generi" class="contenitore-generi">
     <div>
-      <p>Home</p>
+      <p id="home2">Home</p>
       <p>Arti Marziali</p>
       <p>Action</p>
       <p>Demoni</p>
@@ -65,6 +65,14 @@ import "../styles/generi.css";
   </div>
 </div>
 <script>
+  let width1 = window.innerWidth;
+  const home2 = document.getElementById("home2");
+  if (width1 > 840) {
+    home2.style.display = "none";
+  }
+  if (width1 < 840) {
+    home2.removeAttribute("style");
+  }
   const generi = document.getElementById("generi");
   const all = document.getElementById("all");
   const button = document.getElementById("button3");

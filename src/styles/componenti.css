@@ -697,6 +697,13 @@ ul {
   max-width: 5rem;
 }
 
+.search button {
+  width: 100%;
+  background-color: #7f66ff;
+  border: none;
+  height: 2.5rem;
+}
+
 @media only screen and (max-width: 1070px) {
   .barra-1 {
     gap: 4rem;

@@ -70,7 +70,8 @@ import Logo from "../img/AnimeCrack.png";
   </div>
 </div>
 <script>
-  addEventListener("input", (event) => {
+  const input = document.getElementById("cerca1");
+  input.addEventListener("input", (event) => {
     let letter = document.getElementById("cerca1").value;
     let search2 = document.getElementById("search");
     if (letter == null || letter == undefined || letter == "") {
@@ -93,7 +94,20 @@ import Logo from "../img/AnimeCrack.png";
 
         let transformato2 = inputsearch.innerText.trim();
 
-        inputsearch.innerHTML = transformato2;
+        inputsearch.innerHTML =
+          transformato2 + '<button id="more">More</button>';
+        if (
+          transformato2 == null ||
+          transformato2 == undefined ||
+          transformato2 == ""
+        ) {
+          inputsearch.innerHTML = "";
+        }
+        const more = document.getElementById("more");
+        more.addEventListener("click", (e) => {
+          let letter = document.getElementById("cerca1").value;
+          window.location.href = "/" + letter + "/search";
+        });
       };
       xhttp.open("GET", "/input/" + letter.replaceAll(" ", "+"));
       xhttp.send();

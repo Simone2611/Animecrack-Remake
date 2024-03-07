@@ -51,11 +51,32 @@ I will make it easy to use it when i finish it 100% with 0 bug
   - Added Category
 
 - **v1.4**
+
   - Loading page
   - Css fix
   - Now the min width is 222px before it break
   - Bug fix
 
+- **v1.5**
+  - Bugfix
+  - fixed error loading or page not loading
+  - better nav bar (css)
+    - less height
+    - search bar update (u can see the first 4 anime u will see of the word u type)
+  - better video player (css)
+    - changed the position of the elements of the page
+    - Episode now have pages (i did it because i dont want to scroll 1h to see last ep)
+    - similar anime added
+    - desc improvement
+    - next and previous button update
+  - logo update
+  - Mobile update
+    - Added home button in mobile version
+    - some fix & css update
+
 ## Bugs that i didnt fixed:
 
-- pag 20+ become 110
+- if u click outside the input it doesn't close the pop up with the 4 anime
+- Mobile is strange but not that bad
+- Similar anime tab work but it search the first word of the title and sometime it can search too much anime
+- Music tab for some reason have thumbnail strange

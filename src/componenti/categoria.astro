@@ -10,7 +10,7 @@ import "../styles/categoria.css";
   <div class="filler"></div>
   <div id="categoria" class="contenitore-categoria">
     <div>
-      <p>Home</p>
+      <p id="home1">Home</p>
       <p>Animes</p>
       <p>Movies</p>
       <p>OVA</p>
@@ -20,6 +20,14 @@ import "../styles/categoria.css";
     </div>
   </div>
   <script>
+    let width1 = window.innerWidth;
+    const home1 = document.getElementById("home1");
+    if (width1 > 840) {
+      home1.style.display = "none";
+    }
+    if (width1 < 840) {
+      home1.removeAttribute("style");
+    }
     const categoria = document.getElementById("categoria");
     const all = document.getElementById("all2");
     const button = document.getElementById("button2");

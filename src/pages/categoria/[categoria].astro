@@ -190,13 +190,23 @@ await axios
           contgen.style.left = "0";
         }
       });
+      let width = window.innerWidth;
+      if (width > 840) {
+        contgen.removeAttribute("style");
+        barra.removeAttribute("style");
+      }
+      if (width < 840) {
+        bottoni.style.display = "none";
+      }
 
-      bottoni.style.display = "none";
       window.addEventListener("resize", (e) => {
         let width = window.innerWidth;
         if (width > 840) {
           contgen.removeAttribute("style");
           barra.removeAttribute("style");
+        }
+        if (width < 840) {
+          bottoni.style.display = "none";
         }
       });
     </script>
