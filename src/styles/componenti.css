@@ -91,7 +91,7 @@
 
 .poster img {
   max-width: 11.5rem;
-  min-height: 5rem;
+  min-height: 17rem;
   object-fit: cover;
   align-self: center;
 
@@ -179,6 +179,16 @@
   width: 100%;
   margin-bottom: 3rem;
   transition: ease 1s;
+}
+
+.playimg {
+  width: 2rem;
+  object-fit: scale-down !important;
+  margin-top: -11rem;
+  overflow-y: hidden;
+  z-index: 2;
+  min-height: 5rem !important;
+  filter: brightness(100%) !important;
 }
 
 .logo {
@@ -668,14 +678,6 @@ ul {
 }
 .consigliati .poster img {
   filter: brightness(70%);
-}
-.playimg {
-  width: 2rem;
-  object-fit: scale-down !important;
-  margin-top: -11rem;
-  overflow-y: hidden;
-  z-index: 2;
-  filter: brightness(100%) !important;
 }
 
 .search {
