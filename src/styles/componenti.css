@@ -90,8 +90,8 @@
 }
 
 .poster img {
-  max-width: 17rem;
-  max-height: 18rem;
+  max-width: 11.5rem;
+  min-height: 5rem;
   object-fit: cover;
   align-self: center;
 
@@ -119,11 +119,13 @@
 
 .Recenti {
   padding: 1rem;
-  height: 5rem;
-  font-size: 3rem;
+  font-size: 1.7rem;
   font-weight: bold;
   color: #fcfcfc;
   text-align: center;
+  justify-content: center;
+  display: flex;
+  align-items: center;
 }
 
 .contenitore-anime {
@@ -684,7 +686,9 @@ ul {
   /* flex-wrap: wrap; */
   align-self: center;
   background-color: #121619;
-  padding: 0.5rem;
+  padding: 1rem;
+  border-radius: 9px;
+  display: none;
 }
 
 .search .inner {
@@ -695,6 +699,8 @@ ul {
 
 .search .inner a img {
   max-width: 5rem;
+  min-height: 7rem;
+  object-fit: cover;
 }
 
 .search button {
@@ -702,6 +708,28 @@ ul {
   background-color: #7f66ff;
   border: none;
   height: 2.5rem;
+}
+
+.scrollup {
+  position: sticky;
+  right: 1rem;
+  bottom: 2rem;
+  float: right;
+  border: none;
+  height: fit-content;
+  width: fit-content;
+}
+.scrollup:hover {
+  background-color: #121619;
+}
+
+.scrollup svg {
+  fill: white;
+  /* padding: 1rem; */
+  width: 1.5rem;
+  height: 1.5rem;
+  align-self: center;
+  padding: 0.5rem;
 }
 
 @media only screen and (max-width: 1070px) {
@@ -755,7 +783,7 @@ ul {
     width: 28rem;
   }
   .Recenti {
-    font-size: 2rem;
+    font-size: 1.3rem;
   }
   .navbar {
     position: relative;
@@ -776,6 +804,7 @@ ul {
     padding: 0.5rem;
     position: absolute;
     background-color: #1c2125;
+    display: none;
   }
   .svg {
     display: none;

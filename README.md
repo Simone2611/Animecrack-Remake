@@ -26,57 +26,64 @@ I will make it easy to use it when i finish it 100% with 0 bug
 
 ## Updates
 
-- **v1.0**
+<span style="color: #FF69B4;">- v1.0 </span>
 
-  - AnimeCrack 100% work.
+- AnimeCrack 100% work.
 
-- **v1.1**
+<span style="color: #FF69B4;">- v1.1 </span>
 
-  - Bug fix
+- Bug fix
 
-- **v1.2**
+<span style="color: #FF69B4;">- v1.2 </span>
 
-  - Fixed Previous button
-  - Added genres of anime (Adventure, Slice of life etc.)
-  - Last Epidose that come out
-  - Anime ongoing
-  - Description and tags under the episode
-  - Added some details and some little thing that make it look good
-  - Fixed page error when the link is short
+- Fixed Previous button
+- Added genres of anime (Adventure, Slice of life etc.)
+- Last Epidose that come out
+- Anime ongoing
+- Description and tags under the episode
+- Added some details and some little thing that make it look good
+- Fixed page error when the link is short
 
-- **v1.3**
+<span style="color: #FF69B4;">- v1.3 </span>
 
-  - Added homepage slider
-  - Added Random anime
-  - Added Category
+- Added homepage slider
+- Added Random anime
+- Added Category
 
-- **v1.4**
+<span style="color: #FF69B4;">- v1.4 </span>
 
-  - Loading page
-  - Css fix
-  - Now the min width is 222px before it break
-  - Bug fix
+- Loading page
+- Css fix
+- Now the min width is 222px before it break
+- Bug fix
 
-- **v1.5**
-  - Bugfix
-  - fixed error loading or page not loading
-  - better nav bar (css)
-    - less height
-    - search bar update (u can see the first 4 anime u will see of the word u type)
-  - better video player (css)
-    - removed Tags becacuse it was useless
-    - changed the position of the elements of the page
-    - Episode now have pages (i did it because i dont want to scroll 1h to see last ep)
-    - similar anime added
-    - desc improvement
-    - next and previous button update
-  - logo update
-  - Mobile update
-    - Added home button in mobile version
-    - some fix & css update
+<span style="color: #FF69B4;">- v1.5 </span>
+
+- Bugfix
+- fixed error loading or page not loading
+- better nav bar (css)
+  - less height
+  - search bar update (u can see the first 4 anime u will see of the word u type)
+- better video player (css)
+  - removed Tags becacuse it was useless
+  - changed the position of the elements of the page
+  - Episode now have pages (i did it because i dont want to scroll 1h to see last ep)
+  - similar anime added
+  - desc improvement
+  - next and previous button update
+- logo update
+- Mobile update
+  - Added home button in mobile version
+  - some fix & css update
+
+<span style="color: #FF69F4;">- v1.5.1 </span>
+
+- Error 404 redirect on home page
+- Music tab fixed
+- Css fix
+- Home page button to go on top of the page
 
 ## Bugs that i didnt fixed:
 
-- Mobile is strange but not that bad
+- Mobile duble click to open sidebar
 - Similar anime tab work but it search the first word of the title and sometime it can search too much anime
-- Music tab for some reason have thumbnail strange
