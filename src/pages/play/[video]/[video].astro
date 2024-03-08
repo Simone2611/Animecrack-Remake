@@ -11,9 +11,9 @@ import { manifest } from "astro:ssr-manifest";
 const { JSDOM } = jsdom;
 
 let URL = Astro.request.url;
-
+let linkredirect = "";
 const URLplay = URL.split("/");
-
+let fixato = "";
 let link2 =
   "https://www.animeworld.so/api/episode/serverPlayerAnimeWorld?id=" +
   URLplay.at(-1);
@@ -30,14 +30,58 @@ await axios.get(link2).then(({ data }) => {
 
   matches.forEach((element) => {
     let fixed = element.src;
-    let blob = new Blob([fixed], { type: "video/mp4" });
-    console.log(blob.stream);
+
     link = fixed;
+  });
+});
+
+await axios.get(link2).then(({ data }) => {
+  const dom = new JSDOM(data);
+  let matches = dom.window.document.querySelectorAll("script");
+
+  matches.forEach((element) => {
+    let fixed = element.outerHTML;
+
+    let fixed1 = fixed.indexOf('urlVideo = youtube_parser("');
+    let fixed3 = fixed.replaceAll(fixed.substr(0, fixed1), "");
+    let fixed4 = fixed3.replaceAll(fixed3.substr(0, fixed3.indexOf('"')));
+    let fixed5 = fixed4.replaceAll("undefined", "");
+    let fixed6 = fixed5.indexOf('");');
+    let fixed7 = fixed5.substr(0, fixed6).replaceAll('"');
+    let finalfix = fixed7.replaceAll("undefined", "");
+
+    fixato = finalfix;
   });
 });
 
 let arr = [];
 let URL2 = URL.replace(Astro.url.origin, "");
+let n = 0;
+await axios.get("https://www.animeworld.so" + URL2).then(({ data }) => {
+  const dom = new JSDOM(data);
+  let matches = dom.window.document.querySelectorAll("div > .server.hidden");
+
+  matches.forEach((element) => {
+    let fixed = element.outerHTML;
+    let fixed2 = fixed.indexOf('data-name="4');
+    let fixed3 = fixed.replaceAll(fixed.substr(0, fixed2), "");
+
+    let fixed4 = fixed3.indexOf("href=");
+    let fixed5 = fixed3.substr(fixed4, 3000).replaceAll('"');
+    let fixed6 = fixed5.replaceAll("undefined", "");
+    let fixed7 = fixed6.indexOf(">");
+    let fixed8 = fixed6.substr(0, fixed7);
+    if (n == 0) {
+      let url = Astro.url.pathname.lastIndexOf("/") + 2;
+      let url2 = JSON.stringify(Astro.url.pathname).substring(0, url);
+
+      let fixed9 = fixed8.replaceAll(url2, "");
+      linkredirect = fixed9.replaceAll("href=", "");
+
+      n++;
+    }
+  });
+});
 
 await axios.get("https://www.animeworld.so" + URL2).then(({ data }) => {
   const dom = new JSDOM(data);
@@ -132,9 +176,18 @@ await axios
     <div class="videocontainer2">
       <div class="contsinistra">
         <div class="videocontainer">
-          <video controls autoplay>
+          <video id="videoc" controls autoplay>
             <source id="video" src={link} type="video/mp4" />
           </video>
+          <iframe
+            width="750"
+            height="400"
+            src={fixato}
+            id="ytvid"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen></iframe>
           <div class="contenitorebtn">
             <p class="nomeanime" id="nomeEp">{nomefinale}</p>
             <button class="nodispl btn" id="previous"></button>
@@ -169,7 +222,29 @@ await axios
       </div>
     </div>
     <img class="hidden" id="play" src={play.src} />
+    <p id="check" class="hidden">{fixato}</p>
+    <p id="check2" class="hidden">{linkredirect}</p>
+    <p id="check3" class="hidden">{link}</p>
     <script>
+      const check3 = document.getElementById("check3");
+      if (check3.innerText == "") {
+        const check = document.getElementById("check");
+        const check2 = document.getElementById("check2");
+        if (check2.innerText != "" && !check.innerText.includes("youtube")) {
+          window.location.href = check2.innerText;
+        }
+        if (check.innerText != "") {
+          const videoc = document.getElementById("videoc");
+          videoc.classList.add("hidden");
+        } else {
+          const ytvid = document.getElementById("ytvid");
+          ytvid.classList.add("hidden");
+        }
+      } else {
+        const ytvid = document.getElementById("ytvid");
+        ytvid.classList.add("hidden");
+      }
+
       const contenitore = document.getElementById("contenitore");
 
       let transformato = contenitore.innerText.trim();

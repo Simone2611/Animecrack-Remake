@@ -105,6 +105,10 @@
   transition: ease 1s;
 }
 
+.inner:hover .music {
+  color: #7f66ff;
+}
+
 .inner:hover .name {
   color: #7f66ff;
 }
@@ -187,7 +191,7 @@
   margin-top: -11rem;
   overflow-y: hidden;
   z-index: 2;
-  min-height: 5rem !important;
+  min-height: 3rem !important;
   filter: brightness(100%) !important;
 }
 
@@ -671,6 +675,7 @@ ul {
   flex-direction: row;
   overflow-x: auto;
   gap: 1.5rem;
+  overflow-y: hidden;
   padding: 1rem;
   max-width: 1000px;
   height: 350px;

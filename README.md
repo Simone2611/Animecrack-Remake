@@ -83,7 +83,24 @@ I will make it easy to use it when i finish it 100% with 0 bug
 - Css fix
 - Home page button to go on top of the page
 
+<span style="color: #FF69F4;">- v1.5.2 </span>
+
+- Music videos don't work
+- Css fix for music
+
 ## Bugs that i didnt fixed:
 
+<span style="color: #f44336;">- Important </span>
+
+- nothing
+
+<span style="color: #f49536;">- Need to do it at some point </span>
+
 - Mobile duble click to open sidebar
+- Similar music don't work well
+
+<span style="color: #8fce00;">- If i want </span>
+
 - Similar anime tab work but it search the first word of the title and sometime it can search too much anime
+
+<span style="color: #444444;">--Last bugfix v1.5.2 8/03/24--</span>

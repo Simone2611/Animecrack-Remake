@@ -43,6 +43,11 @@ ul {
   z-index: -1;
 }
 
+iframe {
+  border-radius: 9px;
+  min-width: 30rem;
+}
+
 ::-webkit-scrollbar {
   width: 0.7rem;
 }
