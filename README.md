@@ -85,7 +85,7 @@ I will make it easy to use it when i finish it 100% with 0 bug
 
 <span style="color: #FF69F4;">- v1.5.2 </span>
 
-- Music videos don't work
+- Music videos work
 - Css fix for music
 
 ## Bugs that i didnt fixed:
