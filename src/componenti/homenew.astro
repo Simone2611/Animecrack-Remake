@@ -1,0 +1,69 @@
+---
+import Barratop from "./barratop.astro";
+import img from "/src/img/wallpaper.jpg";
+import "../styles/global.css";
+
+import axios from "axios";
+import jsdom from "jsdom";
+import { manifest } from "astro:ssr-manifest";
+const { JSDOM } = jsdom;
+let array1 = [];
+
+await axios.get("https://www.animeworld.so/newest").then(({ data }) => {
+  const dom = new JSDOM(data);
+  let matches = dom.window.document.querySelectorAll(
+    ".film-list > .item > .inner"
+  );
+  console.log(array1);
+  matches.forEach((element) => {
+    let fixed = element.outerHTML;
+    if (fixed.includes('<div class="dub">DUB</div>')) {
+      fixed = fixed.replace('<div class="dub">DUB</div>', "");
+    }
+
+    if (fixed.includes('<div class="ova">OVA</div>')) {
+      fixed = fixed.replace('<div class="ova">OVA</div>', "");
+    }
+
+    if (fixed.includes('<div class="ona">ONA</div>')) {
+      fixed = fixed.replace('<div class="ona">ONA</div>', "");
+    }
+
+    if (fixed.includes('<div class="movie">Movie</div>')) {
+      fixed = fixed.replace('<div class="movie">Movie</div>', "");
+    }
+
+    if (fixed.includes('<div class="special">Special</div>')) {
+      fixed = fixed.replace('<div class="special">Special</div>', "");
+    }
+
+    array1.push(fixed);
+  });
+});
+---
+
+<div class="cont-anime">
+  <div class="recentiC">
+    <div class="pagbtn-l">
+      <p class="Recenti">Ultime uscite</p>
+    </div>
+  </div>
+  <div class="contenitore-anime-new" id="contenitorenew">
+    {array1}
+  </div>
+</div>
+<button class="scrollup" id="up">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
+    ><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+    <path
+      d="M256 48a208 208 0 1 1 0 416 208 208 0 1 1 0-416zm0 464A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM135.1 217.4c-4.5 4.2-7.1 10.1-7.1 16.3c0 12.3 10 22.3 22.3 22.3H208v96c0 17.7 14.3 32 32 32h32c17.7 0 32-14.3 32-32V256h57.7c12.3 0 22.3-10 22.3-22.3c0-6.2-2.6-12.1-7.1-16.3L269.8 117.5c-3.8-3.5-8.7-5.5-13.8-5.5s-10.1 2-13.8 5.5L135.1 217.4z"
+    ></path></svg
+  >
+</button>
+<script>
+  const contenitore = document.getElementById("contenitorenew");
+
+  let transformato = contenitore.innerText.trim();
+
+  contenitore.innerHTML = transformato;
+</script>

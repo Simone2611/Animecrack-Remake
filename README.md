@@ -88,6 +88,13 @@ I will make it easy to use it when i finish it 100% with 0 bug
 - Music videos work
 - Css fix for music
 
+<span style="color: #FF69F4;">- v1.5.3 </span>
+
+- Better Home page
+  - added newest anime in the hompage
+  - fixed css
+- Css changed
+
 ## Bugs that i didnt fixed:
 
 <span style="color: #f44336;">- Important </span>
