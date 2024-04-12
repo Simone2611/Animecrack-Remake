@@ -114,4 +114,4 @@ I will make it easy to use it when i finish it 100% with 0 bug
 
 - Similar anime tab work but it search the first word of the title and sometime it can search too much anime
 
-<span style="color: #444444;">--Last bugfix v1.5.2 8/03/24--</span>
+<span style="color: #444444;">--Last bugfix v1.5.3.1 12/04/24--</span>
