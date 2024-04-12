@@ -95,6 +95,10 @@ I will make it easy to use it when i finish it 100% with 0 bug
   - fixed css
 - Css changed
 
+  <span style="color: #FF69A0;">- v1.5.3.1 </span>
+
+  - Similar anime tab fixed
+
 ## Bugs that i didnt fixed:
 
 <span style="color: #f44336;">- Important </span>

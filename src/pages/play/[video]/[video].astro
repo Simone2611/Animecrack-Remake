@@ -126,6 +126,9 @@ await axios.get("https://www.animeworld.so" + URL2).then(({ data }) => {
 
 let name = nomefinale.split(" ")[0];
 
+if (name.length < 3) {
+  name = name + "+" + nomefinale.split(" ")[1];
+}
 let arr2 = [];
 await axios
   .get("https://www.animeworld.so/search?keyword=" + name.toLowerCase())
