@@ -49,6 +49,7 @@ iframe {
 }
 
 ::-webkit-scrollbar {
+  background-color: #1c2125;
   width: 0.7rem;
 }
 

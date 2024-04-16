@@ -34,6 +34,10 @@ await axios.get("https://www.animeworld.so/").then(({ data }) => {
       fixed = fixed.replace('<div class="special">Special</div>', "");
     }
 
+    if (fixed.includes('<div class="owl-carousel owl-theme">')) {
+      fixed = fixed.replace('<div class="owl-carousel owl-theme">', "");
+    }
+
     arr.push(fixed);
   });
 });
@@ -85,13 +89,13 @@ await axios.get("https://www.animeworld.so/").then(({ data }) => {
   let pagN = 1;
   let pagetxtN = document.getElementById("Npage");
   succ.addEventListener("click", (e) => {
-    if (pagN != numeropagTot - 2) {
+    if (pagN != numeropagTot) {
       let pagprima = document.getElementById("pages" + pagN);
       pagprima.classList.add("hide");
       pagN++;
       let pagsucc = document.getElementById("pages" + pagN);
       pagsucc.classList.remove("hide");
-      pagetxtN.innerText = "Page " + pagN + " / " + (numeropagTot - 2);
+      pagetxtN.innerText = "Page " + pagN + " / " + numeropagTot;
     }
   });
 
@@ -103,9 +107,9 @@ await axios.get("https://www.animeworld.so/").then(({ data }) => {
 
       let pagprima = document.getElementById("pages" + pagN);
       pagprima.classList.remove("hide");
-      pagetxtN.innerText = "Page " + pagN + " / " + (numeropagTot - 2);
+      pagetxtN.innerText = "Page " + pagN + " / " + numeropagTot;
     }
   });
 
-  pagetxtN.innerText = "Page 1 / " + (numeropagTot - 2);
+  pagetxtN.innerText = "Page 1 / " + numeropagTot;
 </script>
