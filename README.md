@@ -99,6 +99,13 @@ I will make it easy to use it when i finish it 100% with 0 bug
 
   - Similar anime tab fixed
 
+<span style="color: #FF69F4;">- v1.5.4 </span>
+
+- css update homepage
+  - pages because the homepage was too long
+- bug fix
+- vercel server not loading fix
+
 ## Bugs that i didnt fixed:
 
 <span style="color: #f44336;">- Important </span>
@@ -114,4 +121,4 @@ I will make it easy to use it when i finish it 100% with 0 bug
 
 - Similar anime tab work but it search the first word of the title and sometime it can search too much anime
 
-<span style="color: #444444;">--Last bugfix v1.5.3.1 12/04/24--</span>
+<span style="color: #444444;">--Last bugfix v1.5.4 18/04/24--</span>

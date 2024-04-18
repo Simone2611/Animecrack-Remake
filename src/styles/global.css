@@ -53,6 +53,10 @@ iframe {
   width: 0.7rem;
 }
 
+::-webkit-scrollbar:horizontal {
+  display: none;
+}
+
 ::-webkit-scrollbar-track {
   background: #1c2125;
   border-radius: 12px;
