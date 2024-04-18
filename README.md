@@ -106,6 +106,10 @@ I will make it easy to use it when i finish it 100% with 0 bug
 - bug fix
 - vercel server not loading fix
 
+  <span style="color: #FF69A0;">- v1.5.4.1 </span>
+
+  - Similar anime (music category) fixed
+
 ## Bugs that i didnt fixed:
 
 <span style="color: #f44336;">- Important </span>
@@ -115,10 +119,9 @@ I will make it easy to use it when i finish it 100% with 0 bug
 <span style="color: #f49536;">- Need to do it at some point </span>
 
 - Mobile duble click to open sidebar
-- Similar music don't work well
 
 <span style="color: #8fce00;">- If i want </span>
 
-- Similar anime tab work but it search the first word of the title and sometime it can search too much anime
+- nothing
 
 <span style="color: #444444;">--Last bugfix v1.5.4 18/04/24--</span>

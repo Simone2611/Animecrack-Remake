@@ -95,7 +95,7 @@
 
 .poster img {
   max-width: 11.5rem;
-  min-height: 17rem;
+  height: 17rem;
   object-fit: cover;
   align-self: center;
 
@@ -265,7 +265,17 @@
 .playimg {
   width: 2rem;
   object-fit: scale-down !important;
-  margin-top: -11rem;
+  margin-top: -17rem;
+  overflow-y: hidden;
+  z-index: 2;
+  min-height: 3rem !important;
+  filter: brightness(100%) !important;
+}
+
+.playimgmusic {
+  width: 2rem;
+  object-fit: scale-down !important;
+  margin-top: -18.5rem;
   overflow-y: hidden;
   z-index: 2;
   min-height: 3rem !important;
@@ -783,12 +793,13 @@ ul {
 .search .inner {
   margin-bottom: 1rem;
   flex-direction: row;
+  gap: 0.5rem;
   align-items: normal;
 }
 
 .search .inner a img {
   max-width: 5rem;
-  min-height: 7rem;
+  height: 7.5rem;
   object-fit: cover;
 }
 
