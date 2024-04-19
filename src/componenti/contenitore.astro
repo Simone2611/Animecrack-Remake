@@ -112,4 +112,14 @@ await axios.get("https://www.animeworld.so/").then(({ data }) => {
   });
 
   pagetxtN.innerText = "Page 1 / " + numeropagTot;
+
+  const allposter = document.querySelectorAll(".poster");
+  allposter.forEach((element) => {
+    element.href = element.href.replace("https://www.animeworld.so", "");
+  });
+
+  const allname = document.querySelectorAll(".name");
+  allname.forEach((element) => {
+    element.href = element.href.replace("https://www.animeworld.so", "");
+  });
 </script>
