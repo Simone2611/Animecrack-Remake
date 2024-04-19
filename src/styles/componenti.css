@@ -879,6 +879,9 @@ ul {
   .film-list {
     grid-template-columns: 1fr 1fr 1fr;
   }
+  .contenitore-anime {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }
 
 @media only screen and (max-width: 839px) {
@@ -951,10 +954,16 @@ ul {
   .consigliati {
     max-width: 400px;
   }
+  .contenitore-anime {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 @media only screen and (max-width: 465px) {
   .film-list {
+    grid-template-columns: 1fr;
+  }
+  .contenitore-anime {
     grid-template-columns: 1fr;
   }
   .consigliati {
