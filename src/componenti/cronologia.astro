@@ -84,9 +84,11 @@ if (Astro.cookies.get("crono")) {
   <div class="recentiC">
     <div class="pagbtn-l">
       <p class="Recenti">Cronologia</p>
+      <p class="bar">|</p>
+      <button id="showCrono">Mostra</button>
     </div>
   </div>
-  <div class="contenitore-anime-new">
+  <div id="containercrono" class="contenitore-anime-new">
     <div class="contenitore" id="crono">
       {arrfinale}
     </div>
@@ -140,4 +142,20 @@ if (Astro.cookies.get("crono")) {
       i++;
     });
   }
+  let i = 0;
+  const crono2 = document.getElementById("containercrono");
+  crono2.style.display = "none";
+
+  const btnconro = document.getElementById("showCrono");
+  btnconro.addEventListener("click", (e) => {
+    if (i == 0) {
+      crono2.style.display = "flex";
+
+      i++;
+    } else {
+      crono2.style.display = "none";
+
+      i = 0;
+    }
+  });
 </script>
