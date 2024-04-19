@@ -133,16 +133,18 @@ import Logo from "../img/AnimeCrack.png";
 
   const barra = document.getElementById("barra");
   const bottoni = document.getElementById("bottoni");
+  bottoni.style.transition = "0.5s ease";
   let nclick = 0;
   barra.addEventListener("click", (e) => {
     if (nclick == 0) {
-      bottoni.style.transform = "scaleX(0%)";
       bottoni.style.display = "flex";
+      bottoni.style.transform = "scaleX(100%)";
+      // bottoni.style.display = "none";
       bottoni.style.transition = "0.5s ease";
       nclick = 1;
     } else {
-      bottoni.style.transform = "scaleX(100%)";
-      // bottoni.style.display = "none";
+      bottoni.style.transform = "scaleX(0%)";
+      bottoni.style.display = "flex";
       bottoni.style.transition = "0.5s ease";
       nclick = 0;
     }

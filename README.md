@@ -110,6 +110,11 @@ I will make it easy to use it when i finish it 100% with 0 bug
 
   - Similar anime (music category) fixed
 
+  <span style="color: #FF69A0;">- v1.5.4.2 </span>
+
+  - Css update (homepage)
+  - fixed button duble click on mobile sidebar
+
 ## Bugs that i didnt fixed:
 
 <span style="color: #f44336;">- Important </span>
@@ -118,7 +123,7 @@ I will make it easy to use it when i finish it 100% with 0 bug
 
 <span style="color: #f49536;">- Need to do it at some point </span>
 
-- Mobile duble click to open sidebar
+- nothing
 
 <span style="color: #8fce00;">- If i want </span>
 
