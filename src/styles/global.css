@@ -54,7 +54,7 @@ iframe {
 }
 
 ::-webkit-scrollbar:horizontal {
-  display: none;
+  height: 0.4rem;
 }
 
 ::-webkit-scrollbar-track {
