@@ -103,7 +103,9 @@ await axios
 
       contenitore.innerHTML = transformato;
       const input = document.getElementById("cerca1");
-      input.value = document.getElementById("namegenere").innerText;
+      input.value = document
+        .getElementById("namegenere")
+        .innerText.replaceAll('"', "");
     </script>
   </body>
 </html>
