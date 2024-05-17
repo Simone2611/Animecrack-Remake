@@ -15,7 +15,7 @@ const URLsearch = URL.split("/");
 let filtro = URL.replaceAll(Astro.url.origin + "/", "");
 
 let filtrofinale = filtro.replaceAll("/search", "");
-let filtrofinale2 = decodeURI(filtrofinale);
+let filtrofinale2 = '"' + decodeURI(filtrofinale) + '"';
 await axios
   .get("https://www.animeworld.so/search?keyword=" + URLsearch.at(-2))
   .then(({ data }) => {
