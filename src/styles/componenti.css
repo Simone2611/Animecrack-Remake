@@ -795,6 +795,7 @@ ul {
 .search {
   position: absolute;
   margin-top: 2.5rem;
+  margin-right: 8rem;
   flex-direction: column;
   justify-content: center;
   /* flex-wrap: wrap; */
@@ -882,6 +883,9 @@ ul {
   .contenitore-anime {
     grid-template-columns: 1fr 1fr 1fr;
   }
+  .search {
+    margin-right: 5rem;
+  }
 }
 
 @media only screen and (max-width: 839px) {
@@ -948,6 +952,15 @@ ul {
   }
   .film-list {
     grid-template-columns: 1fr 1fr;
+  }
+  .search {
+    margin-right: 3rem;
+  }
+}
+
+@media only screen and (max-width: 670px) {
+  .search {
+    margin-right: 0rem;
   }
 }
 @media only screen and (max-width: 640px) {
