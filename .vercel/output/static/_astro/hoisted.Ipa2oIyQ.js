@@ -1,1 +1,0 @@
-import"./categoria.astro_astro_type_script_index_0_lang.f7mQuCtM.js";const e=document.getElementById("contenitore");let t=e.innerText.trim();e.innerHTML=t;const n=document.getElementById("cerca1");n.value=document.getElementById("namegenere").innerText.replaceAll('"',"");
