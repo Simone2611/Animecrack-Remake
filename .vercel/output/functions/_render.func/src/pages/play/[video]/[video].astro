@@ -1,0 +1,475 @@
+---
+import Playvideo from "../../../componenti/playvideo.astro";
+import img from "/src/img/wallpaper.webp";
+import play from "/src/img/play.svg";
+import "../../../styles/componenti.css";
+import "../../../js/js.js";
+
+import axios from "axios";
+import jsdom from "jsdom";
+import { manifest } from "astro:ssr-manifest";
+const { JSDOM } = jsdom;
+
+let URL = Astro.request.url;
+let linkredirect = "";
+const URLplay = URL.split("/");
+let fixato = "";
+let link2 =
+  "https://www.animeworld.so/api/episode/serverPlayerAnimeWorld?id=" +
+  URLplay.at(-1);
+let nome1 = URLplay.at(-2).split(".");
+let nome2 = nome1.at(-2);
+let nome3 = nome2.replaceAll("-", " ");
+let nomefinale = nome3.toUpperCase();
+
+let link = "";
+
+await axios.get(link2).then(({ data }) => {
+  const dom = new JSDOM(data);
+  let matches = dom.window.document.querySelectorAll("div video source");
+
+  matches.forEach((element) => {
+    let fixed = element.src;
+
+    link = fixed;
+  });
+});
+
+await axios.get(link2).then(({ data }) => {
+  const dom = new JSDOM(data);
+  let matches = dom.window.document.querySelectorAll("script");
+
+  matches.forEach((element) => {
+    let fixed = element.outerHTML;
+
+    let fixed1 = fixed.indexOf('urlVideo = youtube_parser("');
+    let fixed3 = fixed.replaceAll(fixed.substr(0, fixed1), "");
+    let fixed4 = fixed3.replaceAll(fixed3.substr(0, fixed3.indexOf('"')));
+    let fixed5 = fixed4.replaceAll("undefined", "");
+    let fixed6 = fixed5.indexOf('");');
+    let fixed7 = fixed5.substr(0, fixed6).replaceAll('"');
+    let finalfix = fixed7.replaceAll("undefined", "");
+
+    fixato = finalfix;
+  });
+});
+
+let arr = [];
+let URL2 = URL.replace(Astro.url.origin, "");
+let n = 0;
+await axios.get("https://www.animeworld.so" + URL2).then(({ data }) => {
+  const dom = new JSDOM(data);
+  let matches = dom.window.document.querySelectorAll("div > .server.hidden");
+
+  matches.forEach((element) => {
+    let fixed = element.outerHTML;
+    let fixed2 = fixed.indexOf('data-name="4');
+    let fixed3 = fixed.replaceAll(fixed.substr(0, fixed2), "");
+
+    let fixed4 = fixed3.indexOf("href=");
+    let fixed5 = fixed3.substr(fixed4, 3000).replaceAll('"');
+    let fixed6 = fixed5.replaceAll("undefined", "");
+    let fixed7 = fixed6.indexOf(">");
+    let fixed8 = fixed6.substr(0, fixed7);
+    if (n == 0) {
+      let url = Astro.url.pathname.lastIndexOf("/") + 2;
+      let url2 = JSON.stringify(Astro.url.pathname).substring(0, url);
+
+      let fixed9 = fixed8.replaceAll(url2, "");
+      linkredirect = fixed9.replaceAll("href=", "");
+
+      n++;
+    }
+  });
+});
+
+await axios.get("https://www.animeworld.so" + URL2).then(({ data }) => {
+  const dom = new JSDOM(data);
+  let matches = dom.window.document.querySelectorAll("div > .server.active");
+
+  matches.forEach((element) => {
+    let fixed = element.outerHTML;
+
+    arr.push(fixed);
+  });
+});
+let desc = "";
+
+await axios.get("https://www.animeworld.so" + URL2).then(({ data }) => {
+  const dom = new JSDOM(data);
+  let matches = dom.window.document.querySelectorAll(".desc");
+
+  matches.forEach((element) => {
+    let fixed = element.outerHTML;
+    let fixed2 = fixed.replaceAll(`<div class="desc">`, ``);
+    desc = fixed2.replaceAll(`</div>`, ``);
+  });
+});
+let tag = "";
+await axios.get("https://www.animeworld.so" + URL2).then(({ data }) => {
+  const dom = new JSDOM(data);
+  let matches = dom.window.document.querySelectorAll("#tagsReload");
+
+  matches.forEach((element) => {
+    let fixed = element.outerHTML;
+    let fixed2 = fixed.replaceAll(
+      `<p id="tagsReload" style="max-height: 100px; overflow-y: auto; font-size: 10px; font-family: 'Nunito Sans', sans-serif;">`,
+      ``
+    );
+    let fixed3 = fixed2.replaceAll(`</p>`, ``);
+    let fixed4 = fixed3.replaceAll(`<span>`, "");
+    let fixed5 = fixed4.replaceAll(`<span class="episode-num-keywords">`, "");
+
+    tag = decodeURI(fixed5.replaceAll("</span>", ""));
+  });
+});
+
+let name = nomefinale.split(" ")[0];
+
+if (name.length < 3) {
+  name = name + "+" + nomefinale.split(" ")[1];
+}
+let arr2 = [];
+await axios
+  .get("https://www.animeworld.so/search?keyword=" + name.toLowerCase())
+  .then(({ data }) => {
+    const dom = new JSDOM(data);
+    let matches = dom.window.document.querySelectorAll(
+      ".film-list > .item > .inner"
+    );
+
+    matches.forEach((element) => {
+      let fixed = element.outerHTML;
+      if (fixed.includes('<div class="dub">DUB</div>')) {
+        fixed = fixed.replace('<div class="dub">DUB</div>', "");
+      }
+
+      if (fixed.includes('<div class="ova">OVA</div>')) {
+        fixed = fixed.replace('<div class="ova">OVA</div>', "");
+      }
+
+      if (fixed.includes('<div class="ona">ONA</div>')) {
+        fixed = fixed.replace('<div class="ona">ONA</div>', "");
+      }
+
+      if (fixed.includes('<div class="movie">Movie</div>')) {
+        fixed = fixed.replace('<div class="movie">Movie</div>', "");
+      }
+
+      if (fixed.includes('<div class="special">Special</div>')) {
+        fixed = fixed.replace('<div class="special">Special</div>', "");
+      }
+
+      arr2.push(fixed);
+    });
+  });
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Animecrack</title>
+  </head>
+  <body>
+    <img class="bgimg" src={img.src} />
+    <Playvideo />
+    <div class="videocontainer2">
+      <div class="contsinistra">
+        <div class="videocontainer">
+          <video id="videoc" controls autoplay>
+            <source id="video" src={link} type="video/mp4" />
+          </video>
+          <iframe
+            width="100%"
+            height="500"
+            src={fixato}
+            id="ytvid"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen></iframe>
+          <div class="contenitorebtn">
+            <p class="nomeanime" id="nomeEp">{nomefinale}</p>
+            <button class="nodispl btn" id="previous"></button>
+            <button class="nodispl btn" id="next"></button>
+          </div>
+          <p id="desc">{desc}</p>
+        </div>
+
+        <div class="contenitoreep">
+          <div class="contenitorebtn">
+            <p id="numeropagina">Episodi pagina:</p>
+            <button class="btn" id="eppag-pre">&lt</button>
+            <button class="btn" id="eppag-next">&gt</button>
+          </div>
+
+          <div class="ep" id="contenitore">{arr}</div>
+        </div>
+      </div>
+      <!-- <p id="asd">{play.src}</p> -->
+      <div class="contenitore-desc">
+        <div class="tagcontainer">
+          <h2>Consigliati</h2>
+        </div>
+
+        <div id="contenitore2" class="consigliati">{arr2}</div>
+        <!-- <div class="tagcontainer">
+          <h2>Tag</h2>
+          <button class="showbtn" id="show">Show all</button>
+        </div>
+
+        <p id="tag">{tag}</p> -->
+      </div>
+    </div>
+
+    <img class="hidden" id="play" src={play.src} />
+    <p id="check" class="hidden">{fixato}</p>
+    <p id="check2" class="hidden">{linkredirect}</p>
+    <p id="check3" class="hidden">{link}</p>
+    <script>
+      const check3 = document.getElementById("check3");
+      if (check3.innerText == "") {
+        const check = document.getElementById("check");
+        const check2 = document.getElementById("check2");
+        if (check2.innerText != "" && !check.innerText.includes("youtube")) {
+          window.location.href = check2.innerText;
+        }
+        if (check.innerText != "") {
+          const videoc = document.getElementById("videoc");
+          videoc.classList.add("hidden");
+          loadDoc();
+        } else {
+          const ytvid = document.getElementById("ytvid");
+          ytvid.classList.add("hidden");
+        }
+      } else {
+        const ytvid = document.getElementById("ytvid");
+        ytvid.classList.add("hidden");
+      }
+      function loadDoc() {
+        const xhttp = new XMLHttpRequest();
+        xhttp.onload = function () {
+          const res = this.responseText;
+
+          const contenitore2 = document.getElementById("contenitore2");
+
+          contenitore2.innerText = res;
+          let transformato = contenitore2.innerText.trim();
+
+          contenitore2.innerHTML = transformato;
+
+          const inputsearch = document.getElementById("inputsearch");
+
+          let transf = inputsearch.innerText.trim();
+
+          inputsearch.innerHTML = transf;
+
+          const inner = contenitore2.querySelectorAll(".inner");
+          inner.forEach((element) => {
+            let img = document.createElement("img");
+            img.classList.add("playimgmusic");
+            img.src = play.getAttribute("src");
+
+            let a = element.querySelector("a");
+            let aImg = document.createElement("a");
+            aImg.href = a.href;
+            a.appendChild(img);
+            element.appendChild(a);
+          });
+          if (
+            transformato == null ||
+            transformato == undefined ||
+            transformato == ""
+          ) {
+            contenitore2.innerHTML = "";
+          }
+        };
+        xhttp.open("GET", "/music");
+        xhttp.send();
+      }
+      const contenitore = document.getElementById("contenitore");
+
+      let transformato = contenitore.innerText.trim();
+
+      contenitore.innerHTML = transformato;
+
+      const contenitore2 = document.getElementById("contenitore2");
+
+      let transformato2 = contenitore2.innerText.trim();
+
+      contenitore2.innerHTML = transformato2;
+
+      let play = document.getElementById("play");
+
+      const inner = contenitore2.querySelectorAll(".inner");
+      inner.forEach((element) => {
+        let img = document.createElement("img");
+        img.classList.add("playimg");
+        img.src = play.getAttribute("src");
+
+        let a = element.querySelector("a");
+        let aImg = document.createElement("a");
+        aImg.href = a.href;
+        a.appendChild(img);
+        element.appendChild(a);
+      });
+
+      let old = JSON.parse(localStorage.getItem("Cronologia"));
+      if (old == null) {
+        let arr = [];
+        let location = window.location.href;
+        arr.push(location);
+        document.cookie =
+          "crono=" +
+          JSON.stringify(arr) +
+          ";path=/;expires=Fri, 31 Dec 9999 23:59:59 GMT";
+        localStorage.setItem("Cronologia", JSON.stringify(arr));
+      } else if (old[4] != undefined) {
+        old.splice(0, 1);
+        let location = window.location.href;
+
+        old.push(location);
+
+        document.cookie =
+          "crono=" +
+          JSON.stringify(old) +
+          ";path=/;expires=Fri, 31 Dec 9999 23:59:59 GMT";
+        localStorage.setItem("Cronologia", JSON.stringify(old));
+      } else {
+        let location = window.location.href;
+
+        let n = 0;
+        old.forEach((element) => {
+          if (element == location) {
+            n = 1;
+          }
+        });
+
+        if (n == 0) {
+          old.push(location);
+          document.cookie =
+            "crono=" +
+            JSON.stringify(old) +
+            ";path=/;expires=Fri, 31 Dec 9999 23:59:59 GMT";
+          localStorage.setItem("Cronologia", JSON.stringify(old));
+        } else {
+        }
+      }
+
+      let numero = 0;
+      let quantepag = 0;
+      const allep = document.querySelectorAll("ul");
+      allep.forEach((element) => {
+        numero += 1;
+        element.setAttribute("id", "n" + numero);
+        quantepag++;
+      });
+      const numeropag = document.getElementById("numeropagina");
+
+      numeropag.innerText = "Episodi pagina 1 / " + quantepag;
+
+      const nextlista = document.getElementById("eppag-next");
+      const prelista = document.getElementById("eppag-pre");
+
+      let pagina = 1;
+
+      nextlista.addEventListener("click", (e) => {
+        if (pagina == quantepag) {
+        } else {
+          let darimuovere = document.getElementById("n" + pagina);
+          let aggiungere = document.getElementById("n" + (+pagina + 1));
+          darimuovere.classList.remove("active");
+          darimuovere.classList.add("hidden");
+          aggiungere.classList.add("active");
+          aggiungere.classList.remove("hidden");
+          pagina++;
+          numeropag.innerText = "Episodi pagina " + pagina + " / " + quantepag;
+        }
+      });
+
+      prelista.addEventListener("click", (e) => {
+        if (pagina == 1) {
+        } else {
+          let darimuovere = document.getElementById("n" + pagina);
+          let aggiungere = document.getElementById("n" + (+pagina - 1));
+          darimuovere.classList.remove("active");
+          darimuovere.classList.add("hidden");
+          aggiungere.classList.add("active");
+          aggiungere.classList.remove("hidden");
+          pagina -= 1;
+          numeropag.innerText = "Episodi pagina " + pagina + " / " + quantepag;
+        }
+      });
+
+      const ep = document.querySelector(".episode .active");
+      const nomeEp = document.getElementById("nomeEp");
+      let nextbtn = document.getElementById("next");
+      let normale = nomeEp.innerText.toLowerCase();
+      nomeEp.innerText =
+        normale.charAt(0).toUpperCase() +
+        normale.slice(1) +
+        " Ep " +
+        ep.textContent;
+
+      // const tag = document.getElementById("tag");
+      // const show = document.getElementById("show");
+      // let n = 1;
+      // show.addEventListener("click", (e) => {
+      //   if (n == 1) {
+      //     tag.style.overflow = "visible";
+      //     tag.style.textOverflow = "unset";
+      //     tag.style.maxWidth = "100%";
+      //     tag.style.whiteSpace = "initial";
+      //     show.innerText = "Hide all";
+      //     n = 2;
+      //   } else {
+      //     tag.removeAttribute("style");
+      //     show.innerText = "Show all";
+      //     n = 1;
+      //   }
+      // });
+
+      next();
+
+      function next() {
+        try {
+          let nextLink =
+            document.querySelector("a.active").parentElement.nextElementSibling
+              .children[0].href;
+          if (nextLink == null || nextLink == undefined || nextLink == "") {
+          } else {
+            let nextA = document.createElement("a");
+            nextA.href = nextLink;
+            nextA.innerHTML = "Next Episode";
+            nextbtn.classList.add("displ");
+            nextbtn.classList.remove("nodispl");
+            nextbtn.appendChild(nextA);
+          }
+          prev();
+        } catch (err) {
+          prev();
+        }
+      }
+
+      function prev() {
+        let nextbtn2 = document.getElementById("previous");
+
+        let nextLink2 =
+          document.querySelector("a.active").parentElement
+            .previousElementSibling.children[0].href;
+        if (nextLink2 == null || nextLink2 == undefined || nextLink2 == "") {
+        } else {
+          let nextA2 = document.createElement("a");
+          nextA2.href = nextLink2;
+          nextA2.innerHTML = "Previous Episode";
+          nextbtn2.classList.add("displ");
+          nextbtn2.classList.remove("nodispl");
+          nextbtn2.appendChild(nextA2);
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,80 @@
+{
+	"version": 3,
+	"routes": [
+		{
+			"src": "^/_astro/(.*)$",
+			"headers": {
+				"cache-control": "public, max-age=31536000, immutable"
+			},
+			"continue": true
+		},
+		{
+			"handle": "filesystem"
+		},
+		{
+			"src": "^\\/_image$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/404\\/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/categoria\\/([^/]+?)\\/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/generi\\/([^/]+?)\\/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/input\\/([^/]+?)\\/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/play\\/([^/]+?)\\/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/play\\/([^/]+?)\\/([^/]+?)\\/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/music\\/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/newest\\/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/ongoing\\/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/random\\/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/upcoming\\/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/updated\\/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/([^/]+?)\\/search\\/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "/.*",
+			"dest": "_render",
+			"status": 404
+		}
+	]
+}

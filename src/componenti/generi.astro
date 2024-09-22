@@ -87,8 +87,10 @@ import "../styles/generi.css";
 
   generi.addEventListener("click", (e) => {
     let genereselezionato = e.target.innerHTML.replaceAll(" ", "-");
+    let specialChars = /[<>]/;
     if (genereselezionato == "Home") {
       window.location.href = "/";
+    } else if (specialChars.test(genereselezionato) == true) {
     } else {
       window.location.href = "/generi/" + genereselezionato.toLowerCase();
     }

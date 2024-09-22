@@ -11,7 +11,7 @@ let n = 1;
 await axios.get("https://www.animeworld.so/").then(({ data }) => {
   const dom = new JSDOM(data);
   let matches = dom.window.document.querySelectorAll(".film-list");
-  console.log(data);
+
   matches.forEach((element) => {
     let fixed = element.outerHTML;
     if (fixed.includes('<div class="dub">DUB</div>')) {
