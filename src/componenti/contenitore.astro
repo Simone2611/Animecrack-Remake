@@ -10,6 +10,7 @@ let arr = [];
 let n = 1;
 await axios.get("https://www.animeworld.so/").then(({ data }) => {
   const dom = new JSDOM(data);
+  console.log(data);
   let matches = dom.window.document.querySelectorAll(".film-list");
 
   matches.forEach((element) => {
