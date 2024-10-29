@@ -164,6 +164,17 @@ await axios
       arr2.push(fixed);
     });
   });
+let arr4 = [];
+await axios.get("https://www.animeworld.so" + URL2).then(({ data }) => {
+  const dom = new JSDOM(data);
+  let matches = dom.window.document.querySelectorAll("div > #next-episode");
+
+  matches.forEach((element) => {
+    let fixed = element.outerHTML;
+
+    arr4.push(fixed);
+  });
+});
 ---
 
 <html lang="en">
@@ -209,6 +220,7 @@ await axios
 
           <div class="ep" id="contenitore">{arr}</div>
         </div>
+        <div id="contenitore3" class="countdown">{arr4}</div>
       </div>
       <!-- <p id="asd">{play.src}</p> -->
       <div class="contenitore-desc">
@@ -230,6 +242,7 @@ await axios
     <p id="check" class="hidden">{fixato}</p>
     <p id="check2" class="hidden">{linkredirect}</p>
     <p id="check3" class="hidden">{link}</p>
+
     <script>
       if (
         localStorage.getItem("EpUguale") == undefined ||
@@ -383,6 +396,57 @@ await axios
       let transformato2 = contenitore2.innerText.trim();
 
       contenitore2.innerHTML = transformato2;
+
+      const contenitore3 = document.getElementById("contenitore3");
+
+      let transformato3 = contenitore3.innerText.trim();
+
+      contenitore3.innerHTML = transformato3;
+
+      const calendarElement = document.getElementById("next-episode");
+      const calendarDate = calendarElement.getAttribute("data-calendar-date");
+      const calendarDate2 = calendarElement.getAttribute("data-calendar-time");
+      console.log(calendarDate);
+
+      let countDownDate = new Date(
+        calendarDate + "," + calendarDate2
+      ).getTime();
+      if (calendarDate == null || calendarDate == undefined) {
+      } else {
+        setInterval(function () {
+          // Get today's date and time
+          let now = new Date().getTime();
+
+          // Find the distance between now and the count down date
+          let distance = countDownDate - now;
+
+          // Time calculations for days, hours, minutes and seconds
+          let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+          let hours = Math.floor(
+            (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+          );
+          let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+          let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+          // Display the result in the element with id="demo"
+          document.getElementById("next-episode").innerHTML =
+            "Next Episode: " +
+            days +
+            "d " +
+            hours +
+            "h " +
+            minutes +
+            "m " +
+            seconds +
+            "s ";
+
+          // If the count down is finished, write some text
+          if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("next-episode").innerHTML = "EXPIRED";
+          }
+        }, 1000);
+      }
 
       let play = document.getElementById("play");
 
