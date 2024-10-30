@@ -22,7 +22,7 @@ On the first page, you'll find the latest updates on recent anime releases. Use 
 
 ## How to use
 
-I will make it easy to use it when i finish it 100% with 0 bug
+Start with the Astro commands (look at the documentation)
 
 ## Updates
 
@@ -135,4 +135,4 @@ I will make it easy to use it when i finish it 100% with 0 bug
 
 - nothing
 
-<span style="color: #444444;">--Last bugfix v1.5.4 18/04/24--</span>
+<span style="color: #444444;">--Last bugfix v1.4 30/10/24--</span>
