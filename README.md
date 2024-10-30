@@ -34,7 +34,7 @@ I will make it easy to use it when i finish it 100% with 0 bug
 
 - Bug fix
 
-<span style="color: #FF69B4;">- v1.2 </span>
+<span style="color: #FF69B4;">- v1.1 </span>
 
 - Fixed Previous button
 - Added genres of anime (Adventure, Slice of life etc.)
@@ -44,21 +44,20 @@ I will make it easy to use it when i finish it 100% with 0 bug
 - Added some details and some little thing that make it look good
 - Fixed page error when the link is short
 
-<span style="color: #FF69B4;">- v1.3 </span>
+<span style="color: #FF69B4;">- v1.2 </span>
 
 - Added homepage slider
 - Added Random anime
 - Added Category
 
-<span style="color: #FF69B4;">- v1.3
-1</span>
+<span style="color: #FF69B4;">- v1.2.1</span>
 
 - Loading page
 - Css fix
 - Now the min width is 222px before it break
 - Bug fix
 
-<span style="color: #FF69B4;">- v1.4 </span>
+<span style="color: #FF69B4;">- v1.3 </span>
 
 - Bugfix
 - fixed error loading or page not loading
@@ -77,44 +76,50 @@ I will make it easy to use it when i finish it 100% with 0 bug
   - Added home button in mobile version
   - some fix & css update
 
-<span style="color: #FF69F4;">- v1.4.1 </span>
+<span style="color: #FF69F4;">- v1.3.1 </span>
 
 - Error 404 redirect on home page
 - Music tab fixed
 - Css fix
 - Home page button to go on top of the page
 
-<span style="color: #FF69F4;">- v1.4.2 </span>
+<span style="color: #FF69F4;">- v1.3.2 </span>
 
 - Music videos work
 - Css fix for music
 
-<span style="color: #FF69F4;">- v1.4.3 </span>
+<span style="color: #FF69F4;">- v1.3.3 </span>
 
 - Better Home page
   - added newest anime in the hompage
   - fixed css
 - Css changed
 
-<span style="color: #FF69A0;">- v1.4.4 </span>
+<span style="color: #FF69A0;">- v1.3.4 </span>
 
 - Similar anime tab fixed
 
-<span style="color: #FF69F4;">- v1.4.5 </span>
+<span style="color: #FF69F4;">- v1.3.5 </span>
 
 - css update homepage
   - pages because the homepage was too long
 - bug fix
 - vercel server not loading fix
 
-<span style="color: #FF69A0;">- v1.4.6 </span>
+<span style="color: #FF69A0;">- v1.3.6 </span>
 
 - Similar anime (music category) fixed
 
-<span style="color: #FF69A0;">- v1.4.7 </span>
+<span style="color: #FF69A0;">- v1.3.7 </span>
 
 - Css update (homepage)
 - fixed button duble click on mobile sidebar
+
+<span style="color: #FF69A0;">- v1.4 </span>
+
+- Added timer for next ep
+- bugfix
+
 
 ## Bugs that i didnt fixed:
 
