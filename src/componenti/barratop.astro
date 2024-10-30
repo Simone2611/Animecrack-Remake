@@ -87,14 +87,24 @@ import Logo from "../img/AnimeCrack.png";
         search2.style.display = "flex";
       }
     }
-
+    input.addEventListener("focus", (e) => {
+      localStorage.setItem("search", "1");
+    });
+    input.addEventListener("change", (e) => {
+      localStorage.setItem("search", "1");
+    });
+    input.addEventListener("blur", (e) => {
+      localStorage.setItem("search", "0");
+    });
     addEventListener("click", (e) => {
       let target = e.target.toString();
 
       if (target.includes("HTMLInputElement")) {
         search2.style.display = "flex";
+        localStorage.setItem("search", "1");
       } else {
         search2.style.display = "none";
+        localStorage.setItem("search", "0");
       }
     });
 

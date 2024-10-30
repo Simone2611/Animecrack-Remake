@@ -245,6 +245,13 @@ await axios.get("https://www.animeworld.so" + URL2).then(({ data }) => {
 
     <script>
       if (
+        localStorage.getItem("search") == undefined ||
+        localStorage.getItem("search") == null ||
+        localStorage.getItem("search") == ""
+      ) {
+        localStorage.setItem("search", "0");
+      }
+      if (
         localStorage.getItem("EpUguale") == undefined ||
         localStorage.getItem("EpUguale") == null ||
         localStorage.getItem("EpUguale") == ""
@@ -304,13 +311,16 @@ await axios.get("https://www.animeworld.so" + URL2).then(({ data }) => {
         }
 
         if (event.keyCode === 32) {
-          event.preventDefault();
-          if (n == 0) {
-            videoc.pause();
-            n++;
+          if (localStorage.getItem("search") == "1") {
           } else {
-            videoc.play();
-            n--;
+            event.preventDefault();
+            if (n == 0) {
+              videoc.pause();
+              n++;
+            } else {
+              videoc.play();
+              n--;
+            }
           }
         }
 
