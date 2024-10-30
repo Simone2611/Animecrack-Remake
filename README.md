@@ -111,6 +111,7 @@ Start with the Astro commands (look at the documentation)
 - Similar anime (music category) fixed
 
 <span style="color: #FF69A0;">- v1.3.7 </span>
+<<<<<<< HEAD
 
 - Css update (homepage)
 - fixed button duble click on mobile sidebar
@@ -119,6 +120,17 @@ Start with the Astro commands (look at the documentation)
 
 - Added timer for next ep
 - bugfix
+=======
+
+- Css update (homepage)
+- fixed button duble click on mobile sidebar
+
+<span style="color: #FF69A0;">- v1.4 </span>
+
+- Added timer for next ep
+- bugfix
+
+>>>>>>> 63e3dee34103c6fbdde8fbca9438208865f70950
 
 ## Bugs that i didnt fixed:
 
