@@ -424,13 +424,13 @@ await axios.get("https://www.animeworld.so" + URL2).then(({ data }) => {
       if (calendarDate == null || calendarDate == undefined) {
       } else {
         setInterval(function () {
-          // Get today's date and time
+          // Tempo oggi
           let now = new Date().getTime();
 
-          // Find the distance between now and the count down date
+          // Dffirenza tempo
           let distance = countDownDate - now;
 
-          // Time calculations for days, hours, minutes and seconds
+          // Calcola giorno, ora, minuto e secondi
           let days = Math.floor(distance / (1000 * 60 * 60 * 24));
           let hours = Math.floor(
             (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
@@ -438,7 +438,6 @@ await axios.get("https://www.animeworld.so" + URL2).then(({ data }) => {
           let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
           let seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-          // Display the result in the element with id="demo"
           document.getElementById("next-episode").innerHTML =
             "Next Episode: " +
             days +
@@ -450,10 +449,11 @@ await axios.get("https://www.animeworld.so" + URL2).then(({ data }) => {
             seconds +
             "s ";
 
-          // If the count down is finished, write some text
+          // Se finisce il timer:
           if (distance < 0) {
             clearInterval(x);
-            document.getElementById("next-episode").innerHTML = "EXPIRED";
+            document.getElementById("next-episode").innerHTML =
+              "Next Episode: Now";
           }
         }, 1000);
       }
