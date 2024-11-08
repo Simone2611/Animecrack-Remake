@@ -413,7 +413,8 @@ await axios.get("https://www.animeworld.so" + URL2).then(({ data }) => {
 
       contenitore3.innerHTML = transformato3;
 
-      if (contenitore3.innerText != "") {
+      if (contenitore3.hasChildNodes() == true) {
+        contenitore3.classList.remove("nodispl");
         const calendarElement = document.getElementById("next-episode");
         const calendarDate = calendarElement.getAttribute("data-calendar-date");
         const calendarDate2 =
