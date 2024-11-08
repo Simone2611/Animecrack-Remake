@@ -76,61 +76,53 @@ Start with the Astro commands (look at the documentation)
   - Added home button in mobile version
   - some fix & css update
 
-<span style="color: #FF69F4;">- v1.3.1 </span>
+<span style="color: #FF69B4;">- v1.3.1 </span>
 
 - Error 404 redirect on home page
 - Music tab fixed
 - Css fix
 - Home page button to go on top of the page
 
-<span style="color: #FF69F4;">- v1.3.2 </span>
+<span style="color: #FF69B4;">- v1.3.2 </span>
 
 - Music videos work
 - Css fix for music
 
-<span style="color: #FF69F4;">- v1.3.3 </span>
+<span style="color: #FF69B4;">- v1.3.3 </span>
 
 - Better Home page
   - added newest anime in the hompage
   - fixed css
 - Css changed
 
-<span style="color: #FF69A0;">- v1.3.4 </span>
+<span style="color: #FF69B4;">- v1.3.4 </span>
 
 - Similar anime tab fixed
 
-<span style="color: #FF69F4;">- v1.3.5 </span>
+<span style="color: #FF69B4;">- v1.3.5 </span>
 
 - css update homepage
   - pages because the homepage was too long
 - bug fix
 - vercel server not loading fix
 
-<span style="color: #FF69A0;">- v1.3.6 </span>
+<span style="color: #FF69B4;">- v1.3.6 </span>
 
 - Similar anime (music category) fixed
 
-<span style="color: #FF69A0;">- v1.3.7 </span>
-<<<<<<< HEAD
+<span style="color: #FF69B4;">- v1.3.7 </span>
 
 - Css update (homepage)
 - fixed button duble click on mobile sidebar
 
-<span style="color: #FF69A0;">- v1.4 </span>
-
-- Added timer for next ep
-- bugfix
-=======
-
-- Css update (homepage)
-- fixed button duble click on mobile sidebar
-
-<span style="color: #FF69A0;">- v1.4 </span>
+<span style="color: #FF69B4;">- v1.4 </span>
 
 - Added timer for next ep
 - bugfix
 
->>>>>>> 63e3dee34103c6fbdde8fbca9438208865f70950
+<span style="color: #FF69B4;">- v1.4.1 </span>
+
+- fixed next ep dissapear when there isn't next ep timer
 
 ## Bugs that i didnt fixed:
 
