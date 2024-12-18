@@ -869,6 +869,30 @@ ul {
   display: none;
 }
 
+dd {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+  margin: 0;
+  gap: 0.5rem;
+  margin-left: 0.5rem;
+  font-size: 0px;
+}
+
+dd > a {
+  font-size: 1rem;
+  background-color: #7f66ff;
+  color: white;
+  padding: 0.3rem;
+  border-radius: 10px;
+  transform: scale(1);
+  transition: transform ease 0.5s;
+}
+
+dd > a:hover {
+  transform: scale(1.1);
+}
+
 @media only screen and (max-width: 1070px) {
   .barra-1 {
     gap: 4rem;
@@ -957,6 +981,10 @@ ul {
   .videocontainer p:last-child {
     font-size: 0.6rem;
   }
+
+  dd > a {
+    font-size: 0.6rem;
+  }
   .consigliati {
     max-width: 600px;
   }
@@ -1037,5 +1065,8 @@ ul {
     flex-direction: column;
     align-items: center;
     gap: 0;
+  }
+  .contenitoreep > .contenitorebtn {
+    flex-direction: row;
   }
 }

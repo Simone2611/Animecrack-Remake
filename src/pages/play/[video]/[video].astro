@@ -105,22 +105,14 @@ await axios.get("https://www.animeworld.so" + URL2).then(({ data }) => {
     desc = fixed2.replaceAll(`</div>`, ``);
   });
 });
-let tag = "";
+let tag = [];
 await axios.get("https://www.animeworld.so" + URL2).then(({ data }) => {
   const dom = new JSDOM(data);
-  let matches = dom.window.document.querySelectorAll("#tagsReload");
+  let matches = dom.window.document.querySelectorAll(".info > .row > dl");
 
   matches.forEach((element) => {
     let fixed = element.outerHTML;
-    let fixed2 = fixed.replaceAll(
-      `<p id="tagsReload" style="max-height: 100px; overflow-y: auto; font-size: 10px; font-family: 'Nunito Sans', sans-serif;">`,
-      ``
-    );
-    let fixed3 = fixed2.replaceAll(`</p>`, ``);
-    let fixed4 = fixed3.replaceAll(`<span>`, "");
-    let fixed5 = fixed4.replaceAll(`<span class="episode-num-keywords">`, "");
-
-    tag = decodeURI(fixed5.replaceAll("</span>", ""));
+    tag.push(fixed);
   });
 });
 
@@ -207,6 +199,9 @@ await axios.get("https://www.animeworld.so" + URL2).then(({ data }) => {
             <p class="nomeanime" id="nomeEp">{nomefinale}</p>
             <button class="nodispl btn" id="previous"></button>
             <button class="nodispl btn" id="next"></button>
+          </div>
+          <div id="tag">
+            {tag}
           </div>
           <p id="desc">{desc}</p>
         </div>
@@ -413,13 +408,37 @@ await axios.get("https://www.animeworld.so" + URL2).then(({ data }) => {
 
       contenitore3.innerHTML = transformato3;
 
+      const tag = document.getElementById("tag");
+      let tagTransf = tag.innerText.trim();
+      tag.innerHTML = tagTransf;
+      const links = document.querySelectorAll("a");
+      // Loop through each link
+      links.forEach((link) => {
+        // Check if the href contains "generi/"
+        if (link.href.includes("genre/")) {
+          // Replace "generi/" with "genere/" in the href
+          link.href = link.href.replace("genre/", "generi/");
+        }
+      });
+      const dt = document.querySelectorAll("dt");
+      dt.forEach((element) => {
+        element.classList.add("hide");
+      });
+      const dd = document.querySelectorAll("dd");
+      let numeroDD = 0;
+      dd.forEach((element) => {
+        numeroDD++;
+        if (numeroDD != 6) {
+          element.classList.add("hide");
+        }
+      });
+
       if (contenitore3.hasChildNodes() == true) {
         contenitore3.classList.remove("nodispl");
         const calendarElement = document.getElementById("next-episode");
         const calendarDate = calendarElement.getAttribute("data-calendar-date");
         const calendarDate2 =
           calendarElement.getAttribute("data-calendar-time");
-        console.log(calendarDate);
 
         let countDownDate = new Date(
           calendarDate + "," + calendarDate2
